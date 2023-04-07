@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOBShelter", "TOBShelter\TOBShelter.csproj", "{4A8AC6B9-2E40-4FC3-BC21-7F9B50D26005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTOBShelter", "TestTOBShelter\TestTOBShelter.csproj", "{9102B9CA-5CF0-400F-B813-A1315FE4D984}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A8AC6B9-2E40-4FC3-BC21-7F9B50D26005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8AC6B9-2E40-4FC3-BC21-7F9B50D26005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8AC6B9-2E40-4FC3-BC21-7F9B50D26005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8AC6B9-2E40-4FC3-BC21-7F9B50D26005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9102B9CA-5CF0-400F-B813-A1315FE4D984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9102B9CA-5CF0-400F-B813-A1315FE4D984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9102B9CA-5CF0-400F-B813-A1315FE4D984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9102B9CA-5CF0-400F-B813-A1315FE4D984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2105310D-2008-4AFD-BC4E-716974292C6C}
+	EndGlobalSection
+EndGlobal
