@@ -1,4 +1,4 @@
-﻿namespace Projet_Ortega_Thil_Brungard.Types.Base
+﻿namespace TOBShelter.Types.Base
 {
     internal enum Gender
     {

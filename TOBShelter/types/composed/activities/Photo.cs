@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Projet_Ortega_Thil_Brungard.Types.Composed.Activities
+namespace TOBShelter.Types.Composed.Activities
 {
     internal class Photo : Activity
     {

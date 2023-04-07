@@ -1,7 +1,7 @@
-﻿using Projet_Ortega_Thil_Brungard.Types.Base;
+﻿using TOBShelter.Types.Base;
 using System;
 
-namespace Projet_Ortega_Thil_Brungard.Types.Composed
+namespace TOBShelter.Types.Composed
 {
     internal abstract class Animal
     {

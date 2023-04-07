@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Projet_Ortega_Thil_Brungard.Utils
+namespace TOBShelter.Utils
 {
     public static class RegexUtil
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Projet_Ortega_Thil_Brungard.Types.Composed
+namespace TOBShelter.Types.Composed
 {
     internal class Person
     {

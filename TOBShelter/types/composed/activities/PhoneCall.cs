@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Projet_Ortega_Thil_Brungard.Types.Composed.Activities
+namespace TOBShelter.Types.Composed.Activities
 {
     internal class PhoneCall : Activity
     {

@@ -1,6 +1,6 @@
-using Projet_Ortega_Thil_Brungard.Types.Base;
+using TOBShelter.Types.Base;
 
-namespace Projet_Ortega_Thil_Brungard.Types.Composed
+namespace TOBShelter.Types.Composed
 {
     internal class Route
     {
