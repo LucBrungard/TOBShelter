@@ -2,6 +2,7 @@
 {
     internal enum IdentityTitle
     {
+        NONE,
         M,
         MME,
         SOCIETE

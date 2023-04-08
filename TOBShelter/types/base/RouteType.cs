@@ -2,6 +2,7 @@
 {
     internal enum RouteType
     {
+        NONE,
         RUE,
         BOULEVARD,
         AVENUE,
