@@ -129,11 +129,8 @@
     <Compile Include="types\composed\animals\Cat.cs" />
     <Compile Include="types\composed\animals\Dog.cs" />
     <Compile Include="types\composed\animals\Horse.cs" />
-    <Compile Include="types\composed\Coordinates.cs" />
-    <Compile Include="types\composed\Identity.cs" />
     <Compile Include="types\composed\Investigator.cs" />
     <Compile Include="types\composed\Person.cs" />
-    <Compile Include="types\composed\Route.cs" />
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />

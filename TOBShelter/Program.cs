@@ -18,60 +18,86 @@ namespace TOBShelter
         [STAThread]
         static void Main()
         {
-            bool res;
             // Create
-            Identity identity = new Physical(IdentityTitle.M, "brungard", "Luc");
-            Route route = new Route("17", RouteType.RUE, "des etangs");
-            Coordinates coordinates = new Coordinates(null, null, null, route, "57420", "Solgne");
-            Identity i2 = new Society(IdentityTitle.SOCIETE, "MaSociete");
+            Person p1 = new Person(
+                IdentityTitle.M,
+                "BRUNGARD",
+                "Luc",
+                "17",
+                RouteType.RUE,
+                "des étangs",
+                "57420",
+                "Solgne");
 
-            Console.WriteLine($"Create physical : {TOBShelter.Services.PersonService.Create(new Person(identity, coordinates))}");
-            Console.WriteLine($"Create societe : {TOBShelter.Services.PersonService.Create(new Person(i2, coordinates))}");
+            Person p2 = new Person(
+                IdentityTitle.SOCIETE,
+                "MASOCIETE",
+                null,
+                "17",
+                RouteType.RUE,
+                "des étangs",
+                "57420",
+                "Soglne");
+
+            Console.WriteLine($"Create physical : {TOBShelter.Services.PersonService.Create(p1)}");
+            Console.WriteLine($"Create societe : {TOBShelter.Services.PersonService.Create(p2)}");
 
 
             // Edit
-            PersonEditDTO details = new PersonEditDTO();
-            details.City = "Metz";
+            PersonDetailsDTO d1 = new PersonDetailsDTO { 
+                Id = 1,
+                City = "Metz"
+            };
+            PersonDetailsDTO d2 = new PersonDetailsDTO
+            {
+                Id = 2,
+                City = "Metz"
+            };
 
-            Console.WriteLine($"Update physical : {TOBShelter.Services.PersonService.Update(identity, details)}");
-            Console.WriteLine($"Update societe : {TOBShelter.Services.PersonService.Update(i2, details)}");
+            Console.WriteLine($"Update physical : {TOBShelter.Services.PersonService.Update(d1)}");
+            Console.WriteLine($"Update societe : {TOBShelter.Services.PersonService.Update(d2)}");
 
             // Find
+            PersonDetailsDTO p = TOBShelter.Services.PersonService.FindById(1);
+            Console.WriteLine(p.Id);
+            Console.WriteLine(p.Title);
+            Console.WriteLine(p.Name);
+            Console.WriteLine(p.FirstName);
+            Console.WriteLine(p.Mobile);
+            Console.WriteLine(p.Home);
+            Console.WriteLine(p.Email);
+            Console.WriteLine(p.NumRoute);
+            Console.WriteLine(p.RouteType);
+            Console.WriteLine(p.RouteName);
+            Console.WriteLine(p.PostalCode);
+            Console.WriteLine(p.City);
 
             // FindAll
-            PersonDetailsDTO personDetailsDTO = new PersonDetailsDTO();
-            personDetailsDTO.FirstName = "Luc";
-
-            Console.WriteLine("FindAll :");
-            List<Identity> list = TOBShelter.Services.PersonService.FindAll(null);
-            foreach (Identity id in list) {
-                Console.WriteLine(id.Title);
-                Console.WriteLine(id.Name);
-                if (id is Physical p)
-                    Console.WriteLine(p.FirstName);
-            }
-
-            Console.WriteLine("FindAll :");
-            list = TOBShelter.Services.PersonService.FindAll(personDetailsDTO);
-            foreach (Identity id in list)
+            PersonDetailsDTO filters = new PersonDetailsDTO
             {
-                Console.WriteLine(id.Title);
-                Console.WriteLine(id.Name);
-                if (id is Physical p)
-                    Console.WriteLine(p.FirstName);
+                FirstName = "Luc"
+            };
+
+            Console.WriteLine("FindAll (no filters) :");
+            List<PersonDTO> list = TOBShelter.Services.PersonService.FindAll(null);
+            foreach (PersonDTO person in list)
+            {
+                Console.WriteLine(person.Id);
+                Console.WriteLine(person.Title);
+                Console.WriteLine(person.Name);
+                Console.WriteLine(person.FirstName);
             }
 
-            //Person person = TOBShelter.Services.PersonService.(IdentityTitle.M, "brungard", "Luc");
-            //Console.WriteLine(person.Identity.Title);
-            //Console.WriteLine(person.Identity.Name);
-            //Console.WriteLine(person.Coordinates.Mobile);
-            //Console.WriteLine(person.Coordinates.Home);
-            //Console.WriteLine(person.Coordinates.Email);
-            //Console.WriteLine(person.Coordinates.Route.Num);
-            //Console.WriteLine(person.Coordinates.Route.Type);
-            //Console.WriteLine(person.Coordinates.Route.Name);
-            //Console.WriteLine(person.Coordinates.PostalCode);
-            //Console.WriteLine(person.Coordinates.City);
+            Console.WriteLine("FindAll (filters) :");
+            list = TOBShelter.Services.PersonService.FindAll(filters);
+            foreach (PersonDTO person in list)
+            {
+                Console.WriteLine(person.Id);
+                Console.WriteLine(person.Title);
+                Console.WriteLine(person.Name);
+                Console.WriteLine(person.FirstName);
+            }
+
             // Application.EnableVisualStyles();
             // Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Form1());

@@ -10,12 +10,11 @@ namespace TOBShelter.Types.Composed
         private string _weight;
         private Gender _gender;
         private Breed _breed;
-        private Identity _owner;
 
-        internal Animal(string firstName, int age, string weight, Gender gender, Breed breed, Identity owner)
+        internal Animal(string firstName, int age, string weight, Gender gender, Breed breed)
         {
             _breed = breed ?? throw new ArgumentNullException(nameof(breed));
-            _owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            //_owner = owner ?? throw new ArgumentNullException(nameof(owner));
             _firstName = firstName;
             _age = age;
             _weight = weight;

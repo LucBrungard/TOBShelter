@@ -23,117 +23,108 @@ namespace TOBShelter.Services
             StringBuilder stringBuilder = new StringBuilder("INSERT INTO `persons` VALUES (\n\t");
             /* Identity */
             stringBuilder.Append("null,\n\t");
-            stringBuilder.Append($"'{person.Identity.Title}',\n\t");
-            stringBuilder.Append($"'{person.Identity.Name}',\n\t");
-            stringBuilder.Append("'");
-            if (person.Identity is Physical p)
-                stringBuilder.Append(p.FirstName);
-            stringBuilder.Append("',\n\t");
+            stringBuilder.Append($"'{person.Title}',\n\t");
+            stringBuilder.Append($"'{person.Name}',\n\t");
+            stringBuilder.Append($"'{person.FirstName}',\n\t");
 
             /* Coordinates */
-            stringBuilder.Append($"'{person.Coordinates.Mobile}',\n\t");
-            stringBuilder.Append($"'{person.Coordinates.Home}',\n\t");
-            stringBuilder.Append($"'{person.Coordinates.Email}',\n\t");
+            stringBuilder.Append($"'{person.Mobile}',\n\t");
+            stringBuilder.Append($"'{person.Home}',\n\t");
+            stringBuilder.Append($"'{person.Email}',\n\t");
 
-            stringBuilder.Append($"'{person.Coordinates.Route.Num}',\n\t");
-            stringBuilder.Append($"'{person.Coordinates.Route.Type}',\n\t");
-            stringBuilder.Append($"'{person.Coordinates.Route.Name}',\n\t");
+            stringBuilder.Append($"'{person.NumRoute}',\n\t");
+            stringBuilder.Append($"'{person.RouteType}',\n\t");
+            stringBuilder.Append($"'{person.RouteName}',\n\t");
 
-            stringBuilder.Append($"'{person.Coordinates.PostalCode}',\n\t");
-            stringBuilder.Append($"'{person.Coordinates.City}');");
+            stringBuilder.Append($"'{person.PostalCode}',\n\t");
+            stringBuilder.Append($"'{person.City}');");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             return cmd.ExecuteNonQuery() == 1;
         }
 
-        internal static bool Update(Identity identity, PersonEditDTO editDTO)
+        internal static bool Update(PersonDetailsDTO person)
         {
-            if (identity == null)
-                throw new ArgumentNullException(nameof(identity));
-            if (editDTO == null)
-                throw new ArgumentNullException(nameof(editDTO));
-
-            if (DbUtil.CheckSqlInjection(identity.Name))
-                throw new ArgumentException("Possible try of sql injection", nameof(identity.Name));
+            if (person == null)
+                throw new ArgumentNullException(nameof(person));
+            if (person.Id == 0)
+                throw new ArgumentException("Cannot be 0", nameof(person.Id));
 
             StringBuilder stringBuilder = new StringBuilder("UPDATE `persons` SET \n\t");
 
             bool empty = true;
 
-            if (editDTO.Mobile != null)
+            if (!(person.Title is IdentityTitle.NONE))
             {
                 empty = false;
-                stringBuilder.Append($"mobile='{editDTO.Mobile}',\n\t");
+                stringBuilder.Append($"title='{person.Title}',\n\t");
             }
-
-            if (editDTO.Home != null)
+            if (person.Name != null)
             {
                 empty = false;
-                stringBuilder.Append($"home='{editDTO.Home}',\n\t");
+                stringBuilder.Append($"name='{person.Name}',\n\t");
             }
-            if (editDTO.Email != null)
+            if (person.FirstName != null)
             {
                 empty = false;
-                stringBuilder.Append($"email='{editDTO.Email}',\n\t");
+                stringBuilder.Append($"first_name='{person.FirstName}',\n\t");
             }
-
-            if (editDTO.NumRoute != null)
+            if (person.Mobile != null)
             {
                 empty = false;
-                stringBuilder.Append($"no_route='{editDTO.NumRoute}',\n\t");
+                stringBuilder.Append($"mobile='{person.Mobile}',\n\t");
             }
-            if (editDTO.RouteType != RouteType.NONE)
+            if (person.Home != null)
             {
                 empty = false;
-                stringBuilder.Append($"route_type='{editDTO.RouteType}',\n\t");
+                stringBuilder.Append($"home='{person.Home}',\n\t");
             }
-            if (editDTO.RouteName != null)
+            if (person.Email != null)
             {
                 empty = false;
-                stringBuilder.Append($"route_name='{editDTO.RouteName}',\n\t");
+                stringBuilder.Append($"email='{person.Email}',\n\t");
             }
-
-            if (editDTO.PostalCode != null)
+            if (person.NumRoute != null)
             {
                 empty = false;
-                stringBuilder.Append($"postal_code='{editDTO.PostalCode}',\n\t");
+                stringBuilder.Append($"no_route='{person.NumRoute}',\n\t");
             }
-            if (editDTO.City != null)
+            if (!(person.RouteType is RouteType.NONE))
             {
                 empty = false;
-                stringBuilder.Append($"city='{editDTO.City}'\n");
+                stringBuilder.Append($"route_type='{person.RouteType}',\n\t");
+            }
+            if (person.RouteName != null)
+            {
+                empty = false;
+                stringBuilder.Append($"route_name='{person.RouteName}',\n\t");
+            }
+            if (person.PostalCode != null)
+            {
+                empty = false;
+                stringBuilder.Append($"postal_code='{person.PostalCode}',\n\t");
+            }
+            if (person.City != null)
+            {
+                empty = false;
+                stringBuilder.Append($"city='{person.City}'\n");
             }
 
             if (empty)
-                throw new ArgumentException("No value set", nameof(editDTO));
+                throw new ArgumentException("No value set", nameof(person));
 
-            stringBuilder.Append($"WHERE title='{identity.Title}' AND name='{identity.Name}' ");
-
-            if (identity is Physical p)
-            {
-                if (DbUtil.CheckSqlInjection(p.FirstName))
-                    throw new ArgumentException("Possible try of sql injection", nameof(p.FirstName));
-                stringBuilder.Append($"AND first_name = '{p.FirstName}'");
-            }
+            stringBuilder.Append($" WHERE person_id='{person.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             return cmd.ExecuteNonQuery() == 1;
         }
 
-        internal static Person Find(Identity id)
+        internal static PersonDetailsDTO FindById(uint id)
         {
-            if (DbUtil.CheckSqlInjection(id.Name))
-                throw new ArgumentException("Possible try of sql injection", nameof(id.Name));
+            if (id == 0)
+                throw new ArgumentException("Cannot be 0", nameof(id));
 
-            string sql = $"SELECT * FROM `persons` WHERE title='{id.Title}' AND name='{id.Name}'";
-
-            if (id is Physical p)
-            {
-                if (DbUtil.CheckSqlInjection(p.FirstName))
-                    throw new ArgumentException("Possible try of sql injection", nameof(p.FirstName));
-
-                sql += $" AND first_name='{p.FirstName}'";
-            }
+            string sql = $"SELECT * FROM `persons` WHERE person_id='{id}'";
 
             MySqlCommand command = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
             MySqlDataReader reader = command.ExecuteReader();
@@ -141,29 +132,27 @@ namespace TOBShelter.Services
             if (!reader.Read())
                 return null;
 
-            IdentityTitle title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), reader.GetString(1).ToUpper());
-            string name = reader.GetString(2);
-            Identity identity = (id is Physical)
-                ? new Physical(title, name, reader.GetString(3))
-                : new Society(title, name);
+            PersonDetailsDTO res = new PersonDetailsDTO();
+            res.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), reader.GetString(1).ToUpper());
+            res.Name = reader.GetString(2);
+            res.FirstName = reader.GetString(3);
+            res.Mobile = reader.GetString(4);
+            res.Home = reader.GetString(5);
+            res.Email = reader.GetString(6);
+            res.NumRoute = reader.GetString(7);
+            res.RouteType = (RouteType)Enum.Parse(typeof(RouteType), reader.GetString(8).ToUpper());
+            res.RouteName = reader.GetString(9);
+            res.PostalCode = reader.GetString(10);
+            res.City = reader.GetString(11);
 
-            Coordinates coordinates = new Coordinates(
-                reader.GetString(4),
-                reader.GetString(5),
-                reader.GetString(6),
-                new Route(
-                    reader.GetString(7),
-                    (RouteType)Enum.Parse(typeof(RouteType), reader.GetString(8).ToUpper()),
-                    reader.GetString(9)),
-                reader.GetString(10),
-                reader.GetString(11));
+            reader.Close();
 
-            return new Person(identity, coordinates);
+            return res;
         }
 
-        internal static List<Identity> FindAll(PersonDetailsDTO filters)
+        internal static List<PersonDTO> FindAll(PersonDetailsDTO filters)
         {
-            string sql = "SELECT `title`, `name`, `first_name` FROM `persons` ";
+            string sql = "SELECT `person_id`, `title`, `name`, `first_name` FROM `persons` ";
 
             bool empty = true;
             StringBuilder conditions = new StringBuilder("WHERE \n\t");
@@ -183,25 +172,25 @@ namespace TOBShelter.Services
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"name='{filters.Name}'\n\t");
+                    empty = false;
                     first = false;
                 }
                 if (filters.FirstName != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"first_name='{filters.FirstName}'\n\t");
-                        first = false;
+                    empty = false;
+                    first = false;
                 }
 
                 if (filters.Mobile != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"mobile='{filters.Mobile}'\n\t");
+                    empty = false;
                     first = false;
                 }
 
@@ -209,16 +198,16 @@ namespace TOBShelter.Services
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"home='{filters.Home}'\n\t");
+                    empty = false;
                     first = false;
                 }
                 if (filters.Email != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"email='{filters.Email}'\n\t");
+                    empty = false;
                     first = false;
                 }
 
@@ -226,43 +215,43 @@ namespace TOBShelter.Services
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"no_route='{filters.NumRoute}'\n\t");
-                        first = false;
+                    empty = false;
+                    first = false;
                 }
                 if (filters.RouteType != RouteType.NONE)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"route_type='{filters.RouteType}'\n\t");
-                        first = false;
+                    empty = false;
+                    first = false;
                 }
                 if (filters.RouteName != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"route_name='{filters.RouteName}'\n\t");
-                        first = false;
+                    empty = false;
+                    first = false;
                 }
 
                 if (filters.PostalCode != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"postal_code='{filters.PostalCode}'\n\t");
-                        first = false;
+                    empty = false;
+                    first = false;
                 }
                 if (filters.City != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
-                    empty = false;
                     conditions.Append($"city='{filters.City}'\n");
+                    empty = false;
+                    first = false;
                 }
-                first = false;
 
                 if (!empty)
                     sql += conditions.ToString();
@@ -271,18 +260,17 @@ namespace TOBShelter.Services
             MySqlCommand cmd = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
-            List<Identity> list = new List<Identity>();
+            List<PersonDTO> list = new List<PersonDTO>();
 
             while (rdr.Read())
             {
-                IdentityTitle title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), rdr.GetString(0).ToUpper());
-                string name = rdr.GetString(1);
-                string firstName = rdr.GetString(2);
+                PersonDTO person = new PersonDTO();
+                person.Id = rdr.GetUInt32(0);
+                person.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), rdr.GetString(1).ToUpper());
+                person.Name = rdr.GetString(2);
+                person.FirstName = rdr.GetString(3);
 
-                if (String.IsNullOrEmpty(firstName))
-                    list.Add(new Society(title, name));
-                else
-                    list.Add(new Physical(title, name, firstName));
+                list.Add(person);
             }
             rdr.Close();
             return list;
