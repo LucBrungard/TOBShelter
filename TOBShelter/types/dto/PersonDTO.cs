@@ -7,7 +7,7 @@ namespace TOBShelter.Types.Dto
 {
     internal class PersonDTO
     {
-        internal uint Id { get; set; }
+        internal long Id { get; set; }
         internal IdentityTitle Title { get; set; }
         internal string Name { get; set; }
         internal string FirstName { get; set; }
@@ -15,7 +15,7 @@ namespace TOBShelter.Types.Dto
 
     internal class PersonDetailsDTO
     {
-        internal uint Id { get; set; }
+        internal long Id { get; set; }
 
         private IdentityTitle _title;
         internal IdentityTitle Title

@@ -15,7 +15,7 @@ namespace TOBShelter.Services
 {
     internal static class PersonService
     {
-        internal static bool Create(Person person)
+        internal static PersonDetailsDTO Create(Person person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -40,10 +40,14 @@ namespace TOBShelter.Services
             stringBuilder.Append($"'{person.City}');");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
-            return cmd.ExecuteNonQuery() == 1;
+            int insertedRows = cmd.ExecuteNonQuery();
+
+            return insertedRows == 1
+                ? FindById(cmd.LastInsertedId)
+                : null;
         }
 
-        internal static bool Update(PersonDetailsDTO person)
+        internal static PersonDetailsDTO Update(PersonDetailsDTO person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -116,10 +120,14 @@ namespace TOBShelter.Services
             stringBuilder.Append($" WHERE person_id='{person.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
-            return cmd.ExecuteNonQuery() == 1;
+            int updatedRows = cmd.ExecuteNonQuery();
+
+            return updatedRows == 1
+                ? FindById(person.Id)
+                : null;
         }
 
-        internal static PersonDetailsDTO FindById(uint id)
+        internal static PersonDetailsDTO FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -160,6 +168,15 @@ namespace TOBShelter.Services
             if (filters != null)
             {
                 bool first = true;
+
+                if (filters.Id != 0)
+                {
+                    if (!first)
+                        conditions.Append("AND ");
+                    conditions.Append($"person_id='{filters.Id}'\n\t");
+                    empty = false;
+                    first = false;
+                }
                 if (filters.Title != IdentityTitle.NONE)
                 {
                     if (!first)
