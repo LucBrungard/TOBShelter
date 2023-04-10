@@ -5,30 +5,10 @@ using TOBShelter.Utils;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class PersonDTO
+    internal class PersonCreateDTO
     {
-        internal long Id { get; set; }
         internal IdentityTitle Title { get; set; }
-        internal string Name { get; set; }
-        internal string FirstName { get; set; }
-    }
-
-    internal class PersonDetailsDTO
-    {
-        internal long Id { get; set; }
-
-        private IdentityTitle _title;
-        internal IdentityTitle Title
-        {
-            get { return _title; }
-            set
-            {
-                if (value is IdentityTitle.NONE)
-                    throw new ArgumentException($"Cannot be of type {IdentityTitle.NONE}", nameof(value));
-                _title = value;
-            }
-        }
-
+        
         private string _name;
         internal string Name
         {
@@ -50,7 +30,15 @@ namespace TOBShelter.Types.Dto
             set
             {
                 if (String.IsNullOrEmpty(value))
-                    throw new ArgumentException($"Cannot be null or empty", nameof(value));
+                {
+                    if (Title is IdentityTitle.M || Title is IdentityTitle.MME)
+                        throw new ArgumentException($"Cannot be null or empty", nameof(value));
+                }
+                else
+                {
+                    if (Title is IdentityTitle.SOCIETE)
+                        throw new ArgumentException($"IdentityTitle must be set to {IdentityTitle.M} or {IdentityTitle.MME} before", nameof(value));
+                }
                 _firstName = value;
             }
         }
@@ -104,17 +92,7 @@ namespace TOBShelter.Types.Dto
             }
         }
 
-        private RouteType _routeType;
-        internal RouteType RouteType
-        {
-            get { return _routeType; }
-            set
-            {
-                if (value is RouteType.NONE)
-                    throw new ArgumentException($"Cannot be {RouteType.NONE}", nameof(value));
-                _routeType = value;
-            }
-        }
+        internal RouteType RouteType { get; set; }
 
         private string _routeName;
         internal string RouteName
@@ -151,5 +129,45 @@ namespace TOBShelter.Types.Dto
                 _city = value;
             }
         }
+
+        internal PersonCreateDTO(IdentityTitle title, string name, string firstName, string numRoute, RouteType routeType, string routeName, string postalCode, string city)
+        {
+            Title = title;
+            Name = name;
+            FirstName = firstName;
+            NumRoute = numRoute;
+            RouteType = routeType;
+            RouteName = routeName;
+            PostalCode = postalCode;
+            City = city;
+        }
     }
+
+    internal class PersonEditDTO
+    {
+        internal long Id { get; set; }
+        internal Nullable<IdentityTitle> Title { get; set; }
+        internal string Name { get; set; }
+        internal string FirstName { get; set; }
+        internal string Mobile { get; set; }
+        internal string Home { get; set; }
+        internal string Email { get; set; }
+        internal string NumRoute { get; set; }
+        internal Nullable<RouteType> RouteType { get; set; }
+        internal string RouteName { get; set; }
+        internal string PostalCode { get; set; }
+        internal string City { get; set; }
+    }
+
+    internal class PersonDTO
+    {
+        internal long Id { get; set; }
+        internal IdentityTitle Title { get; set; }
+        internal string Name { get; set; }
+        internal string FirstName { get; set; }
+    }
+
+    internal class PersonDetailsDTO: PersonEditDTO { }
+
+    internal class PersonFilters: PersonEditDTO { }
 }

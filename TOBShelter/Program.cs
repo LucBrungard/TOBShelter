@@ -19,7 +19,7 @@ namespace TOBShelter
         static void Main()
         {
             // Create
-            Person p1 = new Person(
+            PersonCreateDTO p1 = new PersonCreateDTO(
                 IdentityTitle.M,
                 "BRUNGARD",
                 "Luc",
@@ -29,7 +29,7 @@ namespace TOBShelter
                 "57420",
                 "Solgne");
 
-            Person p2 = new Person(
+            PersonCreateDTO p2 = new PersonCreateDTO(
                 IdentityTitle.SOCIETE,
                 "MASOCIETE",
                 null,
@@ -73,7 +73,7 @@ namespace TOBShelter
             Console.WriteLine(p.City);
 
             // FindAll
-            PersonDetailsDTO filters = new PersonDetailsDTO
+            PersonFilters filters = new PersonFilters
             {
                 FirstName = "Luc"
             };

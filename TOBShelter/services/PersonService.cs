@@ -15,7 +15,7 @@ namespace TOBShelter.Services
 {
     internal static class PersonService
     {
-        internal static PersonDetailsDTO Create(Person person)
+        internal static PersonDetailsDTO Create(PersonCreateDTO person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -47,7 +47,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static PersonDetailsDTO Update(PersonDetailsDTO person)
+        internal static PersonDetailsDTO Update(PersonEditDTO person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -58,7 +58,7 @@ namespace TOBShelter.Services
 
             bool empty = true;
 
-            if (!(person.Title is IdentityTitle.NONE))
+            if (person.Title != null)
             {
                 empty = false;
                 stringBuilder.Append($"title='{person.Title}',\n\t");
@@ -93,7 +93,7 @@ namespace TOBShelter.Services
                 empty = false;
                 stringBuilder.Append($"no_route='{person.NumRoute}',\n\t");
             }
-            if (!(person.RouteType is RouteType.NONE))
+            if (person.RouteType != null)
             {
                 empty = false;
                 stringBuilder.Append($"route_type='{person.RouteType}',\n\t");
@@ -141,6 +141,7 @@ namespace TOBShelter.Services
                 return null;
 
             PersonDetailsDTO res = new PersonDetailsDTO();
+            res.Id = reader.GetInt64(0);
             res.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), reader.GetString(1).ToUpper());
             res.Name = reader.GetString(2);
             res.FirstName = reader.GetString(3);
@@ -158,15 +159,16 @@ namespace TOBShelter.Services
             return res;
         }
 
-        internal static List<PersonDTO> FindAll(PersonDetailsDTO filters)
+        internal static List<PersonDTO> FindAll(PersonFilters filters)
         {
             string sql = "SELECT `person_id`, `title`, `name`, `first_name` FROM `persons` ";
 
-            bool empty = true;
+            
             StringBuilder conditions = new StringBuilder("WHERE \n\t");
 
             if (filters != null)
             {
+                bool empty = true;
                 bool first = true;
 
                 if (filters.Id != 0)
@@ -177,7 +179,7 @@ namespace TOBShelter.Services
                     empty = false;
                     first = false;
                 }
-                if (filters.Title != IdentityTitle.NONE)
+                if (filters.Title != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
@@ -227,7 +229,6 @@ namespace TOBShelter.Services
                     empty = false;
                     first = false;
                 }
-
                 if (filters.NumRoute != null)
                 {
                     if (!first)
@@ -236,7 +237,7 @@ namespace TOBShelter.Services
                     empty = false;
                     first = false;
                 }
-                if (filters.RouteType != RouteType.NONE)
+                if (filters.RouteType != null)
                 {
                     if (!first)
                         conditions.Append("AND ");
@@ -252,7 +253,6 @@ namespace TOBShelter.Services
                     empty = false;
                     first = false;
                 }
-
                 if (filters.PostalCode != null)
                 {
                     if (!first)
