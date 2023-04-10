@@ -113,6 +113,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\DBConnection.cs" />
+    <Compile Include="services\InvestigationService.cs" />
+    <Compile Include="services\InvestigatorService.cs" />
     <Compile Include="services\PersonService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="types\base\Breed.cs" />
@@ -129,8 +131,8 @@
     <Compile Include="types\composed\animals\Cat.cs" />
     <Compile Include="types\composed\animals\Dog.cs" />
     <Compile Include="types\composed\animals\Horse.cs" />
-    <Compile Include="types\composed\Investigator.cs" />
-    <Compile Include="types\composed\Person.cs" />
+    <Compile Include="types\dto\InvestigationDTO.cs" />
+    <Compile Include="types\dto\InvestigatorDTO.cs" />
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />

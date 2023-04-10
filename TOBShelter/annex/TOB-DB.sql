@@ -48,12 +48,10 @@ CREATE TABLE `animals` (
 DROP TABLE IF EXISTS `investigators`;
 SET character_set_client = utf8mb4 ;
 CREATE TABLE `investigators` (
-    `investigator_id` int(11)  AUTO_INCREMENT,
     `available` tinyint(1) NOT NULL,
     `in_operation` tinyint(1) NOT NULL,
     `business_sector` varchar(500) NOT NULL,
     `person_id` int(11) NOT NULL,
-    PRIMARY KEY (`investigator_id`),
     KEY `person_id` (`person_id`),
     CONSTRAINT `investigators_person_idfk_1` FOREIGN KEY (`person_id`) REFERENCES `persons` (`person_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -74,7 +72,7 @@ CREATE TABLE `investigations` (
     KEY `offender` (`offender`),
     CONSTRAINT `investigations_offenderfk_1` FOREIGN KEY (`offender`) REFERENCES `persons` (`person_id`),
     KEY `investigator` (`investigator`),
-    CONSTRAINT `investigations_investigatorfk_1` FOREIGN KEY (`investigator`) REFERENCES `investigators` (`investigator_id`)
+    CONSTRAINT `investigations_investigatorfk_1` FOREIGN KEY (`investigator`) REFERENCES `investigators` (`person_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 SET character_set_client = utf8mb4 ;
