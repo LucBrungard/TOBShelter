@@ -67,7 +67,7 @@ namespace TOBShelter.Types.Dto
                     && !value.IsSubclassOf(typeof(Breed.Dog))
                     && !value.IsSubclassOf(typeof(Breed.Horse)))
                     throw new ArgumentException("Should be a subtype of Cat or Dog or Horse", nameof(value));
-                _animalType = value;
+                _breed = value;
             }
         }
         internal Nullable<long> OwnerId { get; set; }
