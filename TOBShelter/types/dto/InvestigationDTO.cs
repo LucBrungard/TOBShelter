@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
@@ -14,6 +15,7 @@ namespace TOBShelter.Types.Dto
         internal long OffenderId { get; set; }
         internal string Reason { get; set; }
         internal long InvestigatorId { get; set; }
+        internal List<Animal> Animals { get; set; }
         internal string Notice { get; set; }
         internal bool Closed { get; set; }
     }
@@ -44,6 +46,7 @@ namespace TOBShelter.Types.Dto
         internal PersonDTO Offender { get; set; }
         internal string Reason { get; set; }
         internal InvestigatorDTO Investigator { get; set; }
+        internal List<Animal> Animals { get; set; }
         internal string Notice { get; set; }
         internal bool Closed { get; set; }
     }

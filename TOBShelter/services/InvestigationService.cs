@@ -1,10 +1,7 @@
 ﻿using MySqlConnector;
-using Org.BouncyCastle.Asn1.X500;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
 using TOBShelter.Types.Dto;
@@ -18,7 +15,30 @@ namespace TOBShelter.Services
             if (investigation == null)
                 throw new ArgumentNullException(nameof(investigation));
 
-            StringBuilder stringBuilder = new StringBuilder("INSERT INTO `investigations` VALUES (\n\t");
+            StringBuilder stringBuilder;
+            MySqlCommand cmd;
+            int insertedRows;
+
+            if (investigation.Animals != null && investigation.Animals.Count > 0)
+            {
+                stringBuilder = new StringBuilder("INSERT INTO `links_animals_investigations` VALUES\n\t");
+
+                for (int i = 0; i < investigation.Animals.Count; i++)
+                {
+                    stringBuilder.Append($"({investigation.Animals[i].Id},");
+                    stringBuilder.Append($"{investigation.Id})\n\t");
+                    if (i != investigation.Animals.Count - 1)
+                        stringBuilder.Append(",");
+                }
+
+                cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
+                insertedRows = cmd.ExecuteNonQuery();
+
+                if (insertedRows != investigation.Animals.Count)
+                    throw new Exception("An error occured, not all animals have been inserted");
+            }
+
+            stringBuilder = new StringBuilder("INSERT INTO `investigations` VALUES (\n\t");
 
             stringBuilder.Append($"'{investigation.Id}',\n\t");
             stringBuilder.Append($"'{investigation.Title}',\n\t");
@@ -29,8 +49,8 @@ namespace TOBShelter.Services
             stringBuilder.Append($"'{investigation.Notice}',\n\t");
             stringBuilder.Append($"'{(investigation.Closed ? 1 : 0)}');");
 
-            MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
-            int insertedRows = cmd.ExecuteNonQuery();
+            cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
+            insertedRows = cmd.ExecuteNonQuery();
 
             return insertedRows == 1
                 ? FindById(cmd.LastInsertedId)
@@ -86,27 +106,33 @@ namespace TOBShelter.Services
             dto.Id = reader.GetInt64(0);
 
             dto.Title = reader.GetString(1);
-
             PersonFilters personFilter = new PersonFilters();
             personFilter.Id = reader.GetInt64(2);
             dto.Complainant = PersonService.FindAll(personFilter)[0];
-
             personFilter.Id = reader.GetInt64(3);
             dto.Offender = PersonService.FindAll(personFilter)[0];
-
             dto.Reason = reader.GetString(4);
-
             InvestigatorFilters investigatorFilter = new InvestigatorFilters
             {
                 Id = reader.GetInt64(5)
             };
             dto.Investigator = InvestigatorService.FindAll(investigatorFilter)[0];
-
             dto.Notice = reader.GetString(6);
-
             dto.Closed = reader.GetBoolean(7);
-
             reader.Close();
+
+            // Get all animals
+            sql = $"SELECT * FROM `links_animals_investigations` WHERE investigation_id='{id}'";
+            command = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
+            reader = command.ExecuteReader();
+
+            List<Animal> animals = new List<Animal>();
+            while (reader.Read())
+                animals.Add(AnimalService.FindById(reader.GetInt64("animal_id")));
+            reader.Close();
+
+            dto.Animals = animals;
+
             return dto;
         }
 
