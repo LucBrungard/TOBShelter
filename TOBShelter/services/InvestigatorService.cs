@@ -9,7 +9,7 @@ using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
 using TOBShelter.Types.Dto;
 
-namespace TOBShelter.services
+namespace TOBShelter.Services
 {
     internal static class InvestigatorService
     {
