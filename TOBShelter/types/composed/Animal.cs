@@ -1,24 +1,60 @@
 ﻿using TOBShelter.Types.Base;
 using System;
+using TOBShelter.Utils;
 
 namespace TOBShelter.Types.Composed
 {
     internal abstract class Animal
     {
-        private string _firstName;
-        private int _age;
-        private string _weight;
-        private Gender _gender;
-        private Breed _breed;
+        internal long Id;
 
-        internal Animal(string firstName, int age, string weight, Gender gender, Breed breed)
+        private string _name;
+        internal string Name
         {
-            _breed = breed ?? throw new ArgumentNullException(nameof(breed));
-            //_owner = owner ?? throw new ArgumentNullException(nameof(owner));
-            _firstName = firstName;
-            _age = age;
-            _weight = weight;
-            _gender = gender;
+            get { return _name; }
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentNullException(nameof(value));
+                _name = value;
+            }
+        }
+
+        private uint _age;
+        internal uint Age
+        {
+            get { return _age; }
+            set
+            {
+                if (value == 0)
+                    throw new ArgumentException("Cannot be 0", nameof(value));
+                _age = value;
+            }
+        }
+
+        private string _weight;
+        internal string Weight { 
+            get { return _weight; }
+            set
+            {
+                if (!RegexUtil.RegexWeight.IsMatch(value))
+                    throw new ArgumentException("Has not the right format", nameof(value));
+                _weight = value;
+            }
+        }
+
+        internal Gender Gender { get; set; }
+        internal Breed Breed { get; set; }
+        internal long OwnerId { get; set; }
+
+        public Animal(string name, uint age, string weight, Gender gender, Breed breed, long ownerId)
+        {
+            Breed = breed ?? throw new ArgumentNullException(nameof(breed));
+            Name = name;
+            Age = age;
+            Weight = weight;
+            Gender = gender;
+            OwnerId = ownerId;
         }
     }
 }
