@@ -114,8 +114,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\AnimalService.cs" />
     <Compile Include="services\DBConnection.cs" />
+    <Compile Include="services\DocumentService.cs" />
     <Compile Include="services\InvestigationService.cs" />
     <Compile Include="services\InvestigatorService.cs" />
+    <Compile Include="services\LinksAIService.cs" />
     <Compile Include="services\PersonService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="types\base\Breed.cs" />
@@ -133,8 +135,10 @@
     <Compile Include="types\composed\animals\Dog.cs" />
     <Compile Include="types\composed\animals\Horse.cs" />
     <Compile Include="types\dto\AnimalDTO.cs" />
+    <Compile Include="types\dto\DocumentDTO.cs" />
     <Compile Include="types\dto\InvestigationDTO.cs" />
     <Compile Include="types\dto\InvestigatorDTO.cs" />
+    <Compile Include="types\dto\LinksAIDTO.cs" />
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />
