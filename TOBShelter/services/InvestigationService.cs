@@ -71,23 +71,38 @@ namespace TOBShelter.Services
         {
             if (investigation == null)
                 throw new ArgumentNullException(nameof(investigation));
-
             if (investigation.Id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(investigation.Id));
 
+            bool empty = true;
             StringBuilder stringBuilder = new StringBuilder("UPDATE `investigations` SET \n\t");
 
             if (investigation.Title != null)
+            {
+                empty = false;
                 stringBuilder.Append($"title='{investigation.Title}',\n\t");
+            }
 
             if (investigation.InvestigatorId != null && investigation.InvestigatorId != 0)
+            {
+                empty = false;
                 stringBuilder.Append($"investigator='{investigation.InvestigatorId}',\n\t");
+            }
 
             if (investigation.Notice != null)
+            {
+                empty = false;
                 stringBuilder.Append($"notice='{investigation.Notice}',\n\t");
+            }
 
             if (investigation.Closed != null)
+            {
+                empty = false;
                 stringBuilder.Append($"closed='{((bool)investigation.Closed ? 1 : 0)}'\n\t");
+            }
+
+            if (!empty)
+                throw new ArgumentException("No value set", nameof(investigation));
 
             stringBuilder.Append($"WHERE investigation_id='{investigation.Id}'");
 
@@ -104,7 +119,7 @@ namespace TOBShelter.Services
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
 
-            string sql = $"SELECT * FROM `investigations` WHERE investigation_id='{id}'";
+            string sql = $"SELECT `investigation_id`, `title`, `complainant`, `offender`, `reason`, `investigator`, `notice`, `closed` FROM `investigations` WHERE investigation_id='{id}'";
 
             MySqlCommand command = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
             MySqlDataReader reader = command.ExecuteReader();
@@ -112,23 +127,17 @@ namespace TOBShelter.Services
             if (!reader.Read())
                 return null;
 
-            InvestigationDetailsDTO dto = new InvestigationDetailsDTO();
-            dto.Id = reader.GetInt64(0);
-
-            dto.Title = reader.GetString(1);
-            PersonFilters personFilter = new PersonFilters();
-            personFilter.Id = reader.GetInt64(2);
-            dto.Complainant = PersonService.FindAll(personFilter)[0];
-            personFilter.Id = reader.GetInt64(3);
-            dto.Offender = PersonService.FindAll(personFilter)[0];
-            dto.Reason = reader.GetString(4);
-            InvestigatorFilters investigatorFilter = new InvestigatorFilters
+            InvestigationDetailsDTO dto = new InvestigationDetailsDTO
             {
-                Id = reader.GetInt64(5)
+                Id = reader.GetInt64("investigation_id"),
+                Title = reader.GetString("title"),
+                Complainant = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("complainant") })[0],
+                Offender = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("offender") })[0],
+                Reason = reader.GetString("reason"),
+                Investigator = InvestigatorService.FindAll(new InvestigatorFilters { Id = reader.GetInt64("investigator") })[0],
+                Notice = reader.GetString("notice"),
+                Closed = reader.GetBoolean("closed")
             };
-            dto.Investigator = InvestigatorService.FindAll(investigatorFilter)[0];
-            dto.Notice = reader.GetString(6);
-            dto.Closed = reader.GetBoolean(7);
             reader.Close();
 
             // Get all animals

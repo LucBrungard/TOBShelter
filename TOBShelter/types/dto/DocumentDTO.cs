@@ -15,11 +15,9 @@ namespace TOBShelter.Types.Dto
         internal string Path { get; set; }
     }
 
-    internal class DocumentDetailsDTO
+    internal class DocumentDetailsDTO: DocumentCreateDTO
     {
         internal long Id { get; set; }
-        internal string Path { get; set; }
-        internal long InvestigationId { get; set; }
     }
 
     internal class DocumentFilters
