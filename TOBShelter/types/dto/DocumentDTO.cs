@@ -6,7 +6,7 @@ namespace TOBShelter.Types.Dto
     internal class DocumentCreateDTO
     {
         internal string Path { get; set; }
-        internal long InvestigationId { get; set; }
+        internal Nullable<long> InvestigationId { get; set; }
     }
 
     internal class DocumentEditDTO

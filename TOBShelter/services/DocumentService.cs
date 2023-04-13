@@ -14,6 +14,8 @@ namespace TOBShelter.Services
         {
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
+            if (document.InvestigationId == null)
+                throw new ArgumentNullException(nameof(document.InvestigationId));
 
             StringBuilder stringBuilder = new StringBuilder("INSERT INTO `documents` ('path', 'investigation_id') VALUES (\n\t");
 
