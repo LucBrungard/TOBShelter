@@ -62,7 +62,7 @@ namespace TOBShelter.Services
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
 
-            string sql = $"SELECT `document_id`, `path`, `investigation_id` FROM `investigations` WHERE document_id='{id}'";
+            string sql = $"SELECT `document_id`, `path`, `investigation_id` FROM `documents` WHERE document_id='{id}'";
 
             MySqlCommand command = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
             MySqlDataReader reader = command.ExecuteReader();
