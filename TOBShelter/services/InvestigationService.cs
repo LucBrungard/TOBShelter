@@ -19,6 +19,7 @@ namespace TOBShelter.Services
             MySqlCommand cmd;
             int insertedRows;
 
+            // Create a link between animals of the list and investigation
             if (investigation.Animals != null && investigation.Animals.Count > 0)
             {
                 stringBuilder = new StringBuilder("INSERT INTO `links_animals_investigations` VALUES\n\t");
@@ -36,6 +37,15 @@ namespace TOBShelter.Services
 
                 if (insertedRows != investigation.Animals.Count)
                     throw new Exception("An error occured, not all animals have been inserted");
+            }
+
+            // Create all documents from the list
+            if (investigation.Documents != null && investigation.Documents.Count > 0)
+            {
+                foreach (var document in investigation.Documents)
+                {
+                    DocumentService.Create(document);
+                }
             }
 
             stringBuilder = new StringBuilder("INSERT INTO `investigations` VALUES (\n\t");
@@ -130,8 +140,10 @@ namespace TOBShelter.Services
             while (reader.Read())
                 animals.Add(AnimalService.FindById(reader.GetInt64("animal_id")));
             reader.Close();
-
             dto.Animals = animals;
+
+            // Get all the documents
+            dto.Documents = DocumentService.FindAll(new DocumentFilters { InvestigationId = id });
 
             return dto;
         }

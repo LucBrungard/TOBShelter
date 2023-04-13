@@ -16,6 +16,7 @@ namespace TOBShelter.Types.Dto
         internal string Reason { get; set; }
         internal long InvestigatorId { get; set; }
         internal List<Animal> Animals { get; set; }
+        internal List<DocumentCreateDTO> Documents { get; set; }
         internal string Notice { get; set; }
         internal bool Closed { get; set; }
     }
@@ -47,6 +48,7 @@ namespace TOBShelter.Types.Dto
         internal string Reason { get; set; }
         internal InvestigatorDTO Investigator { get; set; }
         internal List<Animal> Animals { get; set; }
+        internal List<DocumentDetailsDTO> Documents { get; set; }
         internal string Notice { get; set; }
         internal bool Closed { get; set; }
     }
