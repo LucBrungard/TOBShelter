@@ -19,35 +19,6 @@ namespace TOBShelter.Services
             MySqlCommand cmd;
             int insertedRows;
 
-            // Create a link between animals of the list and investigation
-            if (investigation.Animals != null && investigation.Animals.Count > 0)
-            {
-                stringBuilder = new StringBuilder("INSERT INTO `links_animals_investigations` VALUES\n\t");
-
-                for (int i = 0; i < investigation.Animals.Count; i++)
-                {
-                    stringBuilder.Append($"({investigation.Animals[i].Id},");
-                    stringBuilder.Append($"{investigation.Id})\n\t");
-                    if (i != investigation.Animals.Count - 1)
-                        stringBuilder.Append(",");
-                }
-
-                cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
-                insertedRows = cmd.ExecuteNonQuery();
-
-                if (insertedRows != investigation.Animals.Count)
-                    throw new Exception("An error occured, not all animals have been inserted");
-            }
-
-            // Create all documents from the list
-            if (investigation.Documents != null && investigation.Documents.Count > 0)
-            {
-                foreach (var document in investigation.Documents)
-                {
-                    DocumentService.Create(document);
-                }
-            }
-
             stringBuilder = new StringBuilder("INSERT INTO `investigations` VALUES (\n\t");
 
             stringBuilder.Append($"'{investigation.Id}',\n\t");
@@ -61,6 +32,30 @@ namespace TOBShelter.Services
 
             cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             insertedRows = cmd.ExecuteNonQuery();
+
+            // Create a link between animals of the list and investigation
+            if (investigation.Animals != null && investigation.Animals.Count > 0)
+            {
+                foreach (var animal in investigation.Animals)
+                {
+                    LinksAIService.Create(
+                        new LinksAICreateDTO
+                        {
+                            AnimalId = animal.Id,
+                            InvestigationId = investigation.Id
+                        });
+                }
+            }
+
+            // Create all documents from the list
+            if (investigation.Documents != null && investigation.Documents.Count > 0)
+            {
+                foreach (var document in investigation.Documents)
+                {
+                    document.InvestigationId ??= investigation.Id;
+                    DocumentService.Create(document);
+                }
+            }
 
             return insertedRows == 1
                 ? FindById(cmd.LastInsertedId)
@@ -140,15 +135,14 @@ namespace TOBShelter.Services
             };
             reader.Close();
 
-            // Get all animals
-            sql = $"SELECT * FROM `links_animals_investigations` WHERE investigation_id='{id}'";
-            command = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
-            reader = command.ExecuteReader();
-
+            // Get all animals related to the investigation
             List<Animal> animals = new List<Animal>();
-            while (reader.Read())
-                animals.Add(AnimalService.FindById(reader.GetInt64("animal_id")));
-            reader.Close();
+
+            List<LinksAIDetailsDTO> linksAI = LinksAIService.FindAll(new LinksAIFilters { InvestigationId = id });
+            foreach (LinksAIDetailsDTO link in linksAI)
+            {
+                animals.Add(AnimalService.FindById(link.AnimalId));
+            }
             dto.Animals = animals;
 
             // Get all the documents
