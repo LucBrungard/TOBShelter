@@ -125,9 +125,9 @@ namespace TOBShelter.Services
 
         internal static List<InvestigatorDTO> FindAll(InvestigatorFilters filters)
         {
-            string sql = "SELECT `person_id`, `title`, `name`, `first_name`, `available`, `in_operation` FROM `persons` INNER JOIN `investigators` ON persons.person_id = investigators.person_id";
+            string sql = "SELECT persons.person_id, title, name, first_name, available, in_operation FROM persons INNER JOIN investigators ON persons.person_id = investigators.person_id ";
 
-            StringBuilder conditions = new StringBuilder("WHERE \n\t");
+            StringBuilder conditions = new StringBuilder("WHERE \n\t ");
 
             if (filters != null)
             {
@@ -235,7 +235,7 @@ namespace TOBShelter.Services
                     empty = false;
                     if (!first)
                         conditions.Append("AND ");
-                    conditions.Append($"available='{filters.Available}'\n\t");
+                    conditions.Append($"available={filters.Available}\n\t");
                     first = false;
                 }
                 if (filters.InOperation != null)
@@ -266,15 +266,18 @@ namespace TOBShelter.Services
                 investigator.Available = rdr.GetBoolean(4);
                 investigator.InOperation = rdr.GetBoolean(5);
 
+                list.Add(investigator);
+            }
+            rdr.Close();
+
+            foreach (var investigator in list)
+            {
                 InvestigationFilters filter = new InvestigationFilters
                 {
                     InvestigatorId = investigator.Id
                 };
                 investigator.NbInvestigations = InvestigationService.FindAll(filter).Count;
-
-                list.Add(investigator);
             }
-            rdr.Close();
             return list;
         }
     }
