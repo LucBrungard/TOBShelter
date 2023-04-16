@@ -3,19 +3,19 @@ using System;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class LinksAICreateDTO
+    public class LinksAICreateDTO
     {
-        internal long InvestigationId { get; set; }
-        internal long AnimalId { get; set; }
+        public long InvestigationId { get; set; }
+        public long AnimalId { get; set; }
     }
 
-    internal class LinksAIRemoveDTO : LinksAICreateDTO { }
+    public class LinksAIRemoveDTO : LinksAICreateDTO { }
 
-    internal class LinksAIDetailsDTO : LinksAICreateDTO { }
+    public class LinksAIDetailsDTO : LinksAICreateDTO { }
 
-    internal class LinksAIFilters
+    public class LinksAIFilters
     {
-        internal Nullable<long> InvestigationId { get; set; }
-        internal Nullable<long> AnimalId { get; set; }
+        public Nullable<long> InvestigationId { get; set; }
+        public Nullable<long> AnimalId { get; set; }
     }
 }

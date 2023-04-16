@@ -2,9 +2,9 @@
 
 namespace TOBShelter.Types.Composed.Activities
 {
-    internal class PhoneCall : Activity
+    public class PhoneCall : Activity
     {
-        internal PhoneCall(DateTime date, string description, string investigation) : base(date, description, investigation)
+        public PhoneCall(DateTime date, string description, string investigation) : base(date, description, investigation)
         {
         }
     }

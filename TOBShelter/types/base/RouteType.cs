@@ -1,6 +1,6 @@
 ﻿namespace TOBShelter.Types.Base
 {
-    internal enum RouteType
+    public enum RouteType
     {
         RUE,
         BOULEVARD,

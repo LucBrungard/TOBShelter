@@ -11,9 +11,9 @@ using TOBShelter.Types.Dto;
 
 namespace TOBShelter.Services
 {
-    internal static class InvestigatorService
+    public static class InvestigatorService
     {
-        internal static InvestigatorDetailsDTO Create(InvestigatorCreateDTO investigator, bool isNewPerson)
+        public static InvestigatorDetailsDTO Create(InvestigatorCreateDTO investigator, bool isNewPerson)
         {
             if (investigator == null)
                 throw new ArgumentNullException(nameof(investigator));
@@ -48,7 +48,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static InvestigatorDetailsDTO Update(InvestigatorEditDTO investigator)
+        public static InvestigatorDetailsDTO Update(InvestigatorEditDTO investigator)
         {
             if (investigator == null)
                 throw new ArgumentNullException(nameof(investigator));
@@ -86,7 +86,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static InvestigatorDetailsDTO FindById(long id)
+        public static InvestigatorDetailsDTO FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -123,7 +123,7 @@ namespace TOBShelter.Services
             return res;
         }
 
-        internal static List<InvestigatorDTO> FindAll(InvestigatorFilters filters)
+        public static List<InvestigatorDTO> FindAll(InvestigatorFilters filters)
         {
             string sql = "SELECT persons.person_id, title, name, first_name, available, in_operation FROM persons INNER JOIN investigators ON persons.person_id = investigators.person_id ";
 

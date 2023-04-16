@@ -4,12 +4,12 @@ using TOBShelter.Utils;
 
 namespace TOBShelter.Types.Composed
 {
-    internal abstract class Animal
+    public abstract class Animal
     {
-        internal long Id;
+        public long Id;
 
         private string _name;
-        internal string Name
+        public string Name
         {
             get { return _name; }
             set
@@ -21,7 +21,7 @@ namespace TOBShelter.Types.Composed
         }
 
         private uint _age;
-        internal uint Age
+        public uint Age
         {
             get { return _age; }
             set
@@ -33,7 +33,7 @@ namespace TOBShelter.Types.Composed
         }
 
         private string _weight;
-        internal string Weight { 
+        public string Weight { 
             get { return _weight; }
             set
             {
@@ -43,9 +43,9 @@ namespace TOBShelter.Types.Composed
             }
         }
 
-        internal Gender Gender { get; set; }
-        internal Breed Breed { get; set; }
-        internal long OwnerId { get; set; }
+        public Gender Gender { get; set; }
+        public Breed Breed { get; set; }
+        public long OwnerId { get; set; }
 
         public Animal(string name, uint age, string weight, Gender gender, Breed breed, long ownerId)
         {

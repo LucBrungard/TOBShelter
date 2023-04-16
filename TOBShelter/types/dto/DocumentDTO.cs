@@ -3,27 +3,27 @@ using System;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class DocumentCreateDTO
+    public class DocumentCreateDTO
     {
-        internal string Path { get; set; }
-        internal Nullable<long> InvestigationId { get; set; }
+        public string Path { get; set; }
+        public Nullable<long> InvestigationId { get; set; }
     }
 
-    internal class DocumentEditDTO
+    public class DocumentEditDTO
     {
-        internal long Id { get; set; }
-        internal string Path { get; set; }
+        public long Id { get; set; }
+        public string Path { get; set; }
     }
 
-    internal class DocumentDetailsDTO: DocumentCreateDTO
+    public class DocumentDetailsDTO: DocumentCreateDTO
     {
-        internal long Id { get; set; }
+        public long Id { get; set; }
     }
 
-    internal class DocumentFilters
+    public class DocumentFilters
     {
-        internal Nullable<long> Id { get; set; }
-        internal string Path { get; set; }
-        internal Nullable<long> InvestigationId { get; set; }
+        public Nullable<long> Id { get; set; }
+        public string Path { get; set; }
+        public Nullable<long> InvestigationId { get; set; }
     }
 }

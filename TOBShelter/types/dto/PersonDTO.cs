@@ -5,12 +5,12 @@ using TOBShelter.Utils;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class PersonCreateDTO
+    public class PersonCreateDTO
     {
-        internal IdentityTitle Title { get; set; }
+        public IdentityTitle Title { get; set; }
         
         private string _name;
-        internal string Name
+        public string Name
         {
             get { return _name; }
             set
@@ -24,7 +24,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _firstName;
-        internal string FirstName
+        public string FirstName
         {
             get { return _firstName; }
             set
@@ -44,7 +44,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _mobile;
-        internal string Mobile
+        public string Mobile
         {
             get { return _mobile; }
             set
@@ -56,7 +56,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _home;
-        internal string Home
+        public string Home
         {
             get { return _home; }
             set
@@ -68,7 +68,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _email;
-        internal string Email
+        public string Email
         {
             get { return _email; }
             set
@@ -80,7 +80,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _numRoute;
-        internal string NumRoute
+        public string NumRoute
         {
             get { return _numRoute; }
             set
@@ -92,10 +92,10 @@ namespace TOBShelter.Types.Dto
             }
         }
 
-        internal RouteType RouteType { get; set; }
+        public RouteType RouteType { get; set; }
 
         private string _routeName;
-        internal string RouteName
+        public string RouteName
         {
             get { return _routeName; }
             set
@@ -107,7 +107,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _postalCode;
-        internal string PostalCode
+        public string PostalCode
         {
             get { return _postalCode; }
             set
@@ -119,7 +119,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _city;
-        internal string City
+        public string City
         {
             get { return _city; }
             set
@@ -130,7 +130,7 @@ namespace TOBShelter.Types.Dto
             }
         }
 
-        internal PersonCreateDTO(IdentityTitle title, string name, string firstName, string numRoute, RouteType routeType, string routeName, string postalCode, string city)
+        public PersonCreateDTO(IdentityTitle title, string name, string firstName, string numRoute, RouteType routeType, string routeName, string postalCode, string city)
         {
             Title = title;
             Name = name;
@@ -143,31 +143,31 @@ namespace TOBShelter.Types.Dto
         }
     }
 
-    internal class PersonEditDTO
+    public class PersonEditDTO
     {
-        internal long Id { get; set; }
-        internal Nullable<IdentityTitle> Title { get; set; }
-        internal string Name { get; set; }
-        internal string FirstName { get; set; }
-        internal string Mobile { get; set; }
-        internal string Home { get; set; }
-        internal string Email { get; set; }
-        internal string NumRoute { get; set; }
-        internal Nullable<RouteType> RouteType { get; set; }
-        internal string RouteName { get; set; }
-        internal string PostalCode { get; set; }
-        internal string City { get; set; }
+        public long Id { get; set; }
+        public Nullable<IdentityTitle> Title { get; set; }
+        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string Mobile { get; set; }
+        public string Home { get; set; }
+        public string Email { get; set; }
+        public string NumRoute { get; set; }
+        public Nullable<RouteType> RouteType { get; set; }
+        public string RouteName { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
     }
 
-    internal class PersonDTO
+    public class PersonDTO
     {
-        internal long Id { get; set; }
-        internal IdentityTitle Title { get; set; }
-        internal string Name { get; set; }
-        internal string FirstName { get; set; }
+        public long Id { get; set; }
+        public IdentityTitle Title { get; set; }
+        public string Name { get; set; }
+        public string FirstName { get; set; }
     }
 
-    internal class PersonDetailsDTO: PersonEditDTO { }
+    public class PersonDetailsDTO: PersonEditDTO { }
 
-    internal class PersonFilters: PersonEditDTO { }
+    public class PersonFilters: PersonEditDTO { }
 }

@@ -8,9 +8,9 @@ using TOBShelter.Types.Dto;
 
 namespace TOBShelter.Services
 {
-    internal class DocumentService
+    public class DocumentService
     {
-        internal static DocumentDetailsDTO Create(DocumentCreateDTO document)
+        public static DocumentDetailsDTO Create(DocumentCreateDTO document)
         {
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
@@ -30,7 +30,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static DocumentDetailsDTO Update(DocumentEditDTO document)
+        public static DocumentDetailsDTO Update(DocumentEditDTO document)
         {
             if (document == null)
                 throw new ArgumentNullException(nameof(document));
@@ -59,7 +59,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static DocumentDetailsDTO FindById(long id)
+        public static DocumentDetailsDTO FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -84,7 +84,7 @@ namespace TOBShelter.Services
             return document;
         }
 
-        internal static List<DocumentDetailsDTO> FindAll(DocumentFilters filters) 
+        public static List<DocumentDetailsDTO> FindAll(DocumentFilters filters) 
         {
             string sql = "SELECT `document_id`, `path`, `investigation_id` FROM `documents`\n\t";
 

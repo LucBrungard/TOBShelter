@@ -8,12 +8,12 @@ using TOBShelter.Types.Dto;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class InvestigatorCreateDTO : PersonCreateDTO
+    public class InvestigatorCreateDTO : PersonCreateDTO
     {
-        internal bool Available { get; set; }
-        internal bool InOperation { get; set; }
-        internal string BusinessSector { get; set; }
-        internal InvestigatorCreateDTO(
+        public bool Available { get; set; }
+        public bool InOperation { get; set; }
+        public string BusinessSector { get; set; }
+        public InvestigatorCreateDTO(
             IdentityTitle title, 
             string name, 
             string firstName, 
@@ -33,28 +33,28 @@ namespace TOBShelter.Types.Dto
         }
     }
 
-    internal class InvestigatorDTO : PersonDTO
+    public class InvestigatorDTO : PersonDTO
     {
-        internal bool Available { get; set; }
-        internal bool InOperation { get; set; }
-        internal int NbInvestigations { get; set; }
+        public bool Available { get; set; }
+        public bool InOperation { get; set; }
+        public int NbInvestigations { get; set; }
     }
 
-    internal class InvestigatorEditDTO : PersonEditDTO
+    public class InvestigatorEditDTO : PersonEditDTO
     {
-        internal Nullable<bool> Available { get; set; }
-        internal Nullable<bool> InOperation { get; set; }
-        internal string BusinessSector { get; set; }
+        public Nullable<bool> Available { get; set; }
+        public Nullable<bool> InOperation { get; set; }
+        public string BusinessSector { get; set; }
     }
 
-    internal class InvestigatorDetailsDTO : PersonDetailsDTO
+    public class InvestigatorDetailsDTO : PersonDetailsDTO
     {
-        internal bool Available { get; set; }
-        internal bool InOperation { get; set; }
-        internal HashSet<InvestigationDTO> Investigations { get; set; }
-        internal string BusinessSector { get; set; }
+        public bool Available { get; set; }
+        public bool InOperation { get; set; }
+        public HashSet<InvestigationDTO> Investigations { get; set; }
+        public string BusinessSector { get; set; }
 
-        internal InvestigatorDetailsDTO(PersonDetailsDTO personDetailsDTO)
+        public InvestigatorDetailsDTO(PersonDetailsDTO personDetailsDTO)
         {
             Id = personDetailsDTO.Id;
             Title = personDetailsDTO.Title;
@@ -71,9 +71,9 @@ namespace TOBShelter.Types.Dto
         }
     }
 
-    internal class InvestigatorFilters : PersonFilters
+    public class InvestigatorFilters : PersonFilters
     {
-        internal Nullable<bool> Available { get; set; }
-        internal Nullable<bool> InOperation { get; set; }
+        public Nullable<bool> Available { get; set; }
+        public Nullable<bool> InOperation { get; set; }
     }
 }

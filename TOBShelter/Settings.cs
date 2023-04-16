@@ -6,7 +6,7 @@
     //  L'événement PropertyChanged est déclenché après la modification d'une valeur de paramètre.
     //  L'événement SettingsLoaded est déclenché après le chargement des valeurs de paramètre.
     //  L'événement SettingsSaving est déclenché avant l'enregistrement des valeurs de paramètre.
-    internal sealed partial class Settings {
+    public sealed partial class Settings {
         
         public Settings() {
             // // Pour ajouter des gestionnaires d'événements afin d'enregistrer et de modifier les paramètres, supprimez les marques de commentaire des lignes ci-dessous :

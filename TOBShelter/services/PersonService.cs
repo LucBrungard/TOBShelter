@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace TOBShelter.Services
 {
-    internal static class PersonService
+    public static class PersonService
     {
-        internal static PersonDetailsDTO Create(PersonCreateDTO person)
+        public static PersonDetailsDTO Create(PersonCreateDTO person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -47,7 +47,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static PersonDetailsDTO Update(PersonEditDTO person)
+        public static PersonDetailsDTO Update(PersonEditDTO person)
         {
             if (person == null)
                 throw new ArgumentNullException(nameof(person));
@@ -127,7 +127,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static PersonDetailsDTO FindById(long id)
+        public static PersonDetailsDTO FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -138,7 +138,10 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
             PersonDetailsDTO res = new PersonDetailsDTO();
             res.Id = reader.GetInt64(0);
@@ -159,7 +162,7 @@ namespace TOBShelter.Services
             return res;
         }
 
-        internal static List<PersonDTO> FindAll(PersonFilters filters)
+        public static List<PersonDTO> FindAll(PersonFilters filters)
         {
             string sql = "SELECT `person_id`, `title`, `name`, `first_name` FROM `persons` ";
 

@@ -9,12 +9,12 @@ using TOBShelter.Utils;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class AnimalEditDTO
+    public class AnimalEditDTO
     {
-        internal long Id { get; set; }
+        public long Id { get; set; }
 
         private Nullable<uint> _age;
-        internal Nullable<uint> Age
+        public Nullable<uint> Age
         {
             get { return _age; }
             set
@@ -26,7 +26,7 @@ namespace TOBShelter.Types.Dto
         }
 
         private string _weight;
-        internal string Weight
+        public string Weight
         {
             get { return _weight; }
             set
@@ -36,15 +36,15 @@ namespace TOBShelter.Types.Dto
                 _weight = value;
             }
         }
-        internal Nullable<long> OwnerId { get; set; }
+        public Nullable<long> OwnerId { get; set; }
     }
 
-    internal class AnimalFilters
+    public class AnimalFilters
     {
-        internal Nullable<long> Id { get; set; }
+        public Nullable<long> Id { get; set; }
 
         private Type _animalType;
-        internal Type AnimalType
+        public Type AnimalType
         {
             get { return _animalType; }
             set
@@ -54,11 +54,11 @@ namespace TOBShelter.Types.Dto
                 _animalType = value;
             }
         }
-        internal string Name { get; set;  }
-        internal Nullable<uint> Age { get; set; }
+        public string Name { get; set;  }
+        public Nullable<uint> Age { get; set; }
 
         private Type _breed;
-        internal Type Breed
+        public Type Breed
         {
             get { return _breed; }
             set
@@ -70,6 +70,6 @@ namespace TOBShelter.Types.Dto
                 _breed = value;
             }
         }
-        internal Nullable<long> OwnerId { get; set; }
+        public Nullable<long> OwnerId { get; set; }
     }
 }

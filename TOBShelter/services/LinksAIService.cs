@@ -7,9 +7,9 @@ using TOBShelter.Types.Dto;
 
 namespace TOBShelter.Services
 {
-    internal class LinksAIService
+    public class LinksAIService
     {
-        internal static bool Create(LinksAICreateDTO link) 
+        public static bool Create(LinksAICreateDTO link) 
         {
             if (link == null)
                 throw new ArgumentNullException(nameof(link));
@@ -25,7 +25,7 @@ namespace TOBShelter.Services
             return insertedRows == 1;
         }
 
-        internal static bool Remove(LinksAIRemoveDTO link) 
+        public static bool Remove(LinksAIRemoveDTO link) 
         {
             if (link == null)
                 throw new ArgumentNullException(nameof(link));
@@ -41,7 +41,7 @@ namespace TOBShelter.Services
             return insertedRows == 1;
         }
 
-        internal static List<LinksAIDetailsDTO> FindAll(LinksAIFilters filters) 
+        public static List<LinksAIDetailsDTO> FindAll(LinksAIFilters filters) 
         {
             string sql = "SELECT `animal_id`, `investigation_id` FROM `links_animals_investigations`\n\t";
 

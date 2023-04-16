@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TOBShelter.utils
 {
-    internal static class DbUtil
+    public static class DbUtil
     {
-        internal static bool CheckSqlInjection(string value)
+        public static bool CheckSqlInjection(string value)
         {
             if (String.IsNullOrEmpty(value))
                 throw new ArgumentNullException(nameof(value));

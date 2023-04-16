@@ -8,9 +8,9 @@ using TOBShelter.Types.Dto;
 
 namespace TOBShelter.Services
 {
-    internal static class InvestigationService
+    public static class InvestigationService
     {
-        internal static InvestigationDetailsDTO Create(InvestigationCreateDTO investigation)
+        public static InvestigationDetailsDTO Create(InvestigationCreateDTO investigation)
         {
             if (investigation == null)
                 throw new ArgumentNullException(nameof(investigation));
@@ -62,7 +62,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static InvestigationDetailsDTO Update(InvestigationEditDTO investigation)
+        public static InvestigationDetailsDTO Update(InvestigationEditDTO investigation)
         {
             if (investigation == null)
                 throw new ArgumentNullException(nameof(investigation));
@@ -109,7 +109,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static InvestigationDetailsDTO FindById(long id)
+        public static InvestigationDetailsDTO FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -151,7 +151,7 @@ namespace TOBShelter.Services
             return dto;
         }
 
-        internal static List<InvestigationDTO> FindAll(InvestigationFilters filters)
+        public static List<InvestigationDTO> FindAll(InvestigationFilters filters)
         {
             string sql = "SELECT `investigation_id`, `title`, `investigator`, `closed` FROM `investigations`\n\t";
 

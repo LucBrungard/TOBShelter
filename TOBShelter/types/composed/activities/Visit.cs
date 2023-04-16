@@ -2,9 +2,9 @@
 
 namespace TOBShelter.Types.Composed.Activities
 {
-    internal class Visit : Activity
+    public class Visit : Activity
     {
-        internal Visit(DateTime date, string description, string investigation) : base(date, description, investigation)
+        public Visit(DateTime date, string description, string investigation) : base(date, description, investigation)
         {
         }
     }

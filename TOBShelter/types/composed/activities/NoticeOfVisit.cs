@@ -2,8 +2,8 @@
 
 namespace TOBShelter.Types.Composed.Activities
 {
-    internal class NoticeOfVisit : Activity
+    public class NoticeOfVisit : Activity
     {
-        internal NoticeOfVisit(DateTime date, string description, string investigation) : base(date, description, investigation) { }
+        public NoticeOfVisit(DateTime date, string description, string investigation) : base(date, description, investigation) { }
     }
 }

@@ -11,9 +11,9 @@ using static TOBShelter.Types.Base.Breed.Cat;
 
 namespace TOBShelter.Services
 {
-    internal static class AnimalService
+    public static class AnimalService
     {
-        internal static Animal Create(Animal animal)
+        public static Animal Create(Animal animal)
         {
             if (animal == null)
                 throw new ArgumentNullException(nameof(animal));
@@ -38,7 +38,7 @@ namespace TOBShelter.Services
             return animal;
         }
 
-        internal static Animal Update(AnimalEditDTO animal)
+        public static Animal Update(AnimalEditDTO animal)
         {
             if (animal == null)
                 throw new ArgumentNullException(nameof(animal));
@@ -84,7 +84,7 @@ namespace TOBShelter.Services
                 : null;
         }
 
-        internal static Animal FindById(long id)
+        public static Animal FindById(long id)
         {
             if (id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(id));
@@ -124,7 +124,7 @@ namespace TOBShelter.Services
             return animal;
         }
 
-        internal static List<Animal> FindAll(AnimalFilters filters)
+        public static List<Animal> FindAll(AnimalFilters filters)
         {
             string sql = "SELECT * FROM `animals` ";
 

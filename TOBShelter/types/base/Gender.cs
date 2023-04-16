@@ -1,6 +1,6 @@
 ﻿namespace TOBShelter.Types.Base
 {
-    internal enum Gender
+    public enum Gender
     {
         M,
         F

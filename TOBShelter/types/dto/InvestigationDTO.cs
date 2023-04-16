@@ -6,59 +6,59 @@ using TOBShelter.Types.Composed;
 
 namespace TOBShelter.Types.Dto
 {
-    internal class InvestigationCreateDTO
+    public class InvestigationCreateDTO
     {
-        internal long Id { get; set; }
-        internal string Title { get; set; }
-        internal long ComplainantId { get; set; }
-        internal long OffenderId { get; set; }
-        internal string Reason { get; set; }
-        internal long InvestigatorId { get; set; }
-        internal List<Animal> Animals { get; set; }
-        internal List<DocumentCreateDTO> Documents { get; set; }
-        internal string Notice { get; set; }
-        internal bool Closed { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public long ComplainantId { get; set; }
+        public long OffenderId { get; set; }
+        public string Reason { get; set; }
+        public long InvestigatorId { get; set; }
+        public List<Animal> Animals { get; set; }
+        public List<DocumentCreateDTO> Documents { get; set; }
+        public string Notice { get; set; }
+        public bool Closed { get; set; }
     }
-    internal class InvestigationDTO
+    public class InvestigationDTO
     {
-        internal long Id { get; set; }
-        internal string Title { get; set; }
-        internal IdentityTitle InvestigatorTitle { get; set; }
-        internal string InvestigatorName { get; set; }
-        internal string InvestigatorFirstName { get; set; }
-        internal DateTime LastModification { get; set; }
-        internal bool Closed { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public IdentityTitle InvestigatorTitle { get; set; }
+        public string InvestigatorName { get; set; }
+        public string InvestigatorFirstName { get; set; }
+        public DateTime LastModification { get; set; }
+        public bool Closed { get; set; }
     }
-    internal class InvestigationEditDTO
+    public class InvestigationEditDTO
     {
-        internal long Id { get; set; }
-        internal string Title { get; set; }
-        internal Nullable<long> InvestigatorId { get; set; }
-        internal string Notice { get; set; }
-        internal Nullable<bool> Closed { get; set; }
-    }
-
-    internal class InvestigationDetailsDTO
-    {
-        internal long Id { get; set; }
-        internal string Title { get; set; }
-        internal PersonDTO Complainant { get; set; }
-        internal PersonDTO Offender { get; set; }
-        internal string Reason { get; set; }
-        internal InvestigatorDTO Investigator { get; set; }
-        internal List<Animal> Animals { get; set; }
-        internal List<DocumentDetailsDTO> Documents { get; set; }
-        internal string Notice { get; set; }
-        internal bool Closed { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public Nullable<long> InvestigatorId { get; set; }
+        public string Notice { get; set; }
+        public Nullable<bool> Closed { get; set; }
     }
 
-    internal class InvestigationFilters
+    public class InvestigationDetailsDTO
     {
-        internal Nullable<long> Id { get; set; }
-        internal string Title { get; set; }
-        internal Nullable<long> ComplainantId { get; set; }
-        internal Nullable<long> OffenderId { get; set; }
-        internal Nullable<long> InvestigatorId { get; set; }
-        internal Nullable<bool> Closed { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public PersonDTO Complainant { get; set; }
+        public PersonDTO Offender { get; set; }
+        public string Reason { get; set; }
+        public InvestigatorDTO Investigator { get; set; }
+        public List<Animal> Animals { get; set; }
+        public List<DocumentDetailsDTO> Documents { get; set; }
+        public string Notice { get; set; }
+        public bool Closed { get; set; }
+    }
+
+    public class InvestigationFilters
+    {
+        public Nullable<long> Id { get; set; }
+        public string Title { get; set; }
+        public Nullable<long> ComplainantId { get; set; }
+        public Nullable<long> OffenderId { get; set; }
+        public Nullable<long> InvestigatorId { get; set; }
+        public Nullable<bool> Closed { get; set; }
     }
 }

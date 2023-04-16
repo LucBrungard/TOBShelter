@@ -3,7 +3,7 @@ using System;
 
 namespace TOBShelter.Types.Composed.Animals
 {
-    internal class Dog : Animal
+    public class Dog : Animal
     {
         public Dog(string name, uint age, string weight, Gender gender, Breed breed, long ownerId)
             : base(name, age, weight, gender, breed, ownerId)
