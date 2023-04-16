@@ -17,6 +17,9 @@ namespace TOBShelter
             InitializeComponent();
             updateDataGrid(null);
             comboBoxInvestigatorAvailibility.SelectedIndex = 0;
+            this.dataGridInvestigators.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            this.dataGridInvestigators.AlternatingRowsDefaultCellStyle.BackColor =
+                Color.White;
         }
 
         private void updateDataGrid(InvestigatorFilters filter)
@@ -56,6 +59,12 @@ namespace TOBShelter
             if (firstName is not null && firstName != "") filters.FirstName = firstName;
 
             updateDataGrid(filters);
+        }
+
+        private void btnAddInvestigator_Click(object sender, EventArgs e)
+        {
+            AddInvestigator f = new AddInvestigator();
+            f.ShowDialog(this);
         }
     }
 }

@@ -108,6 +108,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddInvestigator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInvestigator.Designer.cs">
+      <DependentUpon>AddInvestigator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPerson.Designer.cs">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="services\AnimalService.cs" />
     <Compile Include="services\DBConnection.cs" />
     <Compile Include="services\DocumentService.cs" />
@@ -146,19 +163,21 @@
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />
+    <EmbeddedResource Include="AddInvestigator.resx">
+      <DependentUpon>AddInvestigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPerson.resx">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.Designer.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Form</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="annex\Projet.pdf" />
     <None Include="annex\schema.drawio" />
     <None Include="App.config" />
@@ -190,6 +209,9 @@
     <None Include="Resources\search.ico" />
     <None Include="Resources\cross.ico" />
     <None Include="Resources\check.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

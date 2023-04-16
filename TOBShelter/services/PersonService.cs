@@ -34,7 +34,7 @@ namespace TOBShelter.Services
 
             stringBuilder.Append($"'{person.NumRoute}',\n\t");
             stringBuilder.Append($"'{person.RouteType}',\n\t");
-            stringBuilder.Append($"'{person.RouteName}',\n\t");
+            stringBuilder.Append($"\"{person.RouteName}\",\n\t");
 
             stringBuilder.Append($"'{person.PostalCode}',\n\t");
             stringBuilder.Append($"'{person.City}');");
@@ -166,7 +166,6 @@ namespace TOBShelter.Services
         {
             string sql = "SELECT `person_id`, `title`, `name`, `first_name` FROM `persons` ";
 
-            
             StringBuilder conditions = new StringBuilder("WHERE \n\t");
 
             if (filters != null)

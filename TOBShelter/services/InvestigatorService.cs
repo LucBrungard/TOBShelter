@@ -256,7 +256,7 @@ namespace TOBShelter.Services
             while (rdr.Read())
             {
                 InvestigatorDTO investigator = new InvestigatorDTO();
-                investigator.Id = rdr.GetUInt32("persons.person_id");
+                investigator.Id = rdr.GetUInt32(0);
                 investigator.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), rdr.GetString("title").ToUpper());
                 investigator.Name = rdr.GetString("name");
                 investigator.FirstName = rdr.GetString("first_name");
