@@ -95,7 +95,10 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
             string name = reader.GetString("name");
             uint age = reader.GetUInt32("age");

@@ -120,24 +120,27 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
             InvestigationDetailsDTO dto = new InvestigationDetailsDTO
             {
                 Id = reader.GetInt64("investigation_id"),
                 Title = reader.GetString("title"),
-                Complainant = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("complainant") })[0],
-                Offender = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("offender") })[0],
                 Reason = reader.GetString("reason"),
-                Investigator = InvestigatorService.FindAll(new InvestigatorFilters { Id = reader.GetInt64("investigator") })[0],
                 Notice = reader.GetString("notice"),
                 Closed = reader.GetBoolean("closed")
             };
             reader.Close();
 
+            dto.Complainant = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("complainant") })[0];
+            dto.Offender = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("offender") })[0];
+            dto.Investigator = InvestigatorService.FindAll(new InvestigatorFilters { Id = reader.GetInt64("investigator") })[0];
+            
             // Get all animals related to the investigation
             List<Animal> animals = new List<Animal>();
-
             List<LinksAIDetailsDTO> linksAI = LinksAIService.FindAll(new LinksAIFilters { InvestigationId = id });
             foreach (LinksAIDetailsDTO link in linksAI)
             {
@@ -211,27 +214,33 @@ namespace TOBShelter.Services
             MySqlDataReader reader = cmd.ExecuteReader();
 
             List<InvestigationDTO> list = new List<InvestigationDTO>();
-
+            List<long> investigatorsId = new List<long>();
             while (reader.Read())
             {
                 InvestigationDTO investigation = new InvestigationDTO();
-                investigation.Id = reader.GetInt64(0);
+                investigation.Id = reader.GetInt64("investigation_id");
+                investigation.Title = reader.GetString("title");
+                investigation.Closed = reader.GetBoolean("closed");
 
-                investigation.Title = reader.GetString(1);
+                list.Add(investigation);
+                investigatorsId.Add(reader.GetInt64("investigator"));
+            }
+            reader.Close();
 
+            for (int i = 0; i < list.Count; i++)
+            {
+                InvestigationDTO investigation = list[i];
                 InvestigatorFilters investigatorFilters = new InvestigatorFilters
                 {
-                    Id = reader.GetInt64(2)
+                    Id = investigatorsId[i],
                 };
                 InvestigatorDTO investigator = InvestigatorService.FindAll(investigatorFilters)[0];
 
                 investigation.InvestigatorTitle = investigator.Title;
                 investigation.InvestigatorName = investigator.Name;
                 investigation.InvestigatorFirstName = investigator.FirstName;
-
-                investigation.Closed = reader.GetBoolean(3);
             }
-            reader.Close();
+            
             return list;
         }
     }

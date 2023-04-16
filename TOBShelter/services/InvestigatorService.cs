@@ -102,24 +102,21 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
-            res.Available = reader.GetInt32(0) == 1;
-            res.InOperation = reader.GetInt32(1) == 1;
-            res.BusinessSector = reader.GetString(2);
-
-            res.Investigations = new HashSet<InvestigationDTO>();
-            InvestigationFilters investigationFilters = new InvestigationFilters
-            {
-                InvestigatorId = res.Id
-            };
-            InvestigationService.FindAll(investigationFilters).ForEach(investigationDTO =>
-            {
-                res.Investigations.Add(investigationDTO);
-            });
+            res.Available = reader.GetInt32("available") == 1;
+            res.InOperation = reader.GetInt32("in_operation") == 1;
+            res.BusinessSector = reader.GetString("business_sector");
 
             reader.Close();
 
+            // Get the investigations
+            InvestigationFilters investigationFilters = new InvestigationFilters { InvestigatorId = res.Id };
+            res.Investigations = new HashSet<InvestigationDTO>(InvestigationService.FindAll(investigationFilters));
+            
             return res;
         }
 
@@ -259,12 +256,12 @@ namespace TOBShelter.Services
             while (rdr.Read())
             {
                 InvestigatorDTO investigator = new InvestigatorDTO();
-                investigator.Id = rdr.GetUInt32(0);
-                investigator.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), rdr.GetString(1).ToUpper());
-                investigator.Name = rdr.GetString(2);
-                investigator.FirstName = rdr.GetString(3);
-                investigator.Available = rdr.GetBoolean(4);
-                investigator.InOperation = rdr.GetBoolean(5);
+                investigator.Id = rdr.GetUInt32("persons.person_id");
+                investigator.Title = (IdentityTitle)Enum.Parse(typeof(IdentityTitle), rdr.GetString("title").ToUpper());
+                investigator.Name = rdr.GetString("name");
+                investigator.FirstName = rdr.GetString("first_name");
+                investigator.Available = rdr.GetBoolean("available");
+                investigator.InOperation = rdr.GetBoolean("in_operation");
 
                 list.Add(investigator);
             }

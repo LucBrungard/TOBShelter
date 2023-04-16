@@ -70,7 +70,10 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
             DocumentDetailsDTO document = new DocumentDetailsDTO
             {
