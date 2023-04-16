@@ -86,6 +86,7 @@ namespace TOBShelter
         {
             AddInvestigator f = new AddInvestigator();
             f.ShowDialog(this);
+            updateInvestigatorDataGrid(null);
         }
 
         private void ckxOpenInvestigation_CheckedChanged(object sender, EventArgs e)
