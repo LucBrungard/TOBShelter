@@ -29,9 +29,22 @@ namespace TOBShelter
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ckxOpenInvestigation = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.investigatorSearchFirstName = new System.Windows.Forms.TextBox();
             this.btnSearchInvestigator = new System.Windows.Forms.Button();
@@ -48,6 +61,8 @@ namespace TOBShelter
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvestigators)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +73,7 @@ namespace TOBShelter
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 40);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(688, 464);
@@ -66,14 +81,158 @@ namespace TOBShelter
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ckxOpenInvestigation);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(680, 416);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Enquêtes";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ckxOpenInvestigation
+            // 
+            this.ckxOpenInvestigation.AutoSize = true;
+            this.ckxOpenInvestigation.Location = new System.Drawing.Point(584, 32);
+            this.ckxOpenInvestigation.Name = "ckxOpenInvestigation";
+            this.ckxOpenInvestigation.Size = new System.Drawing.Size(64, 17);
+            this.ckxOpenInvestigation.TabIndex = 16;
+            this.ckxOpenInvestigation.Text = "Ouverte";
+            this.ckxOpenInvestigation.UseVisualStyleBackColor = true;
+            this.ckxOpenInvestigation.CheckedChanged += new System.EventHandler(this.ckxOpenInvestigation_CheckedChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(157, 26);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.MinimumSize = new System.Drawing.Size(93, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(93, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::TOBShelter.Properties.Resources.search;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(251, 26);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(2);
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 14;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(35, 26);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.MinimumSize = new System.Drawing.Size(93, 22);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(112, 20);
+            this.textBox2.TabIndex = 13;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewImageColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewButtonColumn1,
+            this.dataGridViewButtonColumn2});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(28, 74);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(625, 267);
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Identifiant";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Intitulé";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Délégué Enquêteur";
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Date de dernière modification";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.MinimumWidth = 6;
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Width = 32;
+            // 
+            // dataGridViewButtonColumn2
+            // 
+            this.dataGridViewButtonColumn2.HeaderText = "";
+            this.dataGridViewButtonColumn2.MinimumWidth = 6;
+            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
+            this.dataGridViewButtonColumn2.ReadOnly = true;
+            this.dataGridViewButtonColumn2.Width = 32;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(276, 362);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(129, 28);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Ajouter une enquête";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -85,9 +244,9 @@ namespace TOBShelter
             this.tabPage2.Controls.Add(this.dataGridInvestigators);
             this.tabPage2.Controls.Add(this.btnAddInvestigator);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(680, 416);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Enquêteurs";
@@ -95,7 +254,7 @@ namespace TOBShelter
             // investigatorSearchFirstName
             // 
             this.investigatorSearchFirstName.Location = new System.Drawing.Point(154, 24);
-            this.investigatorSearchFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.investigatorSearchFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.investigatorSearchFirstName.MinimumSize = new System.Drawing.Size(93, 22);
             this.investigatorSearchFirstName.Name = "investigatorSearchFirstName";
             this.investigatorSearchFirstName.Size = new System.Drawing.Size(93, 20);
@@ -109,7 +268,7 @@ namespace TOBShelter
             this.btnSearchInvestigator.Location = new System.Drawing.Point(248, 24);
             this.btnSearchInvestigator.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchInvestigator.Name = "btnSearchInvestigator";
-            this.btnSearchInvestigator.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchInvestigator.Padding = new System.Windows.Forms.Padding(2);
             this.btnSearchInvestigator.Size = new System.Drawing.Size(24, 24);
             this.btnSearchInvestigator.TabIndex = 8;
             this.btnSearchInvestigator.UseVisualStyleBackColor = true;
@@ -118,7 +277,7 @@ namespace TOBShelter
             // investigatorSearchName
             // 
             this.investigatorSearchName.Location = new System.Drawing.Point(32, 24);
-            this.investigatorSearchName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.investigatorSearchName.Margin = new System.Windows.Forms.Padding(2);
             this.investigatorSearchName.MinimumSize = new System.Drawing.Size(93, 22);
             this.investigatorSearchName.Name = "investigatorSearchName";
             this.investigatorSearchName.Size = new System.Drawing.Size(112, 20);
@@ -132,7 +291,7 @@ namespace TOBShelter
             "Disponible",
             "Retraité"});
             this.comboBoxInvestigatorAvailibility.Location = new System.Drawing.Point(520, 24);
-            this.comboBoxInvestigatorAvailibility.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxInvestigatorAvailibility.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxInvestigatorAvailibility.MaxLength = 32;
             this.comboBoxInvestigatorAvailibility.MinimumSize = new System.Drawing.Size(76, 0);
             this.comboBoxInvestigatorAvailibility.Name = "comboBoxInvestigatorAvailibility";
@@ -155,16 +314,16 @@ namespace TOBShelter
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridInvestigators.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridInvestigators.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridInvestigators.Location = new System.Drawing.Point(25, 72);
-            this.dataGridInvestigators.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridInvestigators.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridInvestigators.MultiSelect = false;
             this.dataGridInvestigators.Name = "dataGridInvestigators";
             this.dataGridInvestigators.ReadOnly = true;
@@ -229,7 +388,7 @@ namespace TOBShelter
             // btnAddInvestigator
             // 
             this.btnAddInvestigator.Location = new System.Drawing.Point(273, 360);
-            this.btnAddInvestigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddInvestigator.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddInvestigator.Name = "btnAddInvestigator";
             this.btnAddInvestigator.Size = new System.Drawing.Size(129, 28);
             this.btnAddInvestigator.TabIndex = 1;
@@ -258,10 +417,14 @@ namespace TOBShelter
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvestigators)).EndInit();
@@ -288,5 +451,17 @@ namespace TOBShelter
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.TextBox investigatorSearchFirstName;
         private System.Windows.Forms.Button btnSearchInvestigator;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox ckxOpenInvestigation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
     }
 }

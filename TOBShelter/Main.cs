@@ -15,14 +15,19 @@ namespace TOBShelter
         public Main()
         {
             InitializeComponent();
-            updateDataGrid(null);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            updateInvestigatorDataGrid(null);
+            updateInvestigationDataGrid(null);
             comboBoxInvestigatorAvailibility.SelectedIndex = 0;
             this.dataGridInvestigators.RowsDefaultCellStyle.BackColor = Color.LightBlue;
             this.dataGridInvestigators.AlternatingRowsDefaultCellStyle.BackColor =
                 Color.White;
         }
 
-        private void updateDataGrid(InvestigatorFilters filter)
+        private void updateInvestigatorDataGrid(InvestigatorFilters filter)
         {
             this.dataGridInvestigators.Rows.Clear();
 
@@ -37,6 +42,22 @@ namespace TOBShelter
             }
         }
 
+        private void updateInvestigationDataGrid(InvestigationFilters filter)
+        {
+            this.dataGridInvestigators.Rows.Clear();
+
+            List<InvestigationDTO> investigations = TOBShelter.Services.InvestigationService.FindAll(filter).ToList();
+            foreach (InvestigationDTO investigation in investigations)
+            {
+                this.dataGridInvestigators.Rows.Add(
+                    investigation.Id,
+                    investigation.Title,
+                    investigation.InvestigatorFirstName + " " + investigation.InvestigatorName
+                    // TODO Ajouter date de derniere modif
+                    );
+            }
+        }
+
         private void comboBoxInvestigatorAvailibility_SelectedIndexChanged(object sender, EventArgs e)
         {
             InvestigatorFilters filter = new InvestigatorFilters();
@@ -46,7 +67,7 @@ namespace TOBShelter
                 filter.Available = true;
             else if (item == "Retraité")
                 filter.InOperation = false;
-            updateDataGrid(filter);
+            updateInvestigatorDataGrid(filter);
         }
 
         private void btnSearchInvestigator_Click(object sender, EventArgs e)
@@ -58,13 +79,24 @@ namespace TOBShelter
             if (name is not null && name != "") filters.Name = name;
             if (firstName is not null && firstName != "") filters.FirstName = firstName;
 
-            updateDataGrid(filters);
+            updateInvestigatorDataGrid(filters);
         }
 
         private void btnAddInvestigator_Click(object sender, EventArgs e)
         {
             AddInvestigator f = new AddInvestigator();
             f.ShowDialog(this);
+        }
+
+        private void ckxOpenInvestigation_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox isOpen = (sender as CheckBox);
+            InvestigationFilters filters = new InvestigationFilters();
+
+            if (isOpen.Checked)
+                filters.Closed = false;
+
+            updateInvestigationDataGrid(filters);
         }
     }
 }
