@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using TOBShelter.Services;
 using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
+using TOBShelter.Types.Composed.Animals;
 using TOBShelter.Types.Dto;
 
 namespace TOBShelter
@@ -18,6 +19,10 @@ namespace TOBShelter
         [STAThread]
         static void Main()
         {
+            Animal cat1 = new Cat("Poussiere", 18, "2.5kg", Gender.F, new Breed.Cat.ABYSSIN(), 1);
+            Animal cat2 = new Cat("Patapouf", 1, "300g", Gender.M, new Breed.Cat.AMERICAN_SHORTHAIR(), 1);
+            Animal cat3 = new Cat("Garfield", 4, "1.0kg", Gender.M, new Breed.Cat.MANDARIN(), 1);
+
             // Create
             PersonCreateDTO p1 = new PersonCreateDTO(
                 IdentityTitle.M,
@@ -41,7 +46,21 @@ namespace TOBShelter
 
             Console.WriteLine($"Create physical : {TOBShelter.Services.PersonService.Create(p1)}");
             Console.WriteLine($"Create societe : {TOBShelter.Services.PersonService.Create(p2)}");
+            TOBShelter.Services.AnimalService.Create(cat1);
+            TOBShelter.Services.AnimalService.Create(cat2);
+            TOBShelter.Services.AnimalService.Create(cat3);
 
+            AnimalEditDTO edit = new AnimalEditDTO();
+            edit.Age = 30;
+
+            edit.Id = 1;
+            TOBShelter.Services.AnimalService.Update(edit);
+            edit.Id = 2;
+            TOBShelter.Services.AnimalService.Update(edit);
+            edit.Id = 3;
+            TOBShelter.Services.AnimalService.Update(edit);
+
+            Console.WriteLine(TOBShelter.Services.AnimalService.FindAll(null).Count);
 
             // Edit
             PersonDetailsDTO d1 = new PersonDetailsDTO { 

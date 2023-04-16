@@ -102,7 +102,10 @@ namespace TOBShelter.Services
             MySqlDataReader reader = command.ExecuteReader();
 
             if (!reader.Read())
+            {
+                reader.Close();
                 return null;
+            }
 
             res.Available = reader.GetInt32(0) == 1;
             res.InOperation = reader.GetInt32(1) == 1;
@@ -125,7 +128,7 @@ namespace TOBShelter.Services
 
         internal static List<InvestigatorDTO> FindAll(InvestigatorFilters filters)
         {
-            string sql = "SELECT `person_id`, `title`, `name`, `first_name`, `available`, `in_operation` FROM `persons` INNER JOIN `investigators` ON persons.person_id = investigators.person_id";
+            string sql = "SELECT `person_id`, `title`, `name`, `first_name`, `available`, `in_operation` FROM `persons` INNER JOIN `investigators` ON persons.person_id = investigators.person_id ";
 
             StringBuilder conditions = new StringBuilder("WHERE \n\t");
 
@@ -264,17 +267,21 @@ namespace TOBShelter.Services
                 investigator.Name = rdr.GetString(2);
                 investigator.FirstName = rdr.GetString(3);
                 investigator.Available = rdr.GetBoolean(4);
-                investigator.InOperation = rdr.GetBoolean(5);
+                investigator.InOperation = rdr.GetBoolean(5)
+                
+                list.Add(investigator);
+            }
+            rdr.Close();
 
+            foreach (var investigator in list)
+            {
                 InvestigationFilters filter = new InvestigationFilters
                 {
                     InvestigatorId = investigator.Id
                 };
                 investigator.NbInvestigations = InvestigationService.FindAll(filter).Count;
-
-                list.Add(investigator);
             }
-            rdr.Close();
+            
             return list;
         }
     }
