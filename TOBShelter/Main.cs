@@ -22,9 +22,6 @@ namespace TOBShelter
             updateInvestigatorDataGrid(null);
             updateInvestigationDataGrid(null);
             comboBoxInvestigatorAvailibility.SelectedIndex = 0;
-            this.dataGridInvestigators.RowsDefaultCellStyle.BackColor = Color.LightBlue;
-            this.dataGridInvestigators.AlternatingRowsDefaultCellStyle.BackColor =
-                Color.White;
         }
 
         private void updateInvestigatorDataGrid(InvestigatorFilters filter)
@@ -35,10 +32,12 @@ namespace TOBShelter
             foreach (InvestigatorDTO investigator in investigators)
             {
                 this.dataGridInvestigators.Rows.Add(
+                    investigator.Id,
                     investigator.Name,
                     investigator.FirstName,
                     investigator.Available ? iconCheck.ToBitmap() : iconCross.ToBitmap(),
-                    investigator.NbInvestigations.ToString());
+                    investigator.NbInvestigations.ToString()
+                    );
             }
         }
 
@@ -98,6 +97,30 @@ namespace TOBShelter
                 filters.Closed = false;
 
             updateInvestigationDataGrid(filters);
+        }
+
+        private void btnViewInvestigator_Click(object sender, EventArgs e)
+        {
+            //String id = this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString();
+        }
+
+        private void btnEditInvestigator_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAddInvestigation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewInvestigation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditInvestigation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
