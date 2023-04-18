@@ -8,6 +8,7 @@ using TOBShelter.Services;
 using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
 using TOBShelter.Types.Dto;
+using static TOBShelter.Types.Base.Breed.Cat;
 
 namespace TOBShelter.Services
 {
@@ -55,9 +56,12 @@ namespace TOBShelter.Services
             if (investigator.Id == 0)
                 throw new ArgumentException("Cannot be 0", nameof(investigator.Id));
 
+            bool isPersonEmpty = true;
             try
             {
                 PersonService.Update(investigator);
+                // Si la modification a ete efectuee avec succes, alors c'est qu'il y a des valeurs dans l'objet
+                isPersonEmpty = false;
             }
             catch (ArgumentException e)
             {
@@ -66,17 +70,45 @@ namespace TOBShelter.Services
             }
 
             StringBuilder stringBuilder = new StringBuilder("UPDATE `investigators` SET \n\t");
+            
+            bool isInvestigatorEmpty = true;
+            bool first = true;
 
             if (investigator.Available != null)
-                stringBuilder.Append($"available='{((bool)investigator.Available ? 1 : 0)}',\n\t");
+            {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                isInvestigatorEmpty = false;
+                first = false;
+                stringBuilder.Append($"available='{((bool)investigator.Available ? 1 : 0)}'");
+            }
 
             if (investigator.InOperation != null)
-                stringBuilder.Append($"in_operation='{((bool)investigator.InOperation ? 1 : 0)}',\n\t");
+            {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                isInvestigatorEmpty = false;
+                first = false;
+                stringBuilder.Append($"in_operation='{((bool)investigator.InOperation ? 1 : 0)}'");
+            }
 
             if (investigator.BusinessSector != null)
-                stringBuilder.Append($"business_sector='{investigator.BusinessSector}'\n\t");
+            {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                isInvestigatorEmpty = false;
+                stringBuilder.Append($"business_sector='{investigator.BusinessSector}'");
+            }
 
-            stringBuilder.Append($" WHERE person_id='{investigator.Id}'");
+            if (isInvestigatorEmpty)
+            {
+                if (isPersonEmpty)
+                    throw new ArgumentException("No value set", nameof(investigator));
+                else
+                    return FindById(investigator.Id);
+            }
+
+            stringBuilder.Append($"\nWHERE person_id='{investigator.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();

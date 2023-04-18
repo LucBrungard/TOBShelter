@@ -57,67 +57,98 @@ namespace TOBShelter.Services
             StringBuilder stringBuilder = new StringBuilder("UPDATE `persons` SET \n\t");
 
             bool empty = true;
+            bool first = true;
 
             if (person.Title != null)
             {
+                first = false;
                 empty = false;
-                stringBuilder.Append($"title='{person.Title}',\n\t");
+                stringBuilder.Append($"title='{person.Title}'");
             }
             if (person.Name != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"name='{person.Name}',\n\t");
+                stringBuilder.Append($"name='{person.Name}'");
             }
             if (person.FirstName != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"first_name='{person.FirstName}',\n\t");
+                stringBuilder.Append($"first_name='{person.FirstName}'");
             }
             if (person.Mobile != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"mobile='{person.Mobile}',\n\t");
+                stringBuilder.Append($"mobile='{person.Mobile}'");
             }
             if (person.Home != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"home='{person.Home}',\n\t");
+                stringBuilder.Append($"home='{person.Home}'");
             }
             if (person.Email != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"email='{person.Email}',\n\t");
+                stringBuilder.Append($"email='{person.Email}'");
             }
             if (person.NumRoute != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"no_route='{person.NumRoute}',\n\t");
+                stringBuilder.Append($"no_route='{person.NumRoute}'");
             }
             if (person.RouteType != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"route_type='{person.RouteType}',\n\t");
+                stringBuilder.Append($"route_type='{person.RouteType}'");
             }
             if (person.RouteName != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"route_name=\"{person.RouteName}\",\n\t");
+                stringBuilder.Append($"route_name=\"{person.RouteName}\"");
             }
             if (person.PostalCode != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"postal_code='{person.PostalCode}',\n\t");
+                stringBuilder.Append($"postal_code='{person.PostalCode}'");
             }
             if (person.City != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
                 empty = false;
-                stringBuilder.Append($"city='{person.City}'\n");
+                stringBuilder.Append($"city='{person.City}'");
             }
 
             if (empty)
                 throw new ArgumentException("No value set", nameof(person));
 
-            stringBuilder.Append($"WHERE person_id='{person.Id}'");
+            stringBuilder.Append($"\nWHERE person_id='{person.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();

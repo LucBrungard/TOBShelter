@@ -70,36 +70,47 @@ namespace TOBShelter.Services
                 throw new ArgumentException("Cannot be 0", nameof(investigation.Id));
 
             bool empty = true;
+            bool first = true;
             StringBuilder stringBuilder = new StringBuilder("UPDATE `investigations` SET \n\t");
 
             if (investigation.Title != null)
             {
+                first = false;
                 empty = false;
-                stringBuilder.Append($"title='{investigation.Title}',\n\t");
+                stringBuilder.Append($"title='{investigation.Title}'");
             }
 
             if (investigation.InvestigatorId != null && investigation.InvestigatorId != 0)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"investigator='{investigation.InvestigatorId}',\n\t");
+                stringBuilder.Append($"investigator='{investigation.InvestigatorId}'");
             }
 
             if (investigation.Notice != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"notice='{investigation.Notice}',\n\t");
+                stringBuilder.Append($"notice='{investigation.Notice}'");
             }
 
             if (investigation.Closed != null)
             {
+                if (!first)
+                    stringBuilder.Append(",\n\t");
+                first = false;
                 empty = false;
-                stringBuilder.Append($"closed='{((bool)investigation.Closed ? 1 : 0)}'\n\t");
+                stringBuilder.Append($"closed='{((bool)investigation.Closed ? 1 : 0)}'");
             }
 
             if (!empty)
                 throw new ArgumentException("No value set", nameof(investigation));
 
-            stringBuilder.Append($"WHERE investigation_id='{investigation.Id}'");
+            stringBuilder.Append($"\nWHERE investigation_id='{investigation.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();

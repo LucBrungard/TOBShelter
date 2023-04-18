@@ -74,7 +74,7 @@ namespace TOBShelter.Services
             if (empty)
                 throw new ArgumentException("No value set", nameof(animal));
 
-            stringBuilder.Append($" WHERE animal_id='{animal.Id}'");
+            stringBuilder.Append($"\nWHERE animal_id='{animal.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();

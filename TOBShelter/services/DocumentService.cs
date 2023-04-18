@@ -49,7 +49,7 @@ namespace TOBShelter.Services
             if (empty)
                 throw new ArgumentException("No value set", nameof(document));
 
-            stringBuilder.Append($"WHERE document_id='{document.Id}'");
+            stringBuilder.Append($"\nWHERE document_id='{document.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();
