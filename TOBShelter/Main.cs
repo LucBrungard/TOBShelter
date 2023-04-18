@@ -106,21 +106,25 @@ namespace TOBShelter
 
         private void btnEditInvestigator_Click(object sender, EventArgs e)
         {
+            if (this.dataGridInvestigators.SelectedRows.Count > 0)
+            {
+                long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                new EditInvestigator(investigator).ShowDialog();
+                updateInvestigatorDataGrid(null);
+            }
         }
 
         private void btnAddInvestigation_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnViewInvestigation_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnEditInvestigation_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -74,7 +74,7 @@ namespace TOBShelter.Services
                 stringBuilder.Append($"in_operation='{((bool)investigator.InOperation ? 1 : 0)}',\n\t");
 
             if (investigator.BusinessSector != null)
-                stringBuilder.Append($"business_sector='{investigator.BusinessSector}',\n\t");
+                stringBuilder.Append($"business_sector='{investigator.BusinessSector}'\n\t");
 
             stringBuilder.Append($" WHERE person_id='{investigator.Id}'");
 

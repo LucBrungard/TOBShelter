@@ -101,7 +101,7 @@ namespace TOBShelter.Services
             if (person.RouteName != null)
             {
                 empty = false;
-                stringBuilder.Append($"route_name='{person.RouteName}',\n\t");
+                stringBuilder.Append($"route_name=\"{person.RouteName}\",\n\t");
             }
             if (person.PostalCode != null)
             {
@@ -117,7 +117,7 @@ namespace TOBShelter.Services
             if (empty)
                 throw new ArgumentException("No value set", nameof(person));
 
-            stringBuilder.Append($" WHERE person_id='{person.Id}'");
+            stringBuilder.Append($"WHERE person_id='{person.Id}'");
 
             MySqlCommand cmd = new MySqlCommand(stringBuilder.ToString(), DBConnection.GetInstance().Connection);
             int updatedRows = cmd.ExecuteNonQuery();

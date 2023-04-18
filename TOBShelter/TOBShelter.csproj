@@ -120,6 +120,12 @@
     <Compile Include="AddPerson.Designer.cs">
       <DependentUpon>AddPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditInvestigator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInvestigator.Designer.cs">
+      <DependentUpon>EditInvestigator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddPerson.resx">
       <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInvestigator.resx">
+      <DependentUpon>EditInvestigator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
