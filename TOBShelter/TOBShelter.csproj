@@ -169,6 +169,12 @@
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />
+    <Compile Include="ViewInvestigator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInvestigator.Designer.cs">
+      <DependentUpon>ViewInvestigator.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddInvestigator.resx">
       <DependentUpon>AddInvestigator.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +192,9 @@
       <SubType>Form</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInvestigator.resx">
+      <DependentUpon>ViewInvestigator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="annex\Projet.pdf" />
     <None Include="annex\schema.drawio" />
@@ -227,6 +236,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\details.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\details-small.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
