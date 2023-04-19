@@ -91,12 +91,12 @@ namespace TOBShelter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon details {
+        internal static System.Drawing.Bitmap details {
             get {
                 object obj = ResourceManager.GetObject("details", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

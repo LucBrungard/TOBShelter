@@ -32,9 +32,9 @@ namespace TOBShelter
             foreach (InvestigatorDTO investigator in investigators)
             {
                 this.dataGridInvestigators.Rows.Add(
-                    investigator.Id,
                     investigator.Name,
                     investigator.FirstName,
+                    investigator.Id,
                     investigator.Available ? iconCheck.ToBitmap() : iconCross.ToBitmap(),
                     investigator.NbInvestigations.ToString()
                     );
@@ -51,8 +51,8 @@ namespace TOBShelter
                 this.dataGridInvestigators.Rows.Add(
                     investigation.Id,
                     investigation.Title,
-                    investigation.InvestigatorFirstName + " " + investigation.InvestigatorName
-                    // TODO Ajouter date de derniere modif
+                    investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
+                    investigation.LastModification
                     );
             }
         }

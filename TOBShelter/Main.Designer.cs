@@ -29,16 +29,25 @@ namespace TOBShelter
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddInvestigation = new System.Windows.Forms.Button();
+            this.btnEditInvestigation = new System.Windows.Forms.Button();
+            this.btnViewInvestigation = new System.Windows.Forms.Button();
             this.ckxOpenInvestigation = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,29 +62,20 @@ namespace TOBShelter
             this.investigatorSearchName = new System.Windows.Forms.TextBox();
             this.comboBoxInvestigatorAvailibility = new System.Windows.Forms.ComboBox();
             this.dataGridInvestigators = new System.Windows.Forms.DataGridView();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddInvestigation = new System.Windows.Forms.Button();
-            this.btnEditInvestigation = new System.Windows.Forms.Button();
-            this.btnViewInvestigation = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvestigators)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,11 +107,147 @@ namespace TOBShelter
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Enquêtes";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(215)))), ((int)(((byte)(208)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumnId,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewImageColumn2,
+            this.dataGridViewTextBoxColumn7});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView2.Location = new System.Drawing.Point(184, 88);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.RowTemplate.ReadOnly = true;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(700, 400);
+            this.dataGridView2.StandardTab = true;
+            this.dataGridView2.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumnId
+            // 
+            this.dataGridViewTextBoxColumnId.HeaderText = "Identifiant";
+            this.dataGridViewTextBoxColumnId.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumnId.Name = "dataGridViewTextBoxColumnId";
+            this.dataGridViewTextBoxColumnId.ReadOnly = true;
+            this.dataGridViewTextBoxColumnId.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Intitulé";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 130;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Délégué Enquêteur";
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Dernière modification";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 130;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.CadetBlue;
+            this.panel2.Controls.Add(this.btnAddInvestigation);
+            this.panel2.Controls.Add(this.btnEditInvestigation);
+            this.panel2.Controls.Add(this.btnViewInvestigation);
+            this.panel2.Location = new System.Drawing.Point(21, 30);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(136, 458);
+            this.panel2.TabIndex = 17;
+            // 
+            // btnAddInvestigation
+            // 
+            this.btnAddInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
+            this.btnAddInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.add;
+            this.btnAddInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddInvestigation.Location = new System.Drawing.Point(24, 24);
+            this.btnAddInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddInvestigation.Name = "btnAddInvestigation";
+            this.btnAddInvestigation.Size = new System.Drawing.Size(88, 82);
+            this.btnAddInvestigation.TabIndex = 1;
+            this.btnAddInvestigation.UseVisualStyleBackColor = false;
+            this.btnAddInvestigation.Click += new System.EventHandler(this.btnAddInvestigation_Click);
+            // 
+            // btnEditInvestigation
+            // 
+            this.btnEditInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
+            this.btnEditInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.edit;
+            this.btnEditInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditInvestigation.Location = new System.Drawing.Point(24, 352);
+            this.btnEditInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditInvestigation.Name = "btnEditInvestigation";
+            this.btnEditInvestigation.Size = new System.Drawing.Size(88, 82);
+            this.btnEditInvestigation.TabIndex = 12;
+            this.btnEditInvestigation.UseVisualStyleBackColor = false;
+            this.btnEditInvestigation.Click += new System.EventHandler(this.btnEditInvestigation_Click);
+            // 
+            // btnViewInvestigation
+            // 
+            this.btnViewInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
+            this.btnViewInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.details;
+            this.btnViewInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnViewInvestigation.Location = new System.Drawing.Point(24, 188);
+            this.btnViewInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnViewInvestigation.Name = "btnViewInvestigation";
+            this.btnViewInvestigation.Size = new System.Drawing.Size(88, 82);
+            this.btnViewInvestigation.TabIndex = 11;
+            this.btnViewInvestigation.UseVisualStyleBackColor = false;
+            this.btnViewInvestigation.Click += new System.EventHandler(this.btnViewInvestigation_Click);
+            // 
             // ckxOpenInvestigation
             // 
             this.ckxOpenInvestigation.AutoSize = true;
             this.ckxOpenInvestigation.Location = new System.Drawing.Point(800, 39);
-            this.ckxOpenInvestigation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ckxOpenInvestigation.Margin = new System.Windows.Forms.Padding(4);
             this.ckxOpenInvestigation.Name = "ckxOpenInvestigation";
             this.ckxOpenInvestigation.Size = new System.Drawing.Size(81, 21);
             this.ckxOpenInvestigation.TabIndex = 16;
@@ -174,9 +310,9 @@ namespace TOBShelter
             this.panel1.Controls.Add(this.btnEditInvestigator);
             this.panel1.Controls.Add(this.btnViewInvestigator);
             this.panel1.Location = new System.Drawing.Point(21, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(139, 453);
+            this.panel1.Size = new System.Drawing.Size(136, 458);
             this.panel1.TabIndex = 10;
             // 
             // btnAddInvestigator
@@ -184,11 +320,11 @@ namespace TOBShelter
             this.btnAddInvestigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
             this.btnAddInvestigator.BackgroundImage = global::TOBShelter.Properties.Resources.add;
             this.btnAddInvestigator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddInvestigator.Location = new System.Drawing.Point(21, 30);
+            this.btnAddInvestigator.Location = new System.Drawing.Point(24, 24);
             this.btnAddInvestigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddInvestigator.Name = "btnAddInvestigator";
             this.btnAddInvestigator.Padding = new System.Windows.Forms.Padding(10);
-            this.btnAddInvestigator.Size = new System.Drawing.Size(96, 89);
+            this.btnAddInvestigator.Size = new System.Drawing.Size(88, 82);
             this.btnAddInvestigator.TabIndex = 1;
             this.btnAddInvestigator.UseVisualStyleBackColor = false;
             this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click);
@@ -198,10 +334,10 @@ namespace TOBShelter
             this.btnEditInvestigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
             this.btnEditInvestigator.BackgroundImage = global::TOBShelter.Properties.Resources.edit;
             this.btnEditInvestigator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEditInvestigator.Location = new System.Drawing.Point(21, 335);
+            this.btnEditInvestigator.Location = new System.Drawing.Point(24, 352);
             this.btnEditInvestigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditInvestigator.Name = "btnEditInvestigator";
-            this.btnEditInvestigator.Size = new System.Drawing.Size(96, 89);
+            this.btnEditInvestigator.Size = new System.Drawing.Size(88, 82);
             this.btnEditInvestigator.TabIndex = 12;
             this.btnEditInvestigator.UseVisualStyleBackColor = false;
             this.btnEditInvestigator.Click += new System.EventHandler(this.btnEditInvestigator_Click);
@@ -209,19 +345,19 @@ namespace TOBShelter
             // btnViewInvestigator
             // 
             this.btnViewInvestigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
-            this.btnViewInvestigator.BackgroundImage = global::TOBShelter.Properties.Resources.search1;
+            this.btnViewInvestigator.BackgroundImage = global::TOBShelter.Properties.Resources.details;
             this.btnViewInvestigator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnViewInvestigator.Location = new System.Drawing.Point(21, 182);
+            this.btnViewInvestigator.Location = new System.Drawing.Point(24, 188);
             this.btnViewInvestigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewInvestigator.Name = "btnViewInvestigator";
-            this.btnViewInvestigator.Size = new System.Drawing.Size(96, 89);
+            this.btnViewInvestigator.Size = new System.Drawing.Size(88, 82);
             this.btnViewInvestigator.TabIndex = 11;
             this.btnViewInvestigator.UseVisualStyleBackColor = false;
             this.btnViewInvestigator.Click += new System.EventHandler(this.btnViewInvestigator_Click);
             // 
             // investigatorSearchFirstName
             // 
-            this.investigatorSearchFirstName.Location = new System.Drawing.Point(363, 30);
+            this.investigatorSearchFirstName.Location = new System.Drawing.Point(344, 30);
             this.investigatorSearchFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.investigatorSearchFirstName.MinimumSize = new System.Drawing.Size(123, 22);
             this.investigatorSearchFirstName.Name = "investigatorSearchFirstName";
@@ -234,7 +370,7 @@ namespace TOBShelter
             this.btnSearchInvestigator.BackgroundImage = global::TOBShelter.Properties.Resources.search;
             this.btnSearchInvestigator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearchInvestigator.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSearchInvestigator.Location = new System.Drawing.Point(491, 30);
+            this.btnSearchInvestigator.Location = new System.Drawing.Point(472, 30);
             this.btnSearchInvestigator.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchInvestigator.Name = "btnSearchInvestigator";
             this.btnSearchInvestigator.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -249,7 +385,7 @@ namespace TOBShelter
             this.investigatorSearchName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.investigatorSearchName.MinimumSize = new System.Drawing.Size(123, 22);
             this.investigatorSearchName.Name = "investigatorSearchName";
-            this.investigatorSearchName.Size = new System.Drawing.Size(169, 22);
+            this.investigatorSearchName.Size = new System.Drawing.Size(150, 22);
             this.investigatorSearchName.TabIndex = 7;
             // 
             // comboBoxInvestigatorAvailibility
@@ -273,37 +409,37 @@ namespace TOBShelter
             this.dataGridInvestigators.AllowUserToAddRows = false;
             this.dataGridInvestigators.AllowUserToDeleteRows = false;
             this.dataGridInvestigators.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(215)))), ((int)(((byte)(208)))));
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridInvestigators.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(215)))), ((int)(((byte)(208)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridInvestigators.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridInvestigators.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridInvestigators.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridInvestigators.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridInvestigators.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridInvestigators.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridInvestigators.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridInvestigators.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnId,
             this.Column1,
             this.Column2,
+            this.ColumnId,
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridInvestigators.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridInvestigators.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridInvestigators.Location = new System.Drawing.Point(181, 89);
             this.dataGridInvestigators.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridInvestigators.MultiSelect = false;
@@ -311,57 +447,15 @@ namespace TOBShelter
             this.dataGridInvestigators.ReadOnly = true;
             this.dataGridInvestigators.RowHeadersVisible = false;
             this.dataGridInvestigators.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridInvestigators.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridInvestigators.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridInvestigators.RowTemplate.Height = 24;
             this.dataGridInvestigators.RowTemplate.ReadOnly = true;
             this.dataGridInvestigators.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridInvestigators.Size = new System.Drawing.Size(700, 394);
+            this.dataGridInvestigators.Size = new System.Drawing.Size(700, 399);
             this.dataGridInvestigators.StandardTab = true;
             this.dataGridInvestigators.TabIndex = 2;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "Column5";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nom";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 130;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Prénom";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 130;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Disponible";
-            this.Column3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 130;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Enquêtes en cours";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 130;
             // 
             // Column7
             // 
@@ -377,141 +471,46 @@ namespace TOBShelter
             this.Column8.Name = "Column8";
             this.Column8.Width = 125;
             // 
-            // panel2
+            // Column1
             // 
-            this.panel2.BackColor = System.Drawing.Color.CadetBlue;
-            this.panel2.Controls.Add(this.btnAddInvestigation);
-            this.panel2.Controls.Add(this.btnEditInvestigation);
-            this.panel2.Controls.Add(this.btnViewInvestigation);
-            this.panel2.Location = new System.Drawing.Point(21, 30);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(139, 453);
-            this.panel2.TabIndex = 17;
+            this.Column1.HeaderText = "Nom";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 118;
             // 
-            // btnAddInvestigation
+            // Column2
             // 
-            this.btnAddInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
-            this.btnAddInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.add;
-            this.btnAddInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddInvestigation.Location = new System.Drawing.Point(21, 30);
-            this.btnAddInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddInvestigation.Name = "btnAddInvestigation";
-            this.btnAddInvestigation.Size = new System.Drawing.Size(96, 89);
-            this.btnAddInvestigation.TabIndex = 1;
-            this.btnAddInvestigation.UseVisualStyleBackColor = false;
-            this.btnAddInvestigation.Click += new System.EventHandler(this.btnAddInvestigation_Click);
+            this.Column2.HeaderText = "Prénom";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 118;
             // 
-            // btnEditInvestigation
+            // ColumnId
             // 
-            this.btnEditInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
-            this.btnEditInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.edit;
-            this.btnEditInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEditInvestigation.Location = new System.Drawing.Point(21, 335);
-            this.btnEditInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnEditInvestigation.Name = "btnEditInvestigation";
-            this.btnEditInvestigation.Size = new System.Drawing.Size(96, 89);
-            this.btnEditInvestigation.TabIndex = 12;
-            this.btnEditInvestigation.UseVisualStyleBackColor = false;
-            this.btnEditInvestigation.Click += new System.EventHandler(this.btnEditInvestigation_Click);
+            this.ColumnId.HeaderText = "ID";
+            this.ColumnId.MinimumWidth = 6;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Width = 50;
             // 
-            // btnViewInvestigation
+            // Column3
             // 
-            this.btnViewInvestigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(236)))));
-            this.btnViewInvestigation.BackgroundImage = global::TOBShelter.Properties.Resources.search1;
-            this.btnViewInvestigation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnViewInvestigation.Location = new System.Drawing.Point(21, 182);
-            this.btnViewInvestigation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnViewInvestigation.Name = "btnViewInvestigation";
-            this.btnViewInvestigation.Size = new System.Drawing.Size(96, 89);
-            this.btnViewInvestigation.TabIndex = 11;
-            this.btnViewInvestigation.UseVisualStyleBackColor = false;
-            this.btnViewInvestigation.Click += new System.EventHandler(this.btnViewInvestigation_Click);
+            this.Column3.HeaderText = "Disponible";
+            this.Column3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 105;
             // 
-            // dataGridView2
+            // Column4
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(215)))), ((int)(((byte)(208)))));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnId,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewImageColumn2,
-            this.dataGridViewTextBoxColumn7});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dataGridView2.Location = new System.Drawing.Point(184, 88);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.RowTemplate.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(700, 394);
-            this.dataGridView2.StandardTab = true;
-            this.dataGridView2.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumnId
-            // 
-            this.dataGridViewTextBoxColumnId.HeaderText = "Identifiant";
-            this.dataGridViewTextBoxColumnId.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumnId.Name = "dataGridViewTextBoxColumnId";
-            this.dataGridViewTextBoxColumnId.ReadOnly = true;
-            this.dataGridViewTextBoxColumnId.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Intitulé";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "Délégué Enquêteur";
-            this.dataGridViewImageColumn2.MinimumWidth = 6;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Dernière modification";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 130;
+            this.Column4.HeaderText = "Enquêtes en cours";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 129;
             // 
             // Main
             // 
@@ -528,12 +527,12 @@ namespace TOBShelter
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvestigators)).EndInit();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -558,11 +557,6 @@ namespace TOBShelter
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnEditInvestigator;
         private System.Windows.Forms.Button btnViewInvestigator;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewImageColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnAddInvestigation;
         private System.Windows.Forms.Button btnEditInvestigation;
@@ -572,5 +566,10 @@ namespace TOBShelter
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+        private System.Windows.Forms.DataGridViewImageColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }
