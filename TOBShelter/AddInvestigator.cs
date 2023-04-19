@@ -27,7 +27,7 @@ namespace TOBShelter
             {
                 InvestigatorCreateDTO investigator = new InvestigatorCreateDTO(
                                 (IdentityTitle)this.cbxCivility.SelectedItem,
-                                this.txtName.Text,
+                                this.txtName.Text.ToUpper(),
                                 this.txtFirstName.Text,
                                 this.txtNumber.Text,
                                 (RouteType)this.cbxRouteType.SelectedItem,
@@ -55,12 +55,12 @@ namespace TOBShelter
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Impossible d'ajouter un enquêteur pour le moment. Vérifier qu'il n'est pas déjà présent dans la base de données", "Impossible d'ajouter un enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Impossible d'ajouter un enquêteur pour le moment.", "Impossible d'ajouter un enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                MessageBox.Show("Certains champs obligatoires sont vides ou mal renseignés.", "Impossible d'ajouter un enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message, "Impossible d'ajouter un enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

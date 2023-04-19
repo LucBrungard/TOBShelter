@@ -15,14 +15,13 @@ namespace TOBShelter
 {
     public partial class EditInvestigator : Form
     {
-        private long investigatorId;
+        public InvestigatorDetailsDTO _investigator;
 
         public EditInvestigator(InvestigatorDetailsDTO investigator)
         {
             InitializeComponent();
             this.cbxCivility.DataSource = Enum.GetValues(typeof(IdentityTitle));
             this.cbxRouteType.DataSource = Enum.GetValues(typeof(RouteType));
-            this.investigatorId = investigator.Id;
             this.cbxCivility.SelectedItem = investigator.Title;
             this.txtName.Text = investigator.Name;
             this.txtFirstName.Text = investigator.FirstName;
@@ -35,28 +34,49 @@ namespace TOBShelter
             this.txtMobile.Text = investigator.Mobile;
             this.txtSector.Text = investigator.BusinessSector;
             this.chkAvailable.Checked = investigator.Available;
-            this.chkRetraite.Checked = !investigator.InOperation;
+            this.chkInOperation.Checked = investigator.InOperation;
+            this._investigator = investigator;
         }
 
         private void edit_Click(object sender, EventArgs e)
         {
-            InvestigatorEditDTO investigator = new InvestigatorEditDTO();
-            investigator.Id = this.investigatorId;
-            investigator.Title = (IdentityTitle)this.cbxCivility.SelectedItem;
-            investigator.Name = this.txtName.Text;
-            investigator.FirstName = this.txtFirstName.Text;
-            investigator.NumRoute = this.txtNumber.Text;
-            investigator.RouteType = (RouteType)this.cbxRouteType.SelectedItem;
-            investigator.RouteName = this.txtRouteName.Text;
-            investigator.PostalCode = this.txtPostalCode.Text;
-            investigator.City = this.txtCity.Text;
-            investigator.Home = this.txtTel.Text;
-            investigator.Mobile = this.txtMobile.Text;
-            investigator.BusinessSector = this.txtSector.Text;
-            investigator.Available = this.chkAvailable.Checked;
-            investigator.InOperation = !this.chkRetraite.Checked;
-            InvestigatorDetailsDTO editedInvestigator = InvestigatorService.Update(investigator);
-            this.Close();
+            try
+            {
+                InvestigatorEditDTO investigator = new InvestigatorEditDTO();
+                investigator.Id = this._investigator.Id;
+                investigator.Title = (IdentityTitle)this.cbxCivility.SelectedItem;
+                investigator.Name = this.txtName.Text;
+                investigator.FirstName = this.txtFirstName.Text;
+                investigator.NumRoute = this.txtNumber.Text;
+                investigator.RouteType = (RouteType)this.cbxRouteType.SelectedItem;
+                investigator.RouteName = this.txtRouteName.Text;
+                investigator.PostalCode = this.txtPostalCode.Text;
+                investigator.City = this.txtCity.Text;
+                investigator.Home = this.txtTel.Text;
+                investigator.Mobile = this.txtMobile.Text;
+                investigator.BusinessSector = this.txtSector.Text;
+                investigator.Available = this.chkAvailable.Checked;
+                investigator.InOperation = this.chkInOperation.Checked;
+                try
+                {
+                    _investigator = InvestigatorService.Update(investigator);
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Impossible de modifier cet enquêteur pour le moment.", "Impossible de modifier cet enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Impossible de modifier cet enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkInOperation_CheckStateChanged(object sender, EventArgs e)
+        {
+            CheckBox inOperation = (CheckBox)sender;
+            if (!inOperation.Checked) this.chkAvailable.Checked = false;
         }
     }
 }

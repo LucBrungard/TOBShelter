@@ -14,28 +14,31 @@ namespace TOBShelter.Types.Dto
         public long Id { get; set; }
 
         private Nullable<uint> _age;
+
         public Nullable<uint> Age
         {
             get { return _age; }
             set
             {
                 if (value == 0)
-                    throw new ArgumentException("Cannot be 0", nameof(value));
+                    throw new ArgumentException("L'animal ne peut pas être agé de 0 mois", nameof(value));
                 _age = value;
             }
         }
 
         private string _weight;
+
         public string Weight
         {
             get { return _weight; }
             set
             {
                 if (!RegexUtil.RegexWeight.IsMatch(value))
-                    throw new ArgumentException("Has not the right format", nameof(value));
+                    throw new ArgumentException("Le poids indiqué ne respecte pas le bon format. (Exemple : 3.2kg ou 800g)", nameof(value));
                 _weight = value;
             }
         }
+
         public Nullable<long> OwnerId { get; set; }
     }
 
@@ -44,6 +47,7 @@ namespace TOBShelter.Types.Dto
         public Nullable<long> Id { get; set; }
 
         private Type _animalType;
+
         public Type AnimalType
         {
             get { return _animalType; }
@@ -54,10 +58,12 @@ namespace TOBShelter.Types.Dto
                 _animalType = value;
             }
         }
-        public string Name { get; set;  }
+
+        public string Name { get; set; }
         public Nullable<uint> Age { get; set; }
 
         private Type _breed;
+
         public Type Breed
         {
             get { return _breed; }
@@ -70,6 +76,7 @@ namespace TOBShelter.Types.Dto
                 _breed = value;
             }
         }
+
         public Nullable<long> OwnerId { get; set; }
     }
 }

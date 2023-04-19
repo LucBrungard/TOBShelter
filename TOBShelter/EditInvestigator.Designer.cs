@@ -58,7 +58,7 @@ namespace TOBShelter
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtMobile = new System.Windows.Forms.TextBox();
             this.chkAvailable = new System.Windows.Forms.CheckBox();
-            this.chkRetraite = new System.Windows.Forms.CheckBox();
+            this.chkInOperation = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -360,28 +360,30 @@ namespace TOBShelter
             this.chkAvailable.Text = "Disponible";
             this.chkAvailable.UseVisualStyleBackColor = true;
             // 
-            // chkRetraite
+            // chkInOperation
             // 
-            this.chkRetraite.AutoSize = true;
-            this.chkRetraite.Location = new System.Drawing.Point(518, 480);
-            this.chkRetraite.Name = "chkRetraite";
-            this.chkRetraite.Size = new System.Drawing.Size(103, 21);
-            this.chkRetraite.TabIndex = 16;
-            this.chkRetraite.Text = "A la retraite";
-            this.chkRetraite.UseVisualStyleBackColor = true;
+            this.chkInOperation.AutoSize = true;
+            this.chkInOperation.Location = new System.Drawing.Point(518, 480);
+            this.chkInOperation.Name = "chkInOperation";
+            this.chkInOperation.Size = new System.Drawing.Size(95, 21);
+            this.chkInOperation.TabIndex = 16;
+            this.chkInOperation.Text = "En activité";
+            this.chkInOperation.UseVisualStyleBackColor = true;
+            this.chkInOperation.CheckStateChanged += new System.EventHandler(this.chkInOperation_CheckStateChanged);
             // 
             // EditInvestigator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 567);
-            this.Controls.Add(this.chkRetraite);
+            this.Controls.Add(this.chkInOperation);
             this.Controls.Add(this.chkAvailable);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.edit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "EditInvestigator";
             this.Text = "Modification d\'un enquêteur";
             this.groupBox1.ResumeLayout(false);
@@ -426,6 +428,6 @@ namespace TOBShelter
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSector;
         private System.Windows.Forms.CheckBox chkAvailable;
-        private System.Windows.Forms.CheckBox chkRetraite;
+        private System.Windows.Forms.CheckBox chkInOperation;
     }
 }

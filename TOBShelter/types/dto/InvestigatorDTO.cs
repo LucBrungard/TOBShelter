@@ -12,15 +12,26 @@ namespace TOBShelter.Types.Dto
     {
         public bool Available { get; set; }
         public bool InOperation { get; set; }
-        public string BusinessSector { get; set; }
+
+        public string BusinessSector
+        {
+            get { return BusinessSector; }
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException("Le secteur d'activité doit être renseigné.");
+                BusinessSector = value;
+            }
+        }
+
         public InvestigatorCreateDTO(
-            IdentityTitle title, 
-            string name, 
-            string firstName, 
-            string numRoute, 
-            RouteType routeType, 
-            string routeName, 
-            string postalCode, 
+            IdentityTitle title,
+            string name,
+            string firstName,
+            string numRoute,
+            RouteType routeType,
+            string routeName,
+            string postalCode,
             string city,
             bool available,
             bool inOperation,

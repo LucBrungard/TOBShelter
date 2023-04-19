@@ -325,7 +325,7 @@ namespace TOBShelter
             this.btnAddInvestigator.Name = "btnAddInvestigator";
             this.btnAddInvestigator.Padding = new System.Windows.Forms.Padding(10);
             this.btnAddInvestigator.Size = new System.Drawing.Size(88, 82);
-            this.btnAddInvestigator.TabIndex = 1;
+            this.btnAddInvestigator.TabIndex = 5;
             this.btnAddInvestigator.UseVisualStyleBackColor = false;
             this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click);
             // 
@@ -338,7 +338,7 @@ namespace TOBShelter
             this.btnEditInvestigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditInvestigator.Name = "btnEditInvestigator";
             this.btnEditInvestigator.Size = new System.Drawing.Size(88, 82);
-            this.btnEditInvestigator.TabIndex = 12;
+            this.btnEditInvestigator.TabIndex = 7;
             this.btnEditInvestigator.UseVisualStyleBackColor = false;
             this.btnEditInvestigator.Click += new System.EventHandler(this.btnEditInvestigator_Click);
             // 
@@ -351,7 +351,7 @@ namespace TOBShelter
             this.btnViewInvestigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewInvestigator.Name = "btnViewInvestigator";
             this.btnViewInvestigator.Size = new System.Drawing.Size(88, 82);
-            this.btnViewInvestigator.TabIndex = 11;
+            this.btnViewInvestigator.TabIndex = 6;
             this.btnViewInvestigator.UseVisualStyleBackColor = false;
             this.btnViewInvestigator.Click += new System.EventHandler(this.btnViewInvestigator_Click);
             // 
@@ -362,7 +362,7 @@ namespace TOBShelter
             this.investigatorSearchFirstName.MinimumSize = new System.Drawing.Size(123, 22);
             this.investigatorSearchFirstName.Name = "investigatorSearchFirstName";
             this.investigatorSearchFirstName.Size = new System.Drawing.Size(125, 22);
-            this.investigatorSearchFirstName.TabIndex = 9;
+            this.investigatorSearchFirstName.TabIndex = 2;
             // 
             // btnSearchInvestigator
             // 
@@ -375,7 +375,7 @@ namespace TOBShelter
             this.btnSearchInvestigator.Name = "btnSearchInvestigator";
             this.btnSearchInvestigator.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearchInvestigator.Size = new System.Drawing.Size(27, 25);
-            this.btnSearchInvestigator.TabIndex = 8;
+            this.btnSearchInvestigator.TabIndex = 3;
             this.btnSearchInvestigator.UseVisualStyleBackColor = false;
             this.btnSearchInvestigator.Click += new System.EventHandler(this.btnSearchInvestigator_Click);
             // 
@@ -386,7 +386,7 @@ namespace TOBShelter
             this.investigatorSearchName.MinimumSize = new System.Drawing.Size(123, 22);
             this.investigatorSearchName.Name = "investigatorSearchName";
             this.investigatorSearchName.Size = new System.Drawing.Size(150, 22);
-            this.investigatorSearchName.TabIndex = 7;
+            this.investigatorSearchName.TabIndex = 1;
             // 
             // comboBoxInvestigatorAvailibility
             // 
@@ -455,7 +455,7 @@ namespace TOBShelter
             this.dataGridInvestigators.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridInvestigators.Size = new System.Drawing.Size(700, 399);
             this.dataGridInvestigators.StandardTab = true;
-            this.dataGridInvestigators.TabIndex = 2;
+            this.dataGridInvestigators.TabIndex = 8;
             // 
             // Column7
             // 

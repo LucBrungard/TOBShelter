@@ -28,32 +28,45 @@ namespace TOBShelter
         {
             this.dataGridInvestigators.Rows.Clear();
 
-            List<InvestigatorDTO> investigators = TOBShelter.Services.InvestigatorService.FindAll(filter).ToList();
-            foreach (InvestigatorDTO investigator in investigators)
+            try
             {
-                this.dataGridInvestigators.Rows.Add(
-                    investigator.Name,
-                    investigator.FirstName,
-                    investigator.Id,
-                    investigator.Available ? iconCheck.ToBitmap() : iconCross.ToBitmap(),
-                    investigator.NbInvestigations.ToString()
-                    );
+                List<InvestigatorDTO> investigators = TOBShelter.Services.InvestigatorService.FindAll(filter).ToList();
+                foreach (InvestigatorDTO investigator in investigators)
+                {
+                    this.dataGridInvestigators.Rows.Add(
+                        investigator.Name,
+                        investigator.FirstName,
+                        investigator.Id,
+                        investigator.Available ? iconCheck.ToBitmap() : iconCross.ToBitmap(),
+                        investigator.NbInvestigations.ToString()
+                        );
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("L'accès a la base de données est momentanément indisponible", "Impossible d'accéder à la base de données", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void updateInvestigationDataGrid(InvestigationFilters filter)
         {
             this.dataGridInvestigators.Rows.Clear();
-
-            List<InvestigationDTO> investigations = TOBShelter.Services.InvestigationService.FindAll(filter).ToList();
-            foreach (InvestigationDTO investigation in investigations)
+            try
             {
-                this.dataGridInvestigators.Rows.Add(
-                    investigation.Id,
-                    investigation.Title,
-                    investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
-                    investigation.LastModification
-                    );
+                List<InvestigationDTO> investigations = TOBShelter.Services.InvestigationService.FindAll(filter).ToList();
+                foreach (InvestigationDTO investigation in investigations)
+                {
+                    this.dataGridInvestigators.Rows.Add(
+                        investigation.Id,
+                        investigation.Title,
+                        investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
+                        investigation.LastModification
+                        );
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("L'accès a la base de données est momentanément indisponible", "Impossible d'accéder à la base de données", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -103,10 +116,17 @@ namespace TOBShelter
         {
             if (this.dataGridInvestigators.SelectedRows.Count > 0)
             {
-                long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
-                new ViewInvestigator(investigator).ShowDialog();
-                updateInvestigatorDataGrid(null);
+                try
+                {
+                    long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    new ViewInvestigator(investigator).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("L'accès aux détails de cet enquêteur est momentanément indisponible", "Impossible d'afficher les détails de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -114,10 +134,17 @@ namespace TOBShelter
         {
             if (this.dataGridInvestigators.SelectedRows.Count > 0)
             {
-                long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
-                new EditInvestigator(investigator).ShowDialog();
-                updateInvestigatorDataGrid(null);
+                try
+                {
+                    long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    new EditInvestigator(investigator).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Cet enquêteur ne peut pas être modifié pour le moment", "Impossible de modifier les informations de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
