@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
 using TOBShelter.Types.Dto;
 
@@ -162,6 +161,24 @@ namespace TOBShelter.Services
             // Get all the documents
             dto.Documents = DocumentService.FindAll(new DocumentFilters { InvestigationId = id });
 
+            // Get the last activity from this investigation
+            ActivityFilters activityFilters = new ActivityFilters
+            {
+                InvestigationId = dto.Id,
+            };
+            List<ActivityDTO> activityList = ActivityService.FindAll(activityFilters);
+
+            if (activityList.Count != 0)
+            {
+                DateTime lastModification = activityList[0].Date;
+                for (int it = 1; it < activityList.Count; it++)
+                {
+                    if (DateTime.Compare(lastModification, activityList[it].Date) < 0)
+                        lastModification = activityList[it].Date;
+                }
+                dto.LastModification = lastModification;
+            }
+
             return dto;
         }
 
@@ -241,15 +258,34 @@ namespace TOBShelter.Services
             for (int i = 0; i < list.Count; i++)
             {
                 InvestigationDTO investigation = list[i];
+
+                // Get infos about investigator
                 InvestigatorFilters investigatorFilters = new InvestigatorFilters
                 {
                     Id = investigatorsId[i],
                 };
                 InvestigatorDTO investigator = InvestigatorService.FindAll(investigatorFilters)[0];
-
                 investigation.InvestigatorTitle = investigator.Title;
                 investigation.InvestigatorName = investigator.Name;
                 investigation.InvestigatorFirstName = investigator.FirstName;
+
+                // Get the last activity from this investigation
+                ActivityFilters activityFilters = new ActivityFilters
+                {
+                    InvestigationId = investigation.Id,
+                };
+                List<ActivityDTO> activityList = ActivityService.FindAll(activityFilters);
+
+                if (activityList.Count == 0)
+                    continue;
+
+                DateTime lastModification = activityList[0].Date;
+                for (int it=1; it<activityList.Count; it++)
+                {
+                    if (DateTime.Compare(lastModification, activityList[it].Date) < 0)
+                        lastModification = activityList[it].Date;
+                }
+                investigation.LastModification = lastModification;
             }
             
             return list;

@@ -139,6 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="services\ActivityService.cs" />
     <Compile Include="services\AnimalService.cs" />
     <Compile Include="services\DBConnection.cs" />
     <Compile Include="services\DocumentService.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="services\LinksAIService.cs" />
     <Compile Include="services\PersonService.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="types\base\ActivityType.cs" />
     <Compile Include="types\base\Breed.cs" />
     <Compile Include="types\base\Gender.cs" />
     <Compile Include="types\base\IdentityTitle.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="types\composed\animals\Cat.cs" />
     <Compile Include="types\composed\animals\Dog.cs" />
     <Compile Include="types\composed\animals\Horse.cs" />
+    <Compile Include="types\dto\ActivityDTO.cs" />
     <Compile Include="types\dto\AnimalDTO.cs" />
     <Compile Include="types\dto\DocumentDTO.cs" />
     <Compile Include="types\dto\InvestigationDTO.cs" />

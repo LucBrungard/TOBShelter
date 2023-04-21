@@ -26,7 +26,7 @@ namespace TOBShelter.Types.Dto
         public IdentityTitle InvestigatorTitle { get; set; }
         public string InvestigatorName { get; set; }
         public string InvestigatorFirstName { get; set; }
-        public DateTime LastModification { get; set; }
+        public Nullable<DateTime> LastModification { get; set; }
         public bool Closed { get; set; }
     }
     public class InvestigationEditDTO
@@ -48,6 +48,7 @@ namespace TOBShelter.Types.Dto
         public InvestigatorDTO Investigator { get; set; }
         public List<Animal> Animals { get; set; }
         public List<DocumentDetailsDTO> Documents { get; set; }
+        public Nullable<DateTime> LastModification { get; set; }
         public string Notice { get; set; }
         public bool Closed { get; set; }
     }
