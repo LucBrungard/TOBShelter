@@ -150,6 +150,9 @@ namespace TOBShelter
 
         private void btnAddInvestigation_Click(object sender, EventArgs e)
         {
+            AddInvestigation addInvestigation = new AddInvestigation();
+            addInvestigation.ShowDialog(this);
+            updateInvestigatorDataGrid(null);
         }
 
         private void btnViewInvestigation_Click(object sender, EventArgs e)

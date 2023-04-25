@@ -30,177 +30,304 @@ namespace TOBShelter
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.cmbComplainant = new System.Windows.Forms.ComboBox();
+            this.cmbOffender = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnAddAnimal = new System.Windows.Forms.Button();
+            this.txtReason = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.brnAddActivities = new System.Windows.Forms.Button();
+            this.btnAddInvestigation = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbInvestigator = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lstAnimals = new System.Windows.Forms.ListBox();
+            this.lstActivities = new System.Windows.Forms.ListBox();
+            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.btnAddInvestigator = new System.Windows.Forms.Button();
+            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 16);
+            this.label1.Location = new System.Drawing.Point(24, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
+            this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Titre de l\'enquête";
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(392, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtTitle.Location = new System.Drawing.Point(27, 40);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(295, 20);
+            this.txtTitle.TabIndex = 1;
             // 
-            // comboBox1
+            // cmbComplainant
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(432, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(224, 24);
-            this.comboBox1.TabIndex = 2;
+            this.cmbComplainant.FormattingEnabled = true;
+            this.cmbComplainant.Location = new System.Drawing.Point(27, 46);
+            this.cmbComplainant.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbComplainant.Name = "cmbComplainant";
+            this.cmbComplainant.Size = new System.Drawing.Size(169, 21);
+            this.cmbComplainant.TabIndex = 2;
             // 
-            // comboBox2
+            // cmbOffender
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(672, 40);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(224, 24);
-            this.comboBox2.TabIndex = 3;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 168);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(392, 168);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(464, 168);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(392, 168);
-            this.dataGridView2.TabIndex = 5;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.cmbOffender.FormattingEnabled = true;
+            this.cmbOffender.Location = new System.Drawing.Point(247, 46);
+            this.cmbOffender.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbOffender.Name = "cmbOffender";
+            this.cmbOffender.Size = new System.Drawing.Size(169, 21);
+            this.cmbOffender.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(432, 16);
+            this.label2.Location = new System.Drawing.Point(24, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 17);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Plaignant";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(672, 16);
+            this.label3.Location = new System.Drawing.Point(244, 27);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 17);
+            this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Infracteur suspecté";
             // 
-            // button1
+            // btnAddAnimal
             // 
-            this.button1.Location = new System.Drawing.Point(144, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 32);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Ajouter un animal";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddAnimal.Location = new System.Drawing.Point(117, 172);
+            this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddAnimal.Name = "btnAddAnimal";
+            this.btnAddAnimal.Size = new System.Drawing.Size(114, 26);
+            this.btnAddAnimal.TabIndex = 8;
+            this.btnAddAnimal.Text = "Ajouter un animal";
+            this.btnAddAnimal.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtReason
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 104);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(392, 22);
-            this.textBox2.TabIndex = 9;
+            this.txtReason.Location = new System.Drawing.Point(344, 40);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(295, 20);
+            this.txtReason.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 80);
+            this.label4.Location = new System.Drawing.Point(341, 21);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Motif";
             // 
-            // button2
+            // brnAddActivities
             // 
-            this.button2.Location = new System.Drawing.Point(592, 344);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 32);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Ajouter un fait";
-            this.button2.UseVisualStyleBackColor = true;
+            this.brnAddActivities.Location = new System.Drawing.Point(435, 172);
+            this.brnAddActivities.Margin = new System.Windows.Forms.Padding(2);
+            this.brnAddActivities.Name = "brnAddActivities";
+            this.brnAddActivities.Size = new System.Drawing.Size(114, 26);
+            this.brnAddActivities.TabIndex = 11;
+            this.brnAddActivities.Text = "Ajouter un fait";
+            this.brnAddActivities.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAddInvestigation
             // 
-            this.button3.Location = new System.Drawing.Point(544, 96);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(240, 32);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Ajouter une nouvelle personne";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddInvestigation.Location = new System.Drawing.Point(300, 614);
+            this.btnAddInvestigation.Name = "btnAddInvestigation";
+            this.btnAddInvestigation.Size = new System.Drawing.Size(75, 23);
+            this.btnAddInvestigation.TabIndex = 13;
+            this.btnAddInvestigation.Text = "Ajouter";
+            this.btnAddInvestigation.UseVisualStyleBackColor = true;
+            this.btnAddInvestigation.Click += new System.EventHandler(this.btnAddInvestigation_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(464, 27);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Enqueteur Titulaire";
+            // 
+            // cmbInvestigator
+            // 
+            this.cmbInvestigator.FormattingEnabled = true;
+            this.cmbInvestigator.Location = new System.Drawing.Point(467, 46);
+            this.cmbInvestigator.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbInvestigator.Name = "cmbInvestigator";
+            this.cmbInvestigator.Size = new System.Drawing.Size(169, 21);
+            this.cmbInvestigator.TabIndex = 14;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtReason);
+            this.groupBox1.Controls.Add(this.txtTitle);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(660, 76);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Enquete";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.gMapControl);
+            this.groupBox2.Controls.Add(this.btnAddInvestigator);
+            this.groupBox2.Controls.Add(this.btnAddPerson);
+            this.groupBox2.Controls.Add(this.cmbOffender);
+            this.groupBox2.Controls.Add(this.cmbComplainant);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.cmbInvestigator);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(12, 94);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(660, 287);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Personnes concernées";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lstAnimals);
+            this.groupBox3.Controls.Add(this.lstActivities);
+            this.groupBox3.Controls.Add(this.btnAddAnimal);
+            this.groupBox3.Controls.Add(this.brnAddActivities);
+            this.groupBox3.Location = new System.Drawing.Point(12, 387);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(660, 208);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Animaux et Documents";
+            // 
+            // lstAnimals
+            // 
+            this.lstAnimals.FormattingEnabled = true;
+            this.lstAnimals.Location = new System.Drawing.Point(27, 19);
+            this.lstAnimals.Name = "lstAnimals";
+            this.lstAnimals.Size = new System.Drawing.Size(294, 134);
+            this.lstAnimals.TabIndex = 13;
+            // 
+            // lstActivities
+            // 
+            this.lstActivities.FormattingEnabled = true;
+            this.lstActivities.Location = new System.Drawing.Point(345, 19);
+            this.lstActivities.Name = "lstActivities";
+            this.lstActivities.Size = new System.Drawing.Size(294, 134);
+            this.lstActivities.TabIndex = 12;
+            // 
+            // btnAddPerson
+            // 
+            this.btnAddPerson.Location = new System.Drawing.Point(27, 84);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(169, 23);
+            this.btnAddPerson.TabIndex = 14;
+            this.btnAddPerson.Text = "Ajouter une personne";
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            // 
+            // btnAddInvestigator
+            // 
+            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 84);
+            this.btnAddInvestigator.Name = "btnAddInvestigator";
+            this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
+            this.btnAddInvestigator.TabIndex = 16;
+            this.btnAddInvestigator.Text = "Ajouter un enquêteur";
+            this.btnAddInvestigator.UseVisualStyleBackColor = true;
+            this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click);
+            // 
+            // gMapControl
+            // 
+            this.gMapControl.Bearing = 0F;
+            this.gMapControl.CanDragMap = true;
+            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl.GrayScaleMode = false;
+            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl.LevelsKeepInMemory = 5;
+            this.gMapControl.Location = new System.Drawing.Point(27, 124);
+            this.gMapControl.MarkersEnabled = true;
+            this.gMapControl.MaxZoom = 2;
+            this.gMapControl.MinZoom = 2;
+            this.gMapControl.MouseWheelZoomEnabled = true;
+            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl.Name = "gMapControl";
+            this.gMapControl.NegativeMode = false;
+            this.gMapControl.PolygonsEnabled = true;
+            this.gMapControl.RetryLoadTile = 0;
+            this.gMapControl.RoutesEnabled = true;
+            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl.ShowTileGridLines = false;
+            this.gMapControl.Size = new System.Drawing.Size(609, 145);
+            this.gMapControl.TabIndex = 17;
+            this.gMapControl.Zoom = 0D;
+            this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
             // 
             // AddInvestigation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 708);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(684, 655);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnAddInvestigation);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddInvestigation";
             this.Text = "AddInvestigation";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.ComboBox cmbComplainant;
+        private System.Windows.Forms.ComboBox cmbOffender;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnAddAnimal;
+        private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button brnAddActivities;
+        private System.Windows.Forms.Button btnAddInvestigation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbInvestigator;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox lstAnimals;
+        private System.Windows.Forms.ListBox lstActivities;
+        private System.Windows.Forms.Button btnAddPerson;
+        private System.Windows.Forms.Button btnAddInvestigator;
+        private GMap.NET.WindowsForms.GMapControl gMapControl;
     }
 }

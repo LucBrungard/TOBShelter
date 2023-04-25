@@ -201,12 +201,6 @@
     <Compile Include="services\LinksAIService.cs" />
     <Compile Include="services\PersonService.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="TestMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestMap.Designer.cs">
-      <DependentUpon>TestMap.cs</DependentUpon>
-    </Compile>
     <Compile Include="types\base\ActivityType.cs" />
     <Compile Include="types\base\Breed.cs" />
     <Compile Include="types\base\Coordinates.cs" />
@@ -259,16 +253,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestMap.resx">
-      <DependentUpon>TestMap.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ViewInvestigator.resx">
       <DependentUpon>ViewInvestigator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="annex\Projet.pdf" />
     <None Include="annex\schema.drawio" />
     <None Include="App.config" />
-    <None Include="App.config.example" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
