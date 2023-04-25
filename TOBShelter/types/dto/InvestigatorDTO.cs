@@ -13,14 +13,16 @@ namespace TOBShelter.Types.Dto
         public bool Available { get; set; }
         public bool InOperation { get; set; }
 
+        private string _businessSector;
+
         public string BusinessSector
         {
-            get { return BusinessSector; }
+            get { return _businessSector; }
             set
             {
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Le secteur d'activité doit être renseigné.");
-                BusinessSector = value;
+                _businessSector = value;
             }
         }
 
