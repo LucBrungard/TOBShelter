@@ -38,18 +38,18 @@ namespace TOBShelter
             this.btnAddAnimal = new System.Windows.Forms.Button();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.brnAddActivities = new System.Windows.Forms.Button();
+            this.brnAddDocuments = new System.Windows.Forms.Button();
             this.btnAddInvestigation = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbInvestigator = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.btnAddInvestigator = new System.Windows.Forms.Button();
+            this.btnAddPerson = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lstAnimals = new System.Windows.Forms.ListBox();
-            this.lstActivities = new System.Windows.Forms.ListBox();
-            this.btnAddPerson = new System.Windows.Forms.Button();
-            this.btnAddInvestigator = new System.Windows.Forms.Button();
-            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.lstDocuments = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -120,6 +120,7 @@ namespace TOBShelter
             this.btnAddAnimal.TabIndex = 8;
             this.btnAddAnimal.Text = "Ajouter un animal";
             this.btnAddAnimal.UseVisualStyleBackColor = true;
+            this.btnAddAnimal.Click += new System.EventHandler(this.btnAddAnimal_Click);
             // 
             // txtReason
             // 
@@ -139,15 +140,16 @@ namespace TOBShelter
             this.label4.TabIndex = 10;
             this.label4.Text = "Motif";
             // 
-            // brnAddActivities
+            // brnAddDocuments
             // 
-            this.brnAddActivities.Location = new System.Drawing.Point(435, 172);
-            this.brnAddActivities.Margin = new System.Windows.Forms.Padding(2);
-            this.brnAddActivities.Name = "brnAddActivities";
-            this.brnAddActivities.Size = new System.Drawing.Size(114, 26);
-            this.brnAddActivities.TabIndex = 11;
-            this.brnAddActivities.Text = "Ajouter un fait";
-            this.brnAddActivities.UseVisualStyleBackColor = true;
+            this.brnAddDocuments.Location = new System.Drawing.Point(435, 172);
+            this.brnAddDocuments.Margin = new System.Windows.Forms.Padding(2);
+            this.brnAddDocuments.Name = "brnAddDocuments";
+            this.brnAddDocuments.Size = new System.Drawing.Size(114, 26);
+            this.brnAddDocuments.TabIndex = 11;
+            this.brnAddDocuments.Text = "Ajouter un fait";
+            this.brnAddDocuments.UseVisualStyleBackColor = true;
+            this.brnAddDocuments.Click += new System.EventHandler(this.brnAddDocuments_Click);
             // 
             // btnAddInvestigation
             // 
@@ -209,55 +211,6 @@ namespace TOBShelter
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personnes concernées";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lstAnimals);
-            this.groupBox3.Controls.Add(this.lstActivities);
-            this.groupBox3.Controls.Add(this.btnAddAnimal);
-            this.groupBox3.Controls.Add(this.brnAddActivities);
-            this.groupBox3.Location = new System.Drawing.Point(12, 387);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(660, 208);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Animaux et Documents";
-            // 
-            // lstAnimals
-            // 
-            this.lstAnimals.FormattingEnabled = true;
-            this.lstAnimals.Location = new System.Drawing.Point(27, 19);
-            this.lstAnimals.Name = "lstAnimals";
-            this.lstAnimals.Size = new System.Drawing.Size(294, 134);
-            this.lstAnimals.TabIndex = 13;
-            // 
-            // lstActivities
-            // 
-            this.lstActivities.FormattingEnabled = true;
-            this.lstActivities.Location = new System.Drawing.Point(345, 19);
-            this.lstActivities.Name = "lstActivities";
-            this.lstActivities.Size = new System.Drawing.Size(294, 134);
-            this.lstActivities.TabIndex = 12;
-            // 
-            // btnAddPerson
-            // 
-            this.btnAddPerson.Location = new System.Drawing.Point(27, 84);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(169, 23);
-            this.btnAddPerson.TabIndex = 14;
-            this.btnAddPerson.Text = "Ajouter une personne";
-            this.btnAddPerson.UseVisualStyleBackColor = true;
-            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
-            // 
-            // btnAddInvestigator
-            // 
-            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 84);
-            this.btnAddInvestigator.Name = "btnAddInvestigator";
-            this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
-            this.btnAddInvestigator.TabIndex = 16;
-            this.btnAddInvestigator.Text = "Ajouter un enquêteur";
-            this.btnAddInvestigator.UseVisualStyleBackColor = true;
-            this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click);
-            // 
             // gMapControl
             // 
             this.gMapControl.Bearing = 0F;
@@ -284,6 +237,55 @@ namespace TOBShelter
             this.gMapControl.TabIndex = 17;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
+            // 
+            // btnAddInvestigator
+            // 
+            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 84);
+            this.btnAddInvestigator.Name = "btnAddInvestigator";
+            this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
+            this.btnAddInvestigator.TabIndex = 16;
+            this.btnAddInvestigator.Text = "Ajouter un enquêteur";
+            this.btnAddInvestigator.UseVisualStyleBackColor = true;
+            this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click);
+            // 
+            // btnAddPerson
+            // 
+            this.btnAddPerson.Location = new System.Drawing.Point(27, 84);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(169, 23);
+            this.btnAddPerson.TabIndex = 14;
+            this.btnAddPerson.Text = "Ajouter une personne";
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lstAnimals);
+            this.groupBox3.Controls.Add(this.lstDocuments);
+            this.groupBox3.Controls.Add(this.btnAddAnimal);
+            this.groupBox3.Controls.Add(this.brnAddDocuments);
+            this.groupBox3.Location = new System.Drawing.Point(12, 387);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(660, 208);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Animaux et Documents";
+            // 
+            // lstAnimals
+            // 
+            this.lstAnimals.FormattingEnabled = true;
+            this.lstAnimals.Location = new System.Drawing.Point(27, 19);
+            this.lstAnimals.Name = "lstAnimals";
+            this.lstAnimals.Size = new System.Drawing.Size(294, 134);
+            this.lstAnimals.TabIndex = 13;
+            // 
+            // lstDocuments
+            // 
+            this.lstDocuments.FormattingEnabled = true;
+            this.lstDocuments.Location = new System.Drawing.Point(345, 19);
+            this.lstDocuments.Name = "lstDocuments";
+            this.lstDocuments.Size = new System.Drawing.Size(294, 134);
+            this.lstDocuments.TabIndex = 12;
             // 
             // AddInvestigation
             // 
@@ -317,7 +319,7 @@ namespace TOBShelter
         private System.Windows.Forms.Button btnAddAnimal;
         private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button brnAddActivities;
+        private System.Windows.Forms.Button brnAddDocuments;
         private System.Windows.Forms.Button btnAddInvestigation;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbInvestigator;
@@ -325,7 +327,7 @@ namespace TOBShelter
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox lstAnimals;
-        private System.Windows.Forms.ListBox lstActivities;
+        private System.Windows.Forms.ListBox lstDocuments;
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Button btnAddInvestigator;
         private GMap.NET.WindowsForms.GMapControl gMapControl;

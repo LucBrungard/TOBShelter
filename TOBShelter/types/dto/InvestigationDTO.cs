@@ -9,58 +9,70 @@ namespace TOBShelter.Types.Dto
     public class InvestigationCreateDTO
     {
         public long Id { get; set; }
+
+        private string _title;
         public string Title {
-            get { return Title; }
+            get { return _title; }
             set
             {
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Le titre de l'enquête doit être renseigné.");
-                Title = value;
+                _title = value;
             }
         }
+
+        private long _complaignantId;
         public long ComplainantId {
-            get { return ComplainantId; }
+            get { return _complaignantId; }
             set
             {
                 if (String.IsNullOrEmpty(value.ToString()))
                     throw new ArgumentException("Le plaignant doit être renseigné.");
-                ComplainantId = value;
+                _complaignantId = value;
             }
         }
+
+        private long _offenderId;
         public long OffenderId {
-            get { return OffenderId; }
+            get { return _offenderId; }
             set
             {
                 if (String.IsNullOrEmpty(value.ToString()))
                     throw new ArgumentException("L'infractaire doit être renseigné.");
-                OffenderId = value;
+                _offenderId = value;
             }
         }
+
+        private string _reason;
         public string Reason {
-            get { return Reason; }
+            get { return _reason; }
             set
             {
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Le motif doit être renseigné.");
-                Reason = value;
+                _reason = value;
             }
         }
+
+        private long _investigatorId;
         public long InvestigatorId {
-            get { return InvestigatorId; }
+            get { return _investigatorId; }
             set
             {
                 if (String.IsNullOrEmpty(value.ToString()))
                     throw new ArgumentException("L'enquêteur titulaire doit être renseigné.");
-                InvestigatorId = value;
+                _investigatorId = value;
             }
         }
+
+        private List<Animal> _animals;
         public List<Animal> Animals {
-            get { return Animals; }
+            get { return _animals; }
             set
             {
                 if (value.Count == 0)
                     throw new ArgumentException("Au moins un animal doit être renseigné.");
-                Animals = value;
+                _animals = value;
             }
         }
         public List<DocumentCreateDTO> Documents { get; set; }

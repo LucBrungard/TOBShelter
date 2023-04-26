@@ -19,13 +19,27 @@ namespace TOBShelter
         {
             InitializeComponent();
             List<PersonDTO> listPerson = PersonService.FindAll(null);
-            
+            List<InvestigatorDTO> listInvestigator = InvestigatorService.FindAll(null);
 
-            foreach(PersonDTO person in listPerson)
+            foreach (InvestigatorDTO investigator in listInvestigator)
+            {
+                string str = investigator.FirstName + " " + investigator.Name;
+                if (!dic.ContainsKey(str))
+                {
+                    this.dic.Add(str, investigator.Id);
+                    this.cmbInvestigator.Items.Add(str);
+                }
+            }
+
+            foreach (PersonDTO person in listPerson)
             {
                 string str = person.FirstName + " " + person.Name;
-                this.dic.Add(str, person.Id);
-                this.cmbComplainant.Items.Add(str);
+                if (!dic.ContainsKey(str))
+                {
+                    this.dic.Add(str, person.Id);
+                    this.cmbComplainant.Items.Add(str);
+                    this.cmbOffender.Items.Add(str);
+                }
             }
         }
 
@@ -37,7 +51,7 @@ namespace TOBShelter
                 long id = long.Parse(today.ToString("yyyyMMdd"));
 
                 List<Animal> listAnimals = this.lstAnimals.Items.Cast<Animal>().ToList();
-                List<DocumentCreateDTO> listActivities = this.lstActivities.Items.Cast<DocumentCreateDTO>().ToList();
+                List<DocumentCreateDTO> listActivities = this.lstDocuments.Items.Cast<DocumentCreateDTO>().ToList();
 
                 InvestigationCreateDTO investigation = new InvestigationCreateDTO()
                 {
@@ -78,6 +92,17 @@ namespace TOBShelter
             this.gMapControl.MinZoom = 0;
             this.gMapControl.MaxZoom = 24;
             this.gMapControl.Zoom = 10;
+        }
+
+        private void btnAddAnimal_Click(object sender, EventArgs e)
+        {
+            AddAnimal addAnimal = new AddAnimal();
+            addAnimal.ShowDialog(this);
+        }
+
+        private void brnAddDocuments_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
