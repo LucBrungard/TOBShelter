@@ -14,7 +14,10 @@ namespace TOBShelter
 {
     public partial class AddPerson : Form
     {
+        public PersonDetailsDTO createdPerson = null;
+
         public AddPerson()
+
         {
             InitializeComponent();
             this.cbxCivility.DataSource = Enum.GetValues(typeof(IdentityTitle));
@@ -46,7 +49,7 @@ namespace TOBShelter
 
                 try
                 {
-                    PersonDetailsDTO createdPerson = TOBShelter.Services.PersonService.Create(person);
+                    createdPerson = TOBShelter.Services.PersonService.Create(person);
                     this.Close();
                 }
                 catch (Exception)
