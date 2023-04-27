@@ -14,12 +14,21 @@ namespace TOBShelter
     public partial class AddInvestigation : Form
     {
         Dictionary<string, long> dic = new Dictionary<string, long>();
+        long id;
 
         public AddInvestigation()
         {
             InitializeComponent();
             List<PersonDTO> listPerson = PersonService.FindAll(null);
             List<InvestigatorDTO> listInvestigator = InvestigatorService.FindAll(null);
+
+            DateTime today = DateTime.Today;
+            this.id = long.Parse(today.ToString("yyyyMMdd") + "0");
+
+            /*InvestigationDetailsDTO lastId = InvestigationService.FindById(this.id + 0);
+            while () {
+                lastId = InvestigationService.FindById();
+            }*/
 
             foreach (InvestigatorDTO investigator in listInvestigator)
             {
@@ -47,9 +56,6 @@ namespace TOBShelter
         {
             try
             {
-                DateTime today = DateTime.Today;
-                long id = long.Parse(today.ToString("yyyyMMdd"));
-
                 List<Animal> listAnimals = this.lstAnimals.Items.Cast<Animal>().ToList();
                 List<DocumentCreateDTO> listActivities = this.lstDocuments.Items.Cast<DocumentCreateDTO>().ToList();
 
@@ -66,6 +72,16 @@ namespace TOBShelter
                     Notice = null,
                     Closed = false
                 };
+
+                try
+                {
+                    InvestigationDetailsDTO createdInvestigator = InvestigationService.Create(investigation);
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Impossible d'ajouter une enquête pour le moment.", "Impossible d'ajouter une enquête", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception exception)
             {
@@ -102,7 +118,30 @@ namespace TOBShelter
 
         private void brnAddDocuments_Click(object sender, EventArgs e)
         {
+            AddDocument addDocument = new AddDocument(id);
+            addDocument.ShowDialog(this);
 
+            DocumentFilters filter = new DocumentFilters();
+            filter.Id = this.id;
+            this.updateDocuments(filter);
+        }
+
+        private void updateDocuments(DocumentFilters filter)
+        {
+            this.lstDocuments.Items.Clear();
+
+            try
+            {
+                List<DocumentDetailsDTO> documents = DocumentService.FindAll(filter).ToList();
+                foreach (DocumentDetailsDTO document in documents)
+                {
+                    this.lstDocuments.Items.Add(document.Path);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("L'accès a la base de données est momentanément indisponible", "Impossible d'accéder à la base de données", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

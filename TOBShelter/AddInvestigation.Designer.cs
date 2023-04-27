@@ -147,7 +147,7 @@ namespace TOBShelter
             this.brnAddDocuments.Name = "brnAddDocuments";
             this.brnAddDocuments.Size = new System.Drawing.Size(114, 26);
             this.brnAddDocuments.TabIndex = 11;
-            this.brnAddDocuments.Text = "Ajouter un fait";
+            this.brnAddDocuments.Text = "Ajouter un document";
             this.brnAddDocuments.UseVisualStyleBackColor = true;
             this.brnAddDocuments.Click += new System.EventHandler(this.brnAddDocuments_Click);
             // 

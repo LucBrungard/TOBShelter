@@ -154,6 +154,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDocument.Designer.cs">
+      <DependentUpon>AddDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddInvestigation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     <EmbeddedResource Include="AddAnimal.resx">
       <DependentUpon>AddAnimal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddDocument.resx">
+      <DependentUpon>AddDocument.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddInvestigation.resx">
       <DependentUpon>AddInvestigation.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +306,7 @@
     <None Include="Resources\check.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Documents\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

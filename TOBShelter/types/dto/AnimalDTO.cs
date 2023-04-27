@@ -20,7 +20,7 @@ namespace TOBShelter.Types.Dto
             get { return _age; }
             set
             {
-                if (value == 0)
+                if (value <= 0)
                     throw new ArgumentException("L'animal ne peut pas être agé de 0 mois", nameof(value));
                 _age = value;
             }
