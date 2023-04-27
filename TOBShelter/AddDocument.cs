@@ -14,10 +14,15 @@ namespace TOBShelter
 {
     public partial class AddDocument : Form
     {
-        long id;
+        const string directory = @"C:\Documents\";
+        private string directoryWithId;
+        private long id;
+        public DocumentCreateDTO document;
+
         public AddDocument(long id)
         {
             this.id = id;
+            this.directoryWithId = directory + id.ToString();
             InitializeComponent();
         }
 
@@ -42,26 +47,19 @@ namespace TOBShelter
         {
             try
             {
-                string dir = "TOBShelter\\TOBShelter\\Documents\\" + this.id.ToString();
-                if (!Directory.Exists(dir))
+                if (!Directory.Exists(this.directoryWithId))
+                    Directory.CreateDirectory(this.directoryWithId);
+
+                string filePathDestination = this.directoryWithId + this.lblPath.Text.Substring(this.lblPath.Text.LastIndexOf(@"\"));
+                File.Copy(this.lblPath.Text, filePathDestination, true);
+
+                this.document = new DocumentCreateDTO()
                 {
-                    Directory.CreateDirectory(dir);
-                }
-                DocumentCreateDTO document = new DocumentCreateDTO()
-                {
-                    Path = dir + this.lblPath.Text.Substring(this.lblPath.Text.LastIndexOf("\\") + 1),
+                    Path = filePathDestination,
                     InvestigationId = this.id
                 };
 
-                /*try
-                {*/
-                    DocumentDetailsDTO createdInvestigator = Services.DocumentService.Create(document);
-                    this.Close();
-                /*}
-                catch (Exception)
-                {
-                    MessageBox.Show("Impossible d'ajouter un document pour le moment.", "Impossible d'ajouter un document", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                this.Close();
             }
             catch (Exception exception)
             {

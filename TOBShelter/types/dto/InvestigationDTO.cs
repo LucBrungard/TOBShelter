@@ -70,8 +70,8 @@ namespace TOBShelter.Types.Dto
             get { return _animals; }
             set
             {
-                /*if (value.Count == 0)
-                    throw new ArgumentException("Au moins un animal doit être renseigné.");*/
+                if (value.Count == 0)
+                    throw new ArgumentException("Au moins un animal doit être renseigné.");
                 _animals = value;
             }
         }

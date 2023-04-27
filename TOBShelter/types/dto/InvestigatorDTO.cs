@@ -64,7 +64,6 @@ namespace TOBShelter.Types.Dto
     {
         public bool Available { get; set; }
         public bool InOperation { get; set; }
-        public HashSet<InvestigationDTO> Investigations { get; set; }
         public string BusinessSector { get; set; }
 
         public InvestigatorDetailsDTO(PersonDetailsDTO personDetailsDTO)

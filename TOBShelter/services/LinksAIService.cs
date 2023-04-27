@@ -14,7 +14,7 @@ namespace TOBShelter.Services
             if (link == null)
                 throw new ArgumentNullException(nameof(link));
 
-            StringBuilder stringBuilder = new StringBuilder("INSERT INTO `links_animals_investigations` ('animal_id', 'investigation_id') VALUES (\n\t");
+            StringBuilder stringBuilder = new StringBuilder("INSERT INTO `links_animals_investigations` (animal_id, investigation_id) VALUES (\n\t");
 
             stringBuilder.Append($"'{link.AnimalId}',\n\t");
             stringBuilder.Append($"'{link.InvestigationId}')");

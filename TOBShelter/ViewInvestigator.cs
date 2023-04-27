@@ -50,7 +50,10 @@ namespace TOBShelter
 
                 foreach (InvestigationDTO investigation in investigations)
                 {
-                    this.dataGridViewInvestigations.Rows.Add(investigation.Id, investigation.Title, investigation.LastModification);
+                    this.dataGridViewInvestigations.Rows.Add(
+                        investigation.Id,
+                        investigation.Title,
+                        investigation.LastModification);
                 }
             }
             catch (Exception)
@@ -73,21 +76,20 @@ namespace TOBShelter
 
         private void btnDetailInvestigation_Click(object sender, EventArgs e)
         {
-            // TODO check quand des enquetes auront été ajoutées.
-            //if (this.dataGridViewInvestigations.SelectedRows.Count > 0)
-            //{
-            //    try
-            //    {
-            //        long id = long.Parse(this.dataGridViewInvestigations.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-            //        InvestigationDetailsDTO investigation = TOBShelter.Services.InvestigationService.FindById(id);
-            //        new ViewInvestigation(investigation).ShowDialog();
-            //        updateDataGridInvestigation();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        MessageBox.Show("L'accès aux détails de cet enquête est momentanément indisponible", "Impossible d'afficher les détails de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-            //}
+            if (this.dataGridViewInvestigations.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    long id = long.Parse(this.dataGridViewInvestigations.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                    InvestigationDetailsDTO investigation = TOBShelter.Services.InvestigationService.FindById(id);
+                    new ViewInvestigation(investigation).ShowDialog();
+                    updateDataGridInvestigation();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("L'accès aux détails de cet enquête est momentanément indisponible", "Impossible d'afficher les détails de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

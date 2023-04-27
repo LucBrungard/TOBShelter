@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TOBShelter.Services;
 using TOBShelter.Types.Dto;
 
 namespace TOBShelter
@@ -30,7 +31,7 @@ namespace TOBShelter
 
             try
             {
-                List<InvestigatorDTO> investigators = TOBShelter.Services.InvestigatorService.FindAll(filter).ToList();
+                List<InvestigatorDTO> investigators = Services.InvestigatorService.FindAll(filter).ToList();
                 foreach (InvestigatorDTO investigator in investigators)
                 {
                     this.dataGridInvestigators.Rows.Add(
@@ -50,17 +51,18 @@ namespace TOBShelter
 
         private void updateInvestigationDataGrid(InvestigationFilters filter)
         {
-            this.dataGridInvestigators.Rows.Clear();
+            this.dataGridViewInvestigation.Rows.Clear();
+
             try
             {
-                List<InvestigationDTO> investigations = TOBShelter.Services.InvestigationService.FindAll(filter).ToList();
+                List<InvestigationDTO> investigations = Services.InvestigationService.FindAll(filter).ToList();
                 foreach (InvestigationDTO investigation in investigations)
-                {
-                    this.dataGridInvestigators.Rows.Add(
+                {                    
+                    this.dataGridViewInvestigation.Rows.Add(
                         investigation.Id,
                         investigation.Title,
                         investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
-                        investigation.LastModification
+                        investigation.LastModification == null ? null : ((DateTime)investigation.LastModification).ToShortDateString()
                         );
                 }
             }
@@ -119,7 +121,7 @@ namespace TOBShelter
                 try
                 {
                     long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
                     new ViewInvestigator(investigator).ShowDialog();
                     updateInvestigatorDataGrid(null);
                 }
@@ -137,7 +139,7 @@ namespace TOBShelter
                 try
                 {
                     long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
                     new EditInvestigator(investigator).ShowDialog();
                     updateInvestigatorDataGrid(null);
                 }
@@ -152,15 +154,53 @@ namespace TOBShelter
         {
             AddInvestigation addInvestigation = new AddInvestigation();
             addInvestigation.ShowDialog(this);
-            updateInvestigatorDataGrid(null);
+            updateInvestigationDataGrid(null);
         }
 
         private void btnViewInvestigation_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewInvestigation.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
+                    new ViewInvestigator(investigator).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("L'accès aux détails de cet enquêteur est momentanément indisponible", "Impossible d'afficher les détails de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnEditInvestigation_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewInvestigation.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["id"].Value.ToString());
+                    InvestigationDetailsDTO investigation = InvestigationService.FindById(id);
+                    new EditInvestigation(investigation).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Cette enquête ne peut pas être modifié pour le moment", "Impossible de modifier les informations de l'enquête", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            updateInvestigationDataGrid(null);
+        }
+
+        private void btnViewInvestigation_Click_1(object sender, EventArgs e)
+        {
+            long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["id"].Value.ToString());
+            InvestigationDetailsDTO investigation = InvestigationService.FindById(id);
+            ViewInvestigation viewInvestigation = new ViewInvestigation(investigation);
+            viewInvestigation.ShowDialog(this);
+            updateInvestigationDataGrid(null);
         }
     }
 }

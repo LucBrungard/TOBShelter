@@ -14,6 +14,8 @@ namespace TOBShelter
 {
     public partial class AddInvestigator : Form
     {
+        public InvestigatorDetailsDTO createdInvestigator = null;
+
         public AddInvestigator()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace TOBShelter
 
                 try
                 {
-                    InvestigatorDetailsDTO createdInvestigator = TOBShelter.Services.InvestigatorService.Create(investigator, true);
+                    createdInvestigator = TOBShelter.Services.InvestigatorService.Create(investigator, true);
                     this.Close();
                 }
                 catch (Exception)

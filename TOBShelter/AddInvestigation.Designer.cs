@@ -48,6 +48,8 @@ namespace TOBShelter
             this.btnAddInvestigator = new System.Windows.Forms.Button();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lstAnimals = new System.Windows.Forms.ListBox();
             this.lstDocuments = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -68,7 +70,7 @@ namespace TOBShelter
             // txtTitle
             // 
             this.txtTitle.Location = new System.Drawing.Point(27, 40);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(295, 20);
             this.txtTitle.TabIndex = 1;
@@ -76,8 +78,8 @@ namespace TOBShelter
             // cmbComplainant
             // 
             this.cmbComplainant.FormattingEnabled = true;
-            this.cmbComplainant.Location = new System.Drawing.Point(27, 46);
-            this.cmbComplainant.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbComplainant.Location = new System.Drawing.Point(27, 40);
+            this.cmbComplainant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbComplainant.Name = "cmbComplainant";
             this.cmbComplainant.Size = new System.Drawing.Size(169, 21);
             this.cmbComplainant.TabIndex = 2;
@@ -85,16 +87,17 @@ namespace TOBShelter
             // cmbOffender
             // 
             this.cmbOffender.FormattingEnabled = true;
-            this.cmbOffender.Location = new System.Drawing.Point(247, 46);
-            this.cmbOffender.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbOffender.Location = new System.Drawing.Point(247, 40);
+            this.cmbOffender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbOffender.Name = "cmbOffender";
             this.cmbOffender.Size = new System.Drawing.Size(169, 21);
             this.cmbOffender.TabIndex = 3;
+            this.cmbOffender.SelectedIndexChanged += new System.EventHandler(this.cmbOffender_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 27);
+            this.label2.Location = new System.Drawing.Point(24, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
@@ -104,7 +107,7 @@ namespace TOBShelter
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(244, 27);
+            this.label3.Location = new System.Drawing.Point(244, 20);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
@@ -113,10 +116,10 @@ namespace TOBShelter
             // 
             // btnAddAnimal
             // 
-            this.btnAddAnimal.Location = new System.Drawing.Point(117, 172);
-            this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddAnimal.Location = new System.Drawing.Point(90, 171);
+            this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddAnimal.Name = "btnAddAnimal";
-            this.btnAddAnimal.Size = new System.Drawing.Size(114, 26);
+            this.btnAddAnimal.Size = new System.Drawing.Size(169, 23);
             this.btnAddAnimal.TabIndex = 8;
             this.btnAddAnimal.Text = "Ajouter un animal";
             this.btnAddAnimal.UseVisualStyleBackColor = true;
@@ -125,7 +128,7 @@ namespace TOBShelter
             // txtReason
             // 
             this.txtReason.Location = new System.Drawing.Point(344, 40);
-            this.txtReason.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(295, 20);
             this.txtReason.TabIndex = 9;
@@ -142,10 +145,10 @@ namespace TOBShelter
             // 
             // brnAddDocuments
             // 
-            this.brnAddDocuments.Location = new System.Drawing.Point(435, 172);
-            this.brnAddDocuments.Margin = new System.Windows.Forms.Padding(2);
+            this.brnAddDocuments.Location = new System.Drawing.Point(407, 171);
+            this.brnAddDocuments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.brnAddDocuments.Name = "brnAddDocuments";
-            this.brnAddDocuments.Size = new System.Drawing.Size(114, 26);
+            this.brnAddDocuments.Size = new System.Drawing.Size(169, 23);
             this.brnAddDocuments.TabIndex = 11;
             this.brnAddDocuments.Text = "Ajouter un document";
             this.brnAddDocuments.UseVisualStyleBackColor = true;
@@ -153,7 +156,7 @@ namespace TOBShelter
             // 
             // btnAddInvestigation
             // 
-            this.btnAddInvestigation.Location = new System.Drawing.Point(300, 614);
+            this.btnAddInvestigation.Location = new System.Drawing.Point(300, 618);
             this.btnAddInvestigation.Name = "btnAddInvestigation";
             this.btnAddInvestigation.Size = new System.Drawing.Size(75, 23);
             this.btnAddInvestigation.TabIndex = 13;
@@ -164,7 +167,7 @@ namespace TOBShelter
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(464, 27);
+            this.label5.Location = new System.Drawing.Point(464, 20);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 13);
@@ -174,8 +177,8 @@ namespace TOBShelter
             // cmbInvestigator
             // 
             this.cmbInvestigator.FormattingEnabled = true;
-            this.cmbInvestigator.Location = new System.Drawing.Point(467, 46);
-            this.cmbInvestigator.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbInvestigator.Location = new System.Drawing.Point(467, 40);
+            this.cmbInvestigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbInvestigator.Name = "cmbInvestigator";
             this.cmbInvestigator.Size = new System.Drawing.Size(169, 21);
             this.cmbInvestigator.TabIndex = 14;
@@ -186,9 +189,9 @@ namespace TOBShelter
             this.groupBox1.Controls.Add(this.txtReason);
             this.groupBox1.Controls.Add(this.txtTitle);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(660, 76);
+            this.groupBox1.Size = new System.Drawing.Size(660, 72);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enquete";
@@ -204,9 +207,9 @@ namespace TOBShelter
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cmbInvestigator);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 94);
+            this.groupBox2.Location = new System.Drawing.Point(12, 84);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(660, 287);
+            this.groupBox2.Size = new System.Drawing.Size(660, 312);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personnes concernées";
@@ -219,7 +222,7 @@ namespace TOBShelter
             this.gMapControl.GrayScaleMode = false;
             this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(27, 124);
+            this.gMapControl.Location = new System.Drawing.Point(27, 98);
             this.gMapControl.MarkersEnabled = true;
             this.gMapControl.MaxZoom = 2;
             this.gMapControl.MinZoom = 2;
@@ -233,14 +236,14 @@ namespace TOBShelter
             this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(609, 145);
+            this.gMapControl.Size = new System.Drawing.Size(609, 208);
             this.gMapControl.TabIndex = 17;
             this.gMapControl.Zoom = 0D;
             this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
             // 
             // btnAddInvestigator
             // 
-            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 84);
+            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 65);
             this.btnAddInvestigator.Name = "btnAddInvestigator";
             this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
             this.btnAddInvestigator.TabIndex = 16;
@@ -250,7 +253,7 @@ namespace TOBShelter
             // 
             // btnAddPerson
             // 
-            this.btnAddPerson.Location = new System.Drawing.Point(27, 84);
+            this.btnAddPerson.Location = new System.Drawing.Point(27, 65);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(169, 23);
             this.btnAddPerson.TabIndex = 14;
@@ -260,21 +263,43 @@ namespace TOBShelter
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lstAnimals);
             this.groupBox3.Controls.Add(this.lstDocuments);
             this.groupBox3.Controls.Add(this.btnAddAnimal);
             this.groupBox3.Controls.Add(this.brnAddDocuments);
-            this.groupBox3.Location = new System.Drawing.Point(12, 387);
+            this.groupBox3.Location = new System.Drawing.Point(12, 410);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(660, 208);
+            this.groupBox3.Size = new System.Drawing.Size(660, 202);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Animaux et Documents";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(341, 16);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Documents";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Animaux";
+            // 
             // lstAnimals
             // 
             this.lstAnimals.FormattingEnabled = true;
-            this.lstAnimals.Location = new System.Drawing.Point(27, 19);
+            this.lstAnimals.Location = new System.Drawing.Point(27, 32);
             this.lstAnimals.Name = "lstAnimals";
             this.lstAnimals.Size = new System.Drawing.Size(294, 134);
             this.lstAnimals.TabIndex = 13;
@@ -282,7 +307,7 @@ namespace TOBShelter
             // lstDocuments
             // 
             this.lstDocuments.FormattingEnabled = true;
-            this.lstDocuments.Location = new System.Drawing.Point(345, 19);
+            this.lstDocuments.Location = new System.Drawing.Point(344, 32);
             this.lstDocuments.Name = "lstDocuments";
             this.lstDocuments.Size = new System.Drawing.Size(294, 134);
             this.lstDocuments.TabIndex = 12;
@@ -296,7 +321,7 @@ namespace TOBShelter
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAddInvestigation);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddInvestigation";
             this.Text = "AddInvestigation";
             this.groupBox1.ResumeLayout(false);
@@ -304,6 +329,7 @@ namespace TOBShelter
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +357,7 @@ namespace TOBShelter
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Button btnAddInvestigator;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

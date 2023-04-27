@@ -216,11 +216,13 @@ namespace TOBShelter
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewInvestigations.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewInvestigations.Location = new System.Drawing.Point(24, 40);
+            this.dataGridViewInvestigations.MultiSelect = false;
             this.dataGridViewInvestigations.Name = "dataGridViewInvestigations";
             this.dataGridViewInvestigations.ReadOnly = true;
             this.dataGridViewInvestigations.RowHeadersVisible = false;
             this.dataGridViewInvestigations.RowHeadersWidth = 51;
             this.dataGridViewInvestigations.RowTemplate.Height = 24;
+            this.dataGridViewInvestigations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewInvestigations.Size = new System.Drawing.Size(816, 200);
             this.dataGridViewInvestigations.TabIndex = 0;
             // 

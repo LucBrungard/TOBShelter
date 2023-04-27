@@ -24,21 +24,20 @@ namespace TOBShelter.services
                 internal Properties Properties { get; set; }
                 internal Geometry Geometry { get; set; }
             }
+
             internal class Properties
             {
                 internal string Nom { get; set; }
                 internal string Code { get; set; }
                 internal int Score { get; set; }
             }
+
             internal class Geometry
             {
                 internal string Type { get; set; }
                 internal double[] Coordinates { get; set; }
             }
         }
-
-
-
 
         internal static async Task<Coordinates> GetCommuneCoordinates(string postalCode, string communeName)
         {
@@ -83,9 +82,10 @@ namespace TOBShelter.services
             if (obj.features.Count == 0)
                 return null;
 
-            return new Coordinates(
-                obj.features[0].geometry.coordinates[0],
-                obj.features[0].geometry.coordinates[1]);
+            double tmp1 = obj.features[0].geometry.coordinates[0];
+            double tmp2 = obj.features[0].geometry.coordinates[1];
+
+            return new Coordinates(tmp1, tmp2);
         }
     }
 }
