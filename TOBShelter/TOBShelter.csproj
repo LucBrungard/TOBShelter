@@ -244,6 +244,12 @@
     <Compile Include="types\dto\PersonDTO.cs" />
     <Compile Include="utils\DbUtil.cs" />
     <Compile Include="utils\RegexUtil.cs" />
+    <Compile Include="ViewInvestigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInvestigation.Designer.cs">
+      <DependentUpon>ViewInvestigation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewInvestigator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
       <SubType>Form</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInvestigation.resx">
+      <DependentUpon>ViewInvestigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewInvestigator.resx">
       <DependentUpon>ViewInvestigator.cs</DependentUpon>

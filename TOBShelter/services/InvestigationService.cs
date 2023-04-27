@@ -88,14 +88,13 @@ namespace TOBShelter.Services
                 stringBuilder.Append($"investigator='{investigation.InvestigatorId}'");
             }
 
-            if (investigation.Notice != null)
-            {
-                if (!first)
-                    stringBuilder.Append(",\n\t");
-                first = false;
-                empty = false;
-                stringBuilder.Append($"notice='{investigation.Notice}'");
-            }
+            
+            if (!first)
+                stringBuilder.Append(",\n\t");
+            first = false;
+            empty = false;
+            stringBuilder.Append($"notice='{investigation.Notice}'");
+            
 
             if (investigation.Closed != null)
             {

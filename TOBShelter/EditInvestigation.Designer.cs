@@ -42,6 +42,11 @@ namespace TOBShelter
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.btnAddInvestigator = new System.Windows.Forms.Button();
+            this.cmbInvestigator = new System.Windows.Forms.ComboBox();
+            this.txtOffender = new System.Windows.Forms.TextBox();
+            this.txtComplaignant = new System.Windows.Forms.TextBox();
             this.btnEditInvestigation = new System.Windows.Forms.Button();
             this.brnAddDocuments = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -49,11 +54,6 @@ namespace TOBShelter
             this.txtNotice = new System.Windows.Forms.TextBox();
             this.chkClosed = new System.Windows.Forms.CheckBox();
             this.lblNotice = new System.Windows.Forms.Label();
-            this.txtComplaignant = new System.Windows.Forms.TextBox();
-            this.txtOffender = new System.Windows.Forms.TextBox();
-            this.btnAddInvestigator = new System.Windows.Forms.Button();
-            this.cmbInvestigator = new System.Windows.Forms.ComboBox();
-            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -121,10 +121,10 @@ namespace TOBShelter
             // 
             // txtReason
             // 
-            this.txtReason.Enabled = false;
             this.txtReason.Location = new System.Drawing.Point(344, 40);
             this.txtReason.Margin = new System.Windows.Forms.Padding(2);
             this.txtReason.Name = "txtReason";
+            this.txtReason.ReadOnly = true;
             this.txtReason.Size = new System.Drawing.Size(295, 20);
             this.txtReason.TabIndex = 9;
             // 
@@ -192,6 +192,68 @@ namespace TOBShelter
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personnes concernées";
+            // 
+            // gMapControl
+            // 
+            this.gMapControl.Bearing = 0F;
+            this.gMapControl.CanDragMap = true;
+            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl.GrayScaleMode = false;
+            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl.LevelsKeepInMemory = 5;
+            this.gMapControl.Location = new System.Drawing.Point(27, 69);
+            this.gMapControl.MarkersEnabled = true;
+            this.gMapControl.MaxZoom = 2;
+            this.gMapControl.MinZoom = 2;
+            this.gMapControl.MouseWheelZoomEnabled = true;
+            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl.Name = "gMapControl";
+            this.gMapControl.NegativeMode = false;
+            this.gMapControl.PolygonsEnabled = true;
+            this.gMapControl.RetryLoadTile = 0;
+            this.gMapControl.RoutesEnabled = true;
+            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl.ShowTileGridLines = false;
+            this.gMapControl.Size = new System.Drawing.Size(389, 145);
+            this.gMapControl.TabIndex = 20;
+            this.gMapControl.Zoom = 0D;
+            this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
+            // 
+            // btnAddInvestigator
+            // 
+            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 83);
+            this.btnAddInvestigator.Name = "btnAddInvestigator";
+            this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
+            this.btnAddInvestigator.TabIndex = 19;
+            this.btnAddInvestigator.Text = "Ajouter un enquêteur";
+            this.btnAddInvestigator.UseVisualStyleBackColor = true;
+            this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click_1);
+            // 
+            // cmbInvestigator
+            // 
+            this.cmbInvestigator.FormattingEnabled = true;
+            this.cmbInvestigator.Location = new System.Drawing.Point(467, 45);
+            this.cmbInvestigator.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbInvestigator.Name = "cmbInvestigator";
+            this.cmbInvestigator.Size = new System.Drawing.Size(169, 21);
+            this.cmbInvestigator.TabIndex = 18;
+            // 
+            // txtOffender
+            // 
+            this.txtOffender.Location = new System.Drawing.Point(247, 43);
+            this.txtOffender.Name = "txtOffender";
+            this.txtOffender.ReadOnly = true;
+            this.txtOffender.Size = new System.Drawing.Size(169, 20);
+            this.txtOffender.TabIndex = 17;
+            // 
+            // txtComplaignant
+            // 
+            this.txtComplaignant.Location = new System.Drawing.Point(27, 43);
+            this.txtComplaignant.Name = "txtComplaignant";
+            this.txtComplaignant.ReadOnly = true;
+            this.txtComplaignant.Size = new System.Drawing.Size(169, 20);
+            this.txtComplaignant.TabIndex = 16;
             // 
             // btnEditInvestigation
             // 
@@ -270,73 +332,11 @@ namespace TOBShelter
             this.lblNotice.TabIndex = 15;
             this.lblNotice.Text = "Avis";
             // 
-            // txtComplaignant
-            // 
-            this.txtComplaignant.Enabled = false;
-            this.txtComplaignant.Location = new System.Drawing.Point(27, 43);
-            this.txtComplaignant.Name = "txtComplaignant";
-            this.txtComplaignant.Size = new System.Drawing.Size(169, 20);
-            this.txtComplaignant.TabIndex = 16;
-            // 
-            // txtOffender
-            // 
-            this.txtOffender.Enabled = false;
-            this.txtOffender.Location = new System.Drawing.Point(247, 43);
-            this.txtOffender.Name = "txtOffender";
-            this.txtOffender.Size = new System.Drawing.Size(169, 20);
-            this.txtOffender.TabIndex = 17;
-            // 
-            // btnAddInvestigator
-            // 
-            this.btnAddInvestigator.Location = new System.Drawing.Point(467, 83);
-            this.btnAddInvestigator.Name = "btnAddInvestigator";
-            this.btnAddInvestigator.Size = new System.Drawing.Size(169, 23);
-            this.btnAddInvestigator.TabIndex = 19;
-            this.btnAddInvestigator.Text = "Ajouter un enquêteur";
-            this.btnAddInvestigator.UseVisualStyleBackColor = true;
-            this.btnAddInvestigator.Click += new System.EventHandler(this.btnAddInvestigator_Click_1);
-            // 
-            // cmbInvestigator
-            // 
-            this.cmbInvestigator.FormattingEnabled = true;
-            this.cmbInvestigator.Location = new System.Drawing.Point(467, 45);
-            this.cmbInvestigator.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbInvestigator.Name = "cmbInvestigator";
-            this.cmbInvestigator.Size = new System.Drawing.Size(169, 21);
-            this.cmbInvestigator.TabIndex = 18;
-            // 
-            // gMapControl
-            // 
-            this.gMapControl.Bearing = 0F;
-            this.gMapControl.CanDragMap = true;
-            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
-            this.gMapControl.GrayScaleMode = false;
-            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl.LevelsKeepInMemory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(27, 69);
-            this.gMapControl.MarkersEnabled = true;
-            this.gMapControl.MaxZoom = 2;
-            this.gMapControl.MinZoom = 2;
-            this.gMapControl.MouseWheelZoomEnabled = true;
-            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl.Name = "gMapControl";
-            this.gMapControl.NegativeMode = false;
-            this.gMapControl.PolygonsEnabled = true;
-            this.gMapControl.RetryLoadTile = 0;
-            this.gMapControl.RoutesEnabled = true;
-            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(389, 145);
-            this.gMapControl.TabIndex = 20;
-            this.gMapControl.Zoom = 0D;
-            this.gMapControl.Load += new System.EventHandler(this.gMapControl_Load);
-            // 
             // EditInvestigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 789);
+            this.ClientSize = new System.Drawing.Size(684, 746);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);

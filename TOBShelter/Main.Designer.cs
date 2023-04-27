@@ -40,6 +40,10 @@ namespace TOBShelter
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewInvestigation = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.investigator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastModification = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddInvestigation = new System.Windows.Forms.Button();
             this.btnEditInvestigation = new System.Windows.Forms.Button();
@@ -65,10 +69,6 @@ namespace TOBShelter
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.investigator = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastModification = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvestigation)).BeginInit();
@@ -159,6 +159,39 @@ namespace TOBShelter
             this.dataGridViewInvestigation.StandardTab = true;
             this.dataGridViewInvestigation.TabIndex = 18;
             // 
+            // id
+            // 
+            this.id.HeaderText = "Identifiant";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 130;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "Intitulé";
+            this.title.MinimumWidth = 6;
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            this.title.Width = 130;
+            // 
+            // investigator
+            // 
+            this.investigator.HeaderText = "Délégué Enquêteur";
+            this.investigator.MinimumWidth = 6;
+            this.investigator.Name = "investigator";
+            this.investigator.ReadOnly = true;
+            this.investigator.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.investigator.Width = 130;
+            // 
+            // lastModification
+            // 
+            this.lastModification.HeaderText = "Dernière modification";
+            this.lastModification.MinimumWidth = 6;
+            this.lastModification.Name = "lastModification";
+            this.lastModification.ReadOnly = true;
+            this.lastModification.Width = 130;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.CadetBlue;
@@ -207,6 +240,7 @@ namespace TOBShelter
             this.btnViewInvestigation.Size = new System.Drawing.Size(66, 67);
             this.btnViewInvestigation.TabIndex = 11;
             this.btnViewInvestigation.UseVisualStyleBackColor = false;
+            this.btnViewInvestigation.Click += new System.EventHandler(this.btnViewInvestigation_Click_1);
             // 
             // ckxOpenInvestigation
             // 
@@ -474,39 +508,6 @@ namespace TOBShelter
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.Width = 125;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Identifiant";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 130;
-            // 
-            // title
-            // 
-            this.title.HeaderText = "Intitulé";
-            this.title.MinimumWidth = 6;
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            this.title.Width = 130;
-            // 
-            // investigator
-            // 
-            this.investigator.HeaderText = "Délégué Enquêteur";
-            this.investigator.MinimumWidth = 6;
-            this.investigator.Name = "investigator";
-            this.investigator.ReadOnly = true;
-            this.investigator.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.investigator.Width = 130;
-            // 
-            // lastModification
-            // 
-            this.lastModification.HeaderText = "Dernière modification";
-            this.lastModification.MinimumWidth = 6;
-            this.lastModification.Name = "lastModification";
-            this.lastModification.ReadOnly = true;
-            this.lastModification.Width = 130;
             // 
             // Main
             // 

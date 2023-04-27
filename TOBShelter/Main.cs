@@ -193,5 +193,14 @@ namespace TOBShelter
             }
             updateInvestigationDataGrid(null);
         }
+
+        private void btnViewInvestigation_Click_1(object sender, EventArgs e)
+        {
+            long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["id"].Value.ToString());
+            InvestigationDetailsDTO investigation = InvestigationService.FindById(id);
+            ViewInvestigation viewInvestigation = new ViewInvestigation(investigation);
+            viewInvestigation.ShowDialog(this);
+            updateInvestigationDataGrid(null);
+        }
     }
 }
