@@ -50,7 +50,7 @@ namespace TOBShelter
             List<ActivityDTO> activities = ActivityService.FindAll(filter);
             foreach (ActivityDTO activity in activities)
             {
-                this.lstActivities.Items.Add(activity.Description);
+                this.lstActivities.Items.Add(activity.Description + ", date: " + activity.Date.ToShortDateString());
             }
         }
     }

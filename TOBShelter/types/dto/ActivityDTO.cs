@@ -9,13 +9,13 @@ namespace TOBShelter.Types.Dto
 {
     internal class ActivityDTOCreate
     {
-        internal DateTime Date { get; set; }
+        internal string Date { get; set; }
         internal string Description { get; set; }
         internal ActivityType ActivityType { get; set; }
         internal long InvestigationId { get; set; }
         internal string[] Links { get; set; }
 
-        internal ActivityDTOCreate(DateTime date, string description, ActivityType activityType, long investigationId, string[] links)
+        internal ActivityDTOCreate(string date, string description, ActivityType activityType, long investigationId, string[] links)
         {
             if ((activityType != ActivityType.PHOTO) && (links != null))
                 throw new ArgumentException("Only photos can have links");

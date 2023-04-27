@@ -48,9 +48,8 @@ namespace TOBShelter
             try
             {
                 if (!Directory.Exists(this.directoryWithId))
-                {
                     Directory.CreateDirectory(this.directoryWithId);
-                }
+
                 string filePathDestination = this.directoryWithId + this.lblPath.Text.Substring(this.lblPath.Text.LastIndexOf(@"\"));
                 File.Copy(this.lblPath.Text, filePathDestination, true);
 

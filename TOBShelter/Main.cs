@@ -57,12 +57,12 @@ namespace TOBShelter
             {
                 List<InvestigationDTO> investigations = Services.InvestigationService.FindAll(filter).ToList();
                 foreach (InvestigationDTO investigation in investigations)
-                {
+                {                    
                     this.dataGridViewInvestigation.Rows.Add(
                         investigation.Id,
                         investigation.Title,
                         investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
-                        investigation.LastModification
+                        investigation.LastModification == null ? null : ((DateTime)investigation.LastModification).ToShortDateString()
                         );
                 }
             }

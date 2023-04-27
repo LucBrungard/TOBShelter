@@ -50,42 +50,20 @@ namespace TOBShelter
                 this.lstAnimals.Items.Add(animal.Name);
             }
 
+            ActivityFilters filter = new ActivityFilters();
+            filter.InvestigationId = investigation.Id;
+            List<ActivityDTO> listActivities = ActivityService.FindAll(filter);
+
+            foreach (ActivityDTO activity in listActivities)
+            {
+                this.lstActivities.Items.Add(activity.Description + ", date:" + activity.Date.ToShortDateString());
+            }
+
             if (investigation.Closed)
             {
                 this.chkClosed.Checked = true;
                 this.txtNotice.Enabled = true;
                 this.lblNotice.Enabled = true;
-            }
-        }
-
-        private void btnAddPerson_Click(object sender, EventArgs e)
-        {
-            AddPerson addPerson = new AddPerson();
-            addPerson.ShowDialog(this);
-        }
-
-        private void btnAddAnimal_Click(object sender, EventArgs e)
-        {
-            AddAnimal addAnimal = new AddAnimal();
-            addAnimal.ShowDialog(this);
-            this.listAnimaux.Add(addAnimal.animal);
-
-            this.updateAnimal();
-        }
-
-        private void updateAnimal()
-        {
-            this.lstAnimals.Items.Clear();
-            try
-            {
-                foreach (Animal animal in this.listAnimaux)
-                {
-                    this.lstAnimals.Items.Add(animal.Name);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("L'accès a la base de données est momentanément indisponible", "Impossible d'accéder à la base de données", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -108,21 +86,21 @@ namespace TOBShelter
                     Closed = this.chkClosed.Checked
                 };
 
-                try
-                {
-                    this.investigation = InvestigationService.Update(investigationUpdated);
+            try
+            {
+                this.investigation = InvestigationService.Update(investigationUpdated);
                     this.Close();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Impossible de modifier cette enquête pour le moment.", "Impossible de modifier cette enquête", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossible de modifier cette enquête pour le moment.", "Impossible de modifier cette enquête", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Impossible de modifier cet enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+}
 
         private void chkClosed_CheckedChanged(object sender, EventArgs e)
         {
@@ -200,10 +178,31 @@ namespace TOBShelter
             catch (Exception) { }
         }
 
-        private void brnAddDocuments_Click(object sender, EventArgs e)
+        private void btnAddActivity_Click(object sender, EventArgs e)
         {
             AddActivity addActivity = new AddActivity(this.investigation.Id);
             addActivity.ShowDialog();
+            updateActivities();
+        }
+
+        private void updateActivities()
+        {
+            this.lstActivities.Items.Clear();
+
+            ActivityFilters filter = new ActivityFilters();
+            filter.InvestigationId = this.investigation.Id;
+            List<ActivityDTO> listActivities = ActivityService.FindAll(filter);
+            try
+            {
+                foreach (ActivityDTO activity in listActivities)
+                {
+                    this.lstActivities.Items.Add(activity.Description + ", date:" + activity.Date.ToShortDateString());
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("L'accès a la base de données est momentanément indisponible", "Impossible d'accéder à la base de données", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

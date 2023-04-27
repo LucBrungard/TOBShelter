@@ -29,88 +29,97 @@ namespace TOBShelter
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.add = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnAddActivity = new System.Windows.Forms.Button();
+            this.dtpActivity = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cmbType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(32, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 24);
-            this.comboBox1.TabIndex = 0;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(24, 32);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(163, 21);
+            this.cmbType.TabIndex = 0;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 16);
+            this.label1.Location = new System.Drawing.Point(24, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 17);
+            this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Type d\'activité";
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 112);
-            this.textBox1.MinimumSize = new System.Drawing.Size(0, 88);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(464, 88);
-            this.textBox1.TabIndex = 2;
+            this.txtDescription.Location = new System.Drawing.Point(24, 91);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDescription.MinimumSize = new System.Drawing.Size(4, 72);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(349, 72);
+            this.txtDescription.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 88);
+            this.label2.Location = new System.Drawing.Point(24, 72);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Description";
             // 
-            // add
+            // btnAddActivity
             // 
-            this.add.Location = new System.Drawing.Point(235, 208);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(71, 32);
-            this.add.TabIndex = 4;
-            this.add.Text = "Ajouter";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.btnAddActivity.Location = new System.Drawing.Point(176, 169);
+            this.btnAddActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddActivity.Name = "btnAddActivity";
+            this.btnAddActivity.Size = new System.Drawing.Size(53, 26);
+            this.btnAddActivity.TabIndex = 4;
+            this.btnAddActivity.Text = "Ajouter";
+            this.btnAddActivity.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Click += new System.EventHandler(this.btnAddActivity_Click);
             // 
-            // dateTimePicker1
+            // dtpActivity
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(296, 40);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dtpActivity.Location = new System.Drawing.Point(222, 32);
+            this.dtpActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpActivity.Name = "dtpActivity";
+            this.dtpActivity.Size = new System.Drawing.Size(151, 20);
+            this.dtpActivity.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(296, 16);
+            this.label3.Location = new System.Drawing.Point(222, 13);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Date ";
             // 
             // AddActivity
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 253);
+            this.ClientSize = new System.Drawing.Size(406, 206);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.add);
+            this.Controls.Add(this.dtpActivity);
+            this.Controls.Add(this.btnAddActivity);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbType);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddActivity";
             this.Text = "AddActivity";
             this.ResumeLayout(false);
@@ -120,12 +129,12 @@ namespace TOBShelter
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button add;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnAddActivity;
+        private System.Windows.Forms.DateTimePicker dtpActivity;
         private System.Windows.Forms.Label label3;
     }
 }

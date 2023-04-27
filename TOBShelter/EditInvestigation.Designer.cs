@@ -48,7 +48,7 @@ namespace TOBShelter
             this.txtOffender = new System.Windows.Forms.TextBox();
             this.txtComplaignant = new System.Windows.Forms.TextBox();
             this.btnEditInvestigation = new System.Windows.Forms.Button();
-            this.brnAddDocuments = new System.Windows.Forms.Button();
+            this.btnAddActivity = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtNotice = new System.Windows.Forms.TextBox();
@@ -265,15 +265,16 @@ namespace TOBShelter
             this.btnEditInvestigation.UseVisualStyleBackColor = true;
             this.btnEditInvestigation.Click += new System.EventHandler(this.btnEditInvestigation_Click);
             // 
-            // brnAddDocuments
+            // btnAddActivity
             // 
-            this.brnAddDocuments.Location = new System.Drawing.Point(407, 171);
-            this.brnAddDocuments.Margin = new System.Windows.Forms.Padding(2);
-            this.brnAddDocuments.Name = "brnAddDocuments";
-            this.brnAddDocuments.Size = new System.Drawing.Size(169, 23);
-            this.brnAddDocuments.TabIndex = 11;
-            this.brnAddDocuments.Text = "Ajouter une activité";
-            this.brnAddDocuments.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Location = new System.Drawing.Point(407, 171);
+            this.btnAddActivity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddActivity.Name = "btnAddActivity";
+            this.btnAddActivity.Size = new System.Drawing.Size(169, 23);
+            this.btnAddActivity.TabIndex = 11;
+            this.btnAddActivity.Text = "Ajouter une activité";
+            this.btnAddActivity.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Click += new System.EventHandler(this.btnAddActivity_Click);
             // 
             // groupBox3
             // 
@@ -281,7 +282,7 @@ namespace TOBShelter
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lstAnimals);
             this.groupBox3.Controls.Add(this.lstActivities);
-            this.groupBox3.Controls.Add(this.brnAddDocuments);
+            this.groupBox3.Controls.Add(this.btnAddActivity);
             this.groupBox3.Location = new System.Drawing.Point(12, 332);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(660, 208);
@@ -372,7 +373,7 @@ namespace TOBShelter
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEditInvestigation;
-        private System.Windows.Forms.Button brnAddDocuments;
+        private System.Windows.Forms.Button btnAddActivity;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtNotice;

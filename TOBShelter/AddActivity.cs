@@ -16,45 +16,24 @@ namespace TOBShelter
 {
     public partial class AddActivity : Form
     {
-        private long _investigationId;
+        private long investigationId;
+        private string[] links = null;
 
         public AddActivity(long investigationId)
         {
             InitializeComponent();
-            this.comboBox1.DataSource = Enum.GetValues(typeof(ActivityType));
-            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker1.CustomFormat = "yyyyMMdd";
-            this._investigationId = investigationId;
+            this.cmbType.DataSource = Enum.GetValues(typeof(ActivityType));
+            this.dtpActivity.Format = DateTimePickerFormat.Custom;
+            this.dtpActivity.CustomFormat = "yyyyMMdd";
+            this.investigationId = investigationId;
         }
-
-        private void add_Click(object sender, EventArgs e)
+        private void btnAddActivity_Click(object sender, EventArgs e)
         {
-            string[] links = null;
+
             ActivityDTOCreate activity = null;
-            if (this.comboBox1.SelectedItem.ToString() == "PHOTO")
-            {
-                try
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        string directoryWithId = @"C:\Documents\" + _investigationId.ToString();
-                        string path = openFileDialog.FileName;
-                        if (!Directory.Exists(directoryWithId))
-                            Directory.CreateDirectory(directoryWithId);
-                        string filePathDestination = directoryWithId + path.Substring(path.LastIndexOf(@"\"));
-                        File.Copy(path, filePathDestination, true);
-                        links.Append(filePathDestination);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message, "Impossible d'ajouter une photo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
             try
             {
-                activity = new ActivityDTOCreate(this.dateTimePicker1.Value, this.textBox1.Text, (ActivityType)this.comboBox1.SelectedItem, _investigationId, links);
+                activity = new ActivityDTOCreate(this.dtpActivity.Value.ToString("yyyyMMdd"), this.txtDescription.Text, (ActivityType)this.cmbType.SelectedItem, investigationId, links);
             }
             catch (Exception exception)
             {
@@ -69,6 +48,33 @@ namespace TOBShelter
                 MessageBox.Show("L'ajout d'activité est momentanément indisponible", "Impossible d'ajouter une activité", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
+        }
+
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbType.SelectedItem.ToString() == "PHOTO")
+            {
+                try
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string directoryWithId = @"C:\Documents\" + investigationId.ToString();
+                        string path = openFileDialog.FileName;
+
+                        if (!Directory.Exists(directoryWithId))
+                            Directory.CreateDirectory(directoryWithId);
+
+                        string filePathDestination = directoryWithId + path.Substring(path.LastIndexOf(@"\"));
+                        File.Copy(path, filePathDestination, true);
+                        this.links.Append(filePathDestination);
+                    }
+                }
+                    catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Impossible d'ajouter une photo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
