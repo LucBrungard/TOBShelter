@@ -106,7 +106,7 @@ namespace TOBShelter.Services
                 stringBuilder.Append($"closed='{((bool)investigation.Closed ? 1 : 0)}'");
             }
 
-            if (!empty)
+            if (empty)
                 throw new ArgumentException("No value set", nameof(investigation));
 
             stringBuilder.Append($"\nWHERE investigation_id='{investigation.Id}'");

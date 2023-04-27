@@ -40,10 +40,6 @@ namespace TOBShelter
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewInvestigation = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddInvestigation = new System.Windows.Forms.Button();
             this.btnEditInvestigation = new System.Windows.Forms.Button();
@@ -69,6 +65,10 @@ namespace TOBShelter
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.investigator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastModification = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvestigation)).BeginInit();
@@ -130,10 +130,10 @@ namespace TOBShelter
             this.dataGridViewInvestigation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewInvestigation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInvestigation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnId,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewImageColumn2,
-            this.dataGridViewTextBoxColumn7});
+            this.id,
+            this.title,
+            this.investigator,
+            this.lastModification});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,39 +158,6 @@ namespace TOBShelter
             this.dataGridViewInvestigation.Size = new System.Drawing.Size(525, 325);
             this.dataGridViewInvestigation.StandardTab = true;
             this.dataGridViewInvestigation.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumnId
-            // 
-            this.dataGridViewTextBoxColumnId.HeaderText = "Identifiant";
-            this.dataGridViewTextBoxColumnId.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumnId.Name = "dataGridViewTextBoxColumnId";
-            this.dataGridViewTextBoxColumnId.ReadOnly = true;
-            this.dataGridViewTextBoxColumnId.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Intitulé";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "Délégué Enquêteur";
-            this.dataGridViewImageColumn2.MinimumWidth = 6;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Dernière modification";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 130;
             // 
             // panel2
             // 
@@ -240,7 +207,6 @@ namespace TOBShelter
             this.btnViewInvestigation.Size = new System.Drawing.Size(66, 67);
             this.btnViewInvestigation.TabIndex = 11;
             this.btnViewInvestigation.UseVisualStyleBackColor = false;
-            this.btnViewInvestigation.Click += new System.EventHandler(this.btnViewInvestigation_Click);
             // 
             // ckxOpenInvestigation
             // 
@@ -509,6 +475,39 @@ namespace TOBShelter
             this.Column8.Name = "Column8";
             this.Column8.Width = 125;
             // 
+            // id
+            // 
+            this.id.HeaderText = "Identifiant";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 130;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "Intitulé";
+            this.title.MinimumWidth = 6;
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            this.title.Width = 130;
+            // 
+            // investigator
+            // 
+            this.investigator.HeaderText = "Délégué Enquêteur";
+            this.investigator.MinimumWidth = 6;
+            this.investigator.Name = "investigator";
+            this.investigator.ReadOnly = true;
+            this.investigator.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.investigator.Width = 130;
+            // 
+            // lastModification
+            // 
+            this.lastModification.HeaderText = "Dernière modification";
+            this.lastModification.MinimumWidth = 6;
+            this.lastModification.Name = "lastModification";
+            this.lastModification.ReadOnly = true;
+            this.lastModification.Width = 130;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,14 +558,14 @@ namespace TOBShelter
         private System.Windows.Forms.Button btnEditInvestigation;
         private System.Windows.Forms.Button btnViewInvestigation;
         private System.Windows.Forms.DataGridView dataGridViewInvestigation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewImageColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn investigator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastModification;
     }
 }

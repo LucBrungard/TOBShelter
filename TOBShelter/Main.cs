@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TOBShelter.Services;
 using TOBShelter.Types.Dto;
 
 namespace TOBShelter
@@ -158,10 +159,39 @@ namespace TOBShelter
 
         private void btnViewInvestigation_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewInvestigation.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["ColumnId"].Value.ToString());
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
+                    new ViewInvestigator(investigator).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("L'accès aux détails de cet enquêteur est momentanément indisponible", "Impossible d'afficher les détails de l'enquêteur", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void btnEditInvestigation_Click(object sender, EventArgs e)
         {
+            if (this.dataGridViewInvestigation.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    long id = long.Parse(this.dataGridViewInvestigation.SelectedRows[0].Cells["id"].Value.ToString());
+                    InvestigationDetailsDTO investigation = InvestigationService.FindById(id);
+                    new EditInvestigation(investigation).ShowDialog();
+                    updateInvestigatorDataGrid(null);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Cette enquête ne peut pas être modifié pour le moment", "Impossible de modifier les informations de l'enquête", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            updateInvestigationDataGrid(null);
         }
     }
 }
