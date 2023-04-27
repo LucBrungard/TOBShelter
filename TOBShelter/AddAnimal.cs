@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TOBShelter.Services;
 using TOBShelter.Types.Base;
 using TOBShelter.Types.Composed;
-using TOBShelter.Types.Composed.Animals;
 using TOBShelter.Types.Dto;
-using static TOBShelter.Types.Base.Breed.Cat;
 
 namespace TOBShelter
 {
     public partial class AddAnimal : Form
     {
         private Dictionary<string, long> dic = new Dictionary<string, long>();
+        public Animal animal = null;
 
         public AddAnimal()
         {
@@ -48,7 +42,6 @@ namespace TOBShelter
         {
             try
             {
-                Animal animal = null;
                 try
                 {
                     string breedTypeName = this.cmbBreed.SelectedItem.ToString();
@@ -57,7 +50,7 @@ namespace TOBShelter
 
                     string animalTypeName = this.cmbType.SelectedItem.ToString();
                     Type animalType = AppDomain.CurrentDomain.GetAssemblies().SelectMany(t => t.GetTypes()).Where(t => String.Equals(t.Name, animalTypeName, StringComparison.Ordinal)).First();
-                    animal = (Animal)Activator.CreateInstance(animalType, new object[6] {
+                    this.animal = (Animal)Activator.CreateInstance(animalType, new object[6] {
                 this.txtName.Text,
                 Convert.ToUInt32(this.nudAge.Value),
                 this.txtWeight.Text,
@@ -70,7 +63,7 @@ namespace TOBShelter
                 {
                     MessageBox.Show(exception.Message, "Impossible d'ajouter un animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                AnimalService.Create(animal);
+                AnimalService.Create(this.animal);
             }
             catch (Exception)
             {

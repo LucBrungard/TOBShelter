@@ -144,11 +144,33 @@ namespace TOBShelter.Services
             res.BusinessSector = reader.GetString("business_sector");
 
             reader.Close();
+            return res;
+        }
 
-            // Get the investigations
-            InvestigationFilters investigationFilters = new InvestigationFilters { InvestigatorId = res.Id };
-            res.Investigations = new HashSet<InvestigationDTO>(InvestigationService.FindAll(investigationFilters));
-            
+        public static HashSet<InvestigationDTO> GetInvestigations(long investigatorId)
+        {
+            return new HashSet<InvestigationDTO>(
+                InvestigationService.FindAll(new InvestigationFilters
+                {
+                    InvestigatorId = investigatorId
+                }));
+        }
+
+        public static int GetNbInvestigation(long investigatorId)
+        {
+            if (investigatorId == 0)
+                return -1;
+
+            string sql = $"SELECT COUNT(*) FROM investigations WHERE investigator='{investigatorId}'";
+            MySqlCommand cmd = new MySqlCommand(sql, DBConnection.GetInstance().Connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (!reader.Read())
+                return -1;
+
+            int res = reader.GetInt32(0);
+            reader.Close();
+
             return res;
         }
 
@@ -168,7 +190,7 @@ namespace TOBShelter.Services
                     empty = false;
                     if (!first)
                         conditions.Append("AND ");
-                    conditions.Append($"person_id='{filters.Id}'\n\t");
+                    conditions.Append($"persons.person_id='{filters.Id}'\n\t");
                     first = false;
                 }
                 if (filters.Title != null)
@@ -300,13 +322,8 @@ namespace TOBShelter.Services
             rdr.Close();
 
             foreach (var investigator in list)
-            {
-                InvestigationFilters filter = new InvestigationFilters
-                {
-                    InvestigatorId = investigator.Id
-                };
-                investigator.NbInvestigations = InvestigationService.FindAll(filter).Count;
-            }
+                investigator.NbInvestigations = GetNbInvestigation(investigator.Id);
+
             return list;
         }
     }

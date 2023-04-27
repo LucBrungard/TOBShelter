@@ -143,11 +143,14 @@ namespace TOBShelter.Services
                 Notice = reader.GetString("notice"),
                 Closed = reader.GetBoolean("closed")
             };
+            long complainantId = reader.GetInt64("complainant");
+            long offenderId = reader.GetInt64("offender");
+            long investigatorId = reader.GetInt64("investigator");
             reader.Close();
 
-            dto.Complainant = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("complainant") })[0];
-            dto.Offender = PersonService.FindAll(new PersonFilters { Id = reader.GetInt64("offender") })[0];
-            dto.Investigator = InvestigatorService.FindAll(new InvestigatorFilters { Id = reader.GetInt64("investigator") })[0];
+            dto.Complainant = PersonService.FindAll(new PersonFilters { Id = complainantId })[0];
+            dto.Offender = PersonService.FindAll(new PersonFilters { Id = offenderId })[0];
+            dto.Investigator = InvestigatorService.FindAll(new InvestigatorFilters { Id = investigatorId })[0];
             
             // Get all animals related to the investigation
             List<Animal> animals = new List<Animal>();
@@ -264,8 +267,8 @@ namespace TOBShelter.Services
                 {
                     Id = investigatorsId[i],
                 };
-                InvestigatorDTO investigator = InvestigatorService.FindAll(investigatorFilters)[0];
-                investigation.InvestigatorTitle = investigator.Title;
+                InvestigatorDetailsDTO investigator = InvestigatorService.FindById(investigatorsId[i]);
+                investigation.InvestigatorTitle = investigator.Title.Value;
                 investigation.InvestigatorName = investigator.Name;
                 investigation.InvestigatorFirstName = investigator.FirstName;
 

@@ -50,6 +50,8 @@ namespace TOBShelter
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lstAnimals = new System.Windows.Forms.ListBox();
             this.lstDocuments = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -113,10 +115,10 @@ namespace TOBShelter
             // 
             // btnAddAnimal
             // 
-            this.btnAddAnimal.Location = new System.Drawing.Point(117, 172);
+            this.btnAddAnimal.Location = new System.Drawing.Point(90, 171);
             this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddAnimal.Name = "btnAddAnimal";
-            this.btnAddAnimal.Size = new System.Drawing.Size(114, 26);
+            this.btnAddAnimal.Size = new System.Drawing.Size(169, 23);
             this.btnAddAnimal.TabIndex = 8;
             this.btnAddAnimal.Text = "Ajouter un animal";
             this.btnAddAnimal.UseVisualStyleBackColor = true;
@@ -142,10 +144,10 @@ namespace TOBShelter
             // 
             // brnAddDocuments
             // 
-            this.brnAddDocuments.Location = new System.Drawing.Point(435, 172);
+            this.brnAddDocuments.Location = new System.Drawing.Point(407, 171);
             this.brnAddDocuments.Margin = new System.Windows.Forms.Padding(2);
             this.brnAddDocuments.Name = "brnAddDocuments";
-            this.brnAddDocuments.Size = new System.Drawing.Size(114, 26);
+            this.brnAddDocuments.Size = new System.Drawing.Size(169, 23);
             this.brnAddDocuments.TabIndex = 11;
             this.brnAddDocuments.Text = "Ajouter un document";
             this.brnAddDocuments.UseVisualStyleBackColor = true;
@@ -260,6 +262,8 @@ namespace TOBShelter
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lstAnimals);
             this.groupBox3.Controls.Add(this.lstDocuments);
             this.groupBox3.Controls.Add(this.btnAddAnimal);
@@ -274,7 +278,7 @@ namespace TOBShelter
             // lstAnimals
             // 
             this.lstAnimals.FormattingEnabled = true;
-            this.lstAnimals.Location = new System.Drawing.Point(27, 19);
+            this.lstAnimals.Location = new System.Drawing.Point(27, 32);
             this.lstAnimals.Name = "lstAnimals";
             this.lstAnimals.Size = new System.Drawing.Size(294, 134);
             this.lstAnimals.TabIndex = 13;
@@ -282,10 +286,30 @@ namespace TOBShelter
             // lstDocuments
             // 
             this.lstDocuments.FormattingEnabled = true;
-            this.lstDocuments.Location = new System.Drawing.Point(345, 19);
+            this.lstDocuments.Location = new System.Drawing.Point(344, 32);
             this.lstDocuments.Name = "lstDocuments";
             this.lstDocuments.Size = new System.Drawing.Size(294, 134);
             this.lstDocuments.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Animaux";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(341, 16);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Documents";
             // 
             // AddInvestigation
             // 
@@ -304,6 +328,7 @@ namespace TOBShelter
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +356,7 @@ namespace TOBShelter
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Button btnAddInvestigator;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -30,7 +30,7 @@ namespace TOBShelter
 
             try
             {
-                List<InvestigatorDTO> investigators = TOBShelter.Services.InvestigatorService.FindAll(filter).ToList();
+                List<InvestigatorDTO> investigators = Services.InvestigatorService.FindAll(filter).ToList();
                 foreach (InvestigatorDTO investigator in investigators)
                 {
                     this.dataGridInvestigators.Rows.Add(
@@ -50,13 +50,14 @@ namespace TOBShelter
 
         private void updateInvestigationDataGrid(InvestigationFilters filter)
         {
-            this.dataGridInvestigators.Rows.Clear();
+            this.dataGridViewInvestigation.Rows.Clear();
+
             try
             {
-                List<InvestigationDTO> investigations = TOBShelter.Services.InvestigationService.FindAll(filter).ToList();
+                List<InvestigationDTO> investigations = Services.InvestigationService.FindAll(filter).ToList();
                 foreach (InvestigationDTO investigation in investigations)
                 {
-                    this.dataGridInvestigators.Rows.Add(
+                    this.dataGridViewInvestigation.Rows.Add(
                         investigation.Id,
                         investigation.Title,
                         investigation.InvestigatorFirstName + " " + investigation.InvestigatorName,
@@ -119,7 +120,7 @@ namespace TOBShelter
                 try
                 {
                     long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
                     new ViewInvestigator(investigator).ShowDialog();
                     updateInvestigatorDataGrid(null);
                 }
@@ -137,7 +138,7 @@ namespace TOBShelter
                 try
                 {
                     long id = long.Parse(this.dataGridInvestigators.SelectedRows[0].Cells["ColumnId"].Value.ToString());
-                    InvestigatorDetailsDTO investigator = TOBShelter.Services.InvestigatorService.FindById(id);
+                    InvestigatorDetailsDTO investigator = Services.InvestigatorService.FindById(id);
                     new EditInvestigator(investigator).ShowDialog();
                     updateInvestigatorDataGrid(null);
                 }
@@ -152,7 +153,7 @@ namespace TOBShelter
         {
             AddInvestigation addInvestigation = new AddInvestigation();
             addInvestigation.ShowDialog(this);
-            updateInvestigatorDataGrid(null);
+            updateInvestigationDataGrid(null);
         }
 
         private void btnViewInvestigation_Click(object sender, EventArgs e)

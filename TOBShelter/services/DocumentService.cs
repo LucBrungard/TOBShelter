@@ -17,7 +17,7 @@ namespace TOBShelter.Services
             if (document.InvestigationId == null)
                 throw new ArgumentNullException(nameof(document.InvestigationId));
 
-            StringBuilder stringBuilder = new StringBuilder("INSERT INTO `documents` ('path', 'investigation_id') VALUES (\n\t");
+            StringBuilder stringBuilder = new StringBuilder("INSERT INTO `documents` (path, investigation_id) VALUES (\n\t");
 
             stringBuilder.Append($"'{document.Path}',\n\t");
             stringBuilder.Append($"'{document.InvestigationId}')");

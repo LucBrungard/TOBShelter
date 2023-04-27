@@ -27,7 +27,7 @@ namespace TOBShelter
             {
                 PersonCreateDTO person = new PersonCreateDTO(
                     (IdentityTitle)this.cbxCivility.SelectedItem,
-                    this.txtName.Text,
+                    this.txtName.Text.ToUpper(),
                     this.txtFirstName.Text,
                     this.txtNumber.Text,
                     (RouteType)this.cbxRouteType.SelectedItem,

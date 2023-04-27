@@ -50,7 +50,10 @@ namespace TOBShelter
 
                 foreach (InvestigationDTO investigation in investigations)
                 {
-                    this.dataGridViewInvestigations.Rows.Add(investigation.Id, investigation.Title, investigation.LastModification);
+                    this.dataGridViewInvestigations.Rows.Add(
+                        investigation.Id, 
+                        investigation.Title, 
+                        investigation.LastModification);
                 }
             }
             catch (Exception)
