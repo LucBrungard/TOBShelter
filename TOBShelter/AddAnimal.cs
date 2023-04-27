@@ -19,7 +19,7 @@ namespace TOBShelter
 {
     public partial class AddAnimal : Form
     {
-        Dictionary<string, long> dic = new Dictionary<string, long>();
+        private Dictionary<string, long> dic = new Dictionary<string, long>();
 
         public AddAnimal()
         {
@@ -42,46 +42,54 @@ namespace TOBShelter
             this.cmbType.Items.Add("Cat");
             this.cmbType.Items.Add("Dog");
             this.cmbType.Items.Add("Horse");
-
-            this.cmbBreed.Items.Add("ABYSSIN");
-            this.cmbBreed.Items.Add("AMERICAN_CURL");
-            this.cmbBreed.Items.Add("AMERICAN_SHORTHAIR");
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
-                string breedTypeName = "TOBShelter.Types.Base.Breed+Cat+" + this.cmbBreed.SelectedItem.ToString();
-                Type breedType = Type.GetType(breedTypeName);
-                ConstructorInfo constructBreed = breedType.GetConstructor(Type.EmptyTypes);
-                Breed breed = (Breed)constructBreed.Invoke(new object[] { });
-
-                string animalTypeName = "TOBShelter.Types.Base.Breed+" + this.cmbType.SelectedItem.ToString();
-                Type animalType = Type.GetType(animalTypeName);
-
-                ConstructorInfo constructAnimal = animalType.GetConstructor(new[] { 
-                    typeof(string), 
-                    typeof(uint), 
-                    typeof(string), 
-                    typeof(Gender), 
-                    typeof(Breed), 
-                    typeof(long) 
-                });
-                Animal animal = (Animal)constructAnimal.Invoke(new object[] {
-                    this.txtName.Text.Trim(),
-                    Convert.ToUInt32(this.nudAge.Value),
-                    this.txtWeight.Text.Trim(),
-                    (Gender)this.cmbSexe.SelectedItem,
-                    breed,
-                    this.dic[cmbOwner.SelectedItem.ToString()]
-                });
-
-            /*}
-            catch (Exception exception)
+            try
             {
-                MessageBox.Show(exception.Message, "Impossible d'ajouter un animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+                Animal animal = null;
+                try
+                {
+                    string breedTypeName = this.cmbBreed.SelectedItem.ToString();
+                    Type breedType = AppDomain.CurrentDomain.GetAssemblies().SelectMany(t => t.GetTypes()).Where(t => String.Equals(t.Name, breedTypeName, StringComparison.Ordinal)).First();
+                    Breed breed = (Breed)Activator.CreateInstance(breedType);
+
+                    string animalTypeName = this.cmbType.SelectedItem.ToString();
+                    Type animalType = AppDomain.CurrentDomain.GetAssemblies().SelectMany(t => t.GetTypes()).Where(t => String.Equals(t.Name, animalTypeName, StringComparison.Ordinal)).First();
+                    animal = (Animal)Activator.CreateInstance(animalType, new object[6] {
+                this.txtName.Text,
+                Convert.ToUInt32(this.nudAge.Value),
+                this.txtWeight.Text,
+                (Gender)this.cmbSexe.SelectedItem,
+                breed,
+                this.dic[cmbOwner.SelectedItem.ToString()]
+                });
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Impossible d'ajouter un animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                AnimalService.Create(animal);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Impossible d'ajouter un animal pour le moment", "Impossible d'ajouter un animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.Close();
+        }
+
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string animalTypeName = (sender as ComboBox).SelectedItem.ToString();
+            Type animalType = AppDomain.CurrentDomain.GetAssemblies().SelectMany(t => t.GetTypes()).Where(t => String.Equals(t.FullName, "TOBShelter.Types.Base.Breed+" + animalTypeName, StringComparison.Ordinal)).First();
+            IEnumerable<Type> races = animalType.Assembly.GetTypes().Where(type => type.IsSubclassOf(animalType));
+
+            this.cmbBreed.Items.Clear();
+            foreach (Type race in races)
+            {
+                cmbBreed.Items.Add(race.Name);
+            }
         }
     }
 }
