@@ -154,6 +154,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddActivity.cs" />
+    <Compile Include="AddActivity.Designer.cs">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDocument.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +260,9 @@
     <Compile Include="ViewInvestigator.Designer.cs">
       <DependentUpon>ViewInvestigator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddActivity.resx">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddAnimal.resx">
       <DependentUpon>AddAnimal.cs</DependentUpon>
     </EmbeddedResource>

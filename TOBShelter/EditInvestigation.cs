@@ -17,6 +17,7 @@ namespace TOBShelter
         private List<Animal> listAnimaux = new List<Animal>();
         private Dictionary<string, long> dic = new Dictionary<string, long>();
         private InvestigationDetailsDTO investigation;
+        private List<InvestigatorDTO> listInvestigator;
 
         public EditInvestigation(InvestigationDetailsDTO investigation)
         {
@@ -24,7 +25,7 @@ namespace TOBShelter
 
             this.investigation = investigation;
 
-            List<InvestigatorDTO> listInvestigator = InvestigatorService.FindAll(null);
+            this.listInvestigator = InvestigatorService.FindAll(null);
 
             foreach (InvestigatorDTO investigator in listInvestigator)
             {
@@ -43,7 +44,7 @@ namespace TOBShelter
             this.cmbInvestigator.SelectedItem = investigation.Investigator.FirstName + " " + investigation.Investigator.Name;
             if (investigation.Notice != null)
                 this.txtNotice.Text = investigation.Notice;
-            
+
             foreach (Animal animal in investigation.Animals)
             {
                 this.lstAnimals.Items.Add(animal.Name);
@@ -61,12 +62,6 @@ namespace TOBShelter
         {
             AddPerson addPerson = new AddPerson();
             addPerson.ShowDialog(this);
-        }
-
-        private void btnAddInvestigator_Click(object sender, EventArgs e)
-        {
-            AddInvestigator addInvestigator = new AddInvestigator();
-            addInvestigator.ShowDialog(this);
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
@@ -104,7 +99,8 @@ namespace TOBShelter
                     notice = this.txtNotice.Text.Trim();
                 }
 
-                InvestigationEditDTO investigationUpdated = new InvestigationEditDTO() { 
+                InvestigationEditDTO investigationUpdated = new InvestigationEditDTO()
+                {
                     Id = this.investigation.Id,
                     Title = this.txtTitle.Text.Trim(),
                     InvestigatorId = this.dic[cmbInvestigator.SelectedItem.ToString()],
@@ -138,6 +134,13 @@ namespace TOBShelter
         {
             AddInvestigator addInvestigator = new AddInvestigator();
             addInvestigator.ShowDialog(this);
+            InvestigatorDetailsDTO newInvestigator = addInvestigator.createdInvestigator;
+            if (newInvestigator is not null)
+            {
+                InvestigatorDTO person = new InvestigatorDTO { Id = newInvestigator.Id, Title = (IdentityTitle)newInvestigator.Title, Name = newInvestigator.Name, FirstName = newInvestigator.FirstName, Available = true, InOperation = true, NbInvestigations = 0 };
+                this.listInvestigator.Add(person);
+                this.cmbInvestigator.Items.Add(person.FirstName + " " + person.Name + ", 0");
+            }
         }
 
         private async void gMapControl_Load(object sender, EventArgs e)
@@ -163,7 +166,7 @@ namespace TOBShelter
                 foreach (InvestigatorDTO investigator in listInvestigator)
                 {
                     InvestigatorDetailsDTO detailInvestigator = TOBShelter.Services.InvestigatorService.FindById(investigator.Id);
-                    Coordinates coords = await(TOBShelter.services.GeoAPIService.GetCommuneCoordinates(detailInvestigator.PostalCode, detailInvestigator.City));
+                    Coordinates coords = await (TOBShelter.services.GeoAPIService.GetCommuneCoordinates(detailInvestigator.PostalCode, detailInvestigator.City));
                     PointLatLng center = new PointLatLng(coords.Y, coords.X);
 
                     // On dessine un pins ou l'enqueteur habite
@@ -195,6 +198,12 @@ namespace TOBShelter
                 }
             }
             catch (Exception) { }
+        }
+
+        private void brnAddDocuments_Click(object sender, EventArgs e)
+        {
+            AddActivity addActivity = new AddActivity(this.investigation.Id);
+            addActivity.ShowDialog();
         }
     }
 }
